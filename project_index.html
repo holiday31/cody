@@ -15,7 +15,6 @@
    <!-- 대학교 소개 자바스크립트 설정 추가-->
    <script src="dbHandle.js"></script>
     <script type="text/javascript" >
-<<<<<<< HEAD
 		$(document).ready(function() {
 			// 처음 flag값을 false로 초기화 시킴
       openDB();
@@ -93,83 +92,6 @@
 			font-weight: bold;
 			color: #950000;
 		}
-=======
-      $(document).ready(function() {
-         // 처음 flag값을 false로 초기화 시킴
-         $("#pic_univ").data("flag","false");
-
-         // flag 값에 따라 스타일을 small과 large를 교환하며 적용
-         $("#pic_univ").click(  function() {
-            var bflag = $("#pic_univ").data("flag");
-            if (bflag == "false" ) {
-               bflag = "true";
-               $("#pic_univ").removeClass("small");
-               $("#pic_univ").addClass("large");
-            } else {
-               bflag = "false";
-               $("#pic_univ").removeClass("large");
-               $("#pic_univ").addClass("small");
-            };
-            $("#pic_univ").data("flag",bflag);
-
-        $("#clickme").click(function(){
-          $("#output").html($("#in").val());
-          var d=new Date();
-          $("output").html(
-            ($("#output").val()
-          +
-          );
-        });
-         } );
-
-      });
-   </script>
-
-   <style type="text/css">
-      /* 메인 페이지 용 */
-      #logo {
-         width:300px;
-         height:120px;
-         text-indent:-9999px;
-         background-image: url(fashion.jpg);
-         background-repeat: no-repeat;
-         margin-top: 20px;
-         margin-right: auto;
-         margin-bottom: 10px;
-         margin-left: auto;
-      }
-      .title_style {
-         color: #3F3C30;
-         padding-top: 10px;
-      }
-      .fotorama__caption {
-      text-align: center;
-      }
-
-      /* 대학교 소개용*/
-      #pic_univ {
-         float: left;
-         margin-right: 10px;
-         margin-bottom: 10px;
-         -webkit-transition-property: width;
-         -webkit-transition-duration: .3s;
-      }
-      .small {
-         width: 30%;
-      }
-      .large {
-         width: 100%;
-      }
-
-      .clear_both {
-         clear: both;
-      }
-      .bold_style {
-         font-weight: bold;
-         color: #950000;
-      }
-</style>
-
     </style>
 </head>
 
