@@ -13,11 +13,21 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.5.1/fotorama.js"></script>
 
    <!-- 대학교 소개 자바스크립트 설정 추가-->
+   <script src="dbHandle.js"></script>
     <script type="text/javascript" >
 		$(document).ready(function() {
 			// 처음 flag값을 false로 초기화 시킴
+      openDB();
+		  createTable();
 			$("#pic_univ").data("flag","false");
-
+      $("#clickme").click(function(){
+        $("#output").html($("#in").val());
+        var d=new Date();
+        $("#output").html(
+          $("#output").val()
+        +$("#in").val()
+        +"\n시간: "+d+"\n"
+        );
 			// flag 값에 따라 스타일을 small과 large를 교환하며 적용
 			$("#pic_univ").click(  function() {
 				var bflag = $("#pic_univ").data("flag");
@@ -31,7 +41,11 @@
 					$("#pic_univ").addClass("small");
 				};
 				$("#pic_univ").data("flag",bflag);
+
+
+        });
 			} );
+
 		});
 	</script>
 
@@ -92,22 +106,22 @@
         <div data-role="content">
             <ul data-role="listview" data-inset="true">
                 <li><a href="#campus_images" >
-                            <img src="images/pic_i.png" alt="" class="ui-li-thumb" />
+                            <img src="" alt="" class="ui-li-thumb" />
                             <h3 class="title_style">팀원 소개</h3>
                       </a>
                 </li>
                 <li ><a href="#intro" >
-                            <img src="images/intro_i.png" alt="" class="ui-li-thumb"/>
+                            <img src="" alt="" class="ui-li-thumb"/>
                             <h3 class="title_style">Project 소개</h3>
                         </a>
                 </li>
                 <li><a href="video.html" rel="external">
-                            <img src="images/movie_i.png" alt="" class="ui-li-thumb"/>
+                            <img src="" alt="" class="ui-li-thumb"/>
                             <h3 class="title_style">홍보동영상</h3>
                       </a>
                 </li>
                 <li><a href="#write">
-                            <img src="images/movie_i.png" alt="" class="ui-li-thumb"/>
+                            <img src="" alt="" class="ui-li-thumb"/>
                             <h3 class="title_style">방명록</h3>
                       </a>
                 </li>
@@ -124,9 +138,9 @@
 
           <div data-role="content" >
                 <div class="fotorama" data-arrows="true" data-width="100%" data-ratio="965/643" data-allowfullscreen="true" data-nav="thumbs" >
-                        <a href="member1.jpg"><img src="pic/thumb/ca01.jpg" data-caption="호수공원" /></a>
-                        <a href="member2.jpg"><img src="pic/thumb/ca02.jpg" data-caption="자유관" /></a>
-                        <a href="member3.jpg"><img src="pic/thumb/ca03.jpg" data-caption="성실관" /></a>
+                        <a href="member1.jpg"></a>
+                        <a href="member2.jpg"></a>
+                        <a href="member3.jpg"></a>
 
                 </div>
            </div>
@@ -135,24 +149,24 @@
         </div>
     </div><!-- page 끝-->
 
-  	<!-- 대학교 소개 페이지-->
- 	<div data-role="page" id="intro" data-add-back-btn="true" >
-		<div data-role="header" data-theme="b" >
-        	<a href="project_index.html" data-icon="home" data-direction="reverse" class="ui-btn-left">Home</a>
-        	<h1>Project 소개</h1>
+    <!-- 프로젝트 소개 페이지-->
+    <div data-role="page" id="intro" data-add-back-btn="true" >
+      <div data-role="header" data-theme="b" >
+           <a href="project_index.html" data-icon="home" data-direction="reverse" class="ui-btn-left">Home</a>
+           <h1>Project 소개</h1>
         </div>
 
         <div data-role="content" >
-           	<img class="small"  id="pic_univ" src="images/univ.jpg" alt="">
-            <h2>&quot;<span class="bold_style">시대정신</span>을 선도하는 열린 <span class="bold_style">학문 공동체</span> 입니다. &quot;</h2>
+              <img class="small"  id="pic_univ" src="project_img.png" alt="">
+            <h2>&quot;<span class="bold_style">여러분의 코디</span>를 책임질 <span class="bold_style">모두의 코디 앱</span> 입니다. &quot;</h2>
             <div class="clear_both"></div>
-      <p>안녕하십니까? 버추얼 대학교에 관심을 가져주셔서 감사합니다. 버추얼 대학교는 1세기의 역사를 지니며 그 동안 많은 발전을 거듭하였습니다. </p>
-			<p>버추어 대학교는 세계에서 가장 선도적인 대학교 중의 하나로 인정받고 있습니다. 설립목적은 사회와 개인에 직접적인 기여와 성공을 준비할 수 있도록 하는 것입니다. 궁극적으로는 인류문명에 유용한 인재를 양성하는 것입니다. 오늘날 버추얼 대학교는 현재 인류가 당면하고 있는 여러 문제를 해결하고 다음 세대를 선도할 수 있는 리더가 될 수 있도록 학생들을 준비시키는 것입니다. </p>
-			<p>여러분의 미래를 버추얼 대학교에서 함께하시길 희망합니다. </p>
-			<p>총창 Luke Andrew</p>
+              <p> 안녕하세요! '옷걸이, 코디를 부탁해'에 관심을 가져주셔서 감사합니다. '옷걸이, 코디를 부탁해'는 SNS형식의 하이브리드앱으로써 더 많은 사람들이 사용할 수 있도록 성장하고 있습니다. </p>
+         <p>'옷걸이, 코디를 부탁해'는 SNS형식의 하이브리드앱으로써 자신의 코디를 사람들에게 평가받는 어플리케이션으로 혼자서 오늘 뭐 입지 고민하지 않아도 됩니다. 아침마다 매일 어떤 옷을 입을지, 요새 어떤 옷을 입는지 많이 궁금하시고 고민되시죠? 저희 앱은 다른 사람들이 여러분의 코디를 보고 평가할 수 있고, 마음에 드는 코디를 공유할 수 있습니다. 또한 SNS 코디 자랑 코너, 공유코너 등 다양한 코너를 통해서 많은 정부를 얻고 사용 할 수 있습니다. </p>
+         <p>여러분의 코디는 '옷걸이, 코디를 부탁해'와 함께합시다~</p>
+         <p>'옷걸이, 코디를 부탁해' 팀원들</p>
         </div>
         <div data-role="footer" data-theme="b">
-            <h2>Cody Project</h2>
+            <h2>옷걸이, 코디를 부탁해</h2>
         </div>
      </div>
 
@@ -164,6 +178,10 @@
 
            <div data-role="content" >
              <label>글을 입력하세요:</label>
+             <input type="text" id="in" value=""/>
+             <a href="#" id="clickme" data-role="button">확인</a>
+             <label>입력결과</label>
+             <textarea id="output"></textarea>
            </div>
            <div data-role="footer" data-theme="b">
                <h2>Cody Project</h2>
