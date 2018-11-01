@@ -20,7 +20,7 @@ function createTable() {
 	      console.log('테이블 생성 트랜잭션 성공...');
      });
  }
- function insertBook(){
+ function insert(){
     db.transaction(function(tr){
 
   		var write= $('#in').val();
