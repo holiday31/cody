@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>버추얼대학교</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+
+    <!-- fotorama CDN 설정 추가 -->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.5.1/fotorama.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.5.1/fotorama.js"></script>
+
+   <!-- 대학교 소개 자바스크립트 설정 추가-->
+    <script type="text/javascript" >
+		$(document).ready(function() {
+			// 처음 flag값을 false로 초기화 시킴
+			$("#pic_univ").data("flag","false");
+
+			// flag 값에 따라 스타일을 small과 large를 교환하며 적용
+			$("#pic_univ").click(  function() {
+				var bflag = $("#pic_univ").data("flag");
+				if (bflag == "false" ) {
+					bflag = "true";
+					$("#pic_univ").removeClass("small");
+					$("#pic_univ").addClass("large");
+				} else {
+					bflag = "false";
+					$("#pic_univ").removeClass("large");
+					$("#pic_univ").addClass("small");
+				};
+				$("#pic_univ").data("flag",bflag);
+			} );
+		});
+	</script>
+
+	<style type="text/css">
+		/* 메인 페이지 용 */
+		#logo {
+			width:176px;
+			height:132px;
+			text-indent:-9999px;
+			background-image: url(images/CI_TITLE.png);
+			background-repeat: no-repeat;
+			margin-top: 0px;
+			margin-right: auto;
+			margin-bottom: 10px;
+			margin-left: auto;
+		}
+		.title_style {
+			color: #3F3C30;
+			padding-top: 10px;
+		}
+		.fotorama__caption {
+		text-align: center;
+		}
+
+		/* 대학교 소개용*/
+		#pic_univ {
+			float: left;
+			margin-right: 10px;
+			margin-bottom: 10px;
+			-webkit-transition-property: width;
+			-webkit-transition-duration: .3s;
+		}
+		.small {
+			width: 30%;
+		}
+		.large {
+			width: 100%;
+		}
+
+		.clear_both {
+			clear: both;
+		}
+		.bold_style {
+			font-weight: bold;
+			color: #950000;
+		}
+</style>
+
+    </style>
+</head>
+
+<body>
+	<!-- 메인 페이지-->
+    <div data-role="page" id="main" >
+    	<div data-role="header" data-theme="b">
+			<h2 id="logo">가상 대학교</h2>
+        </div>
+        <div data-role="content">
+            <ul data-role="listview" data-inset="true">
+                <li><a href="#campus_images" >
+                            <img src="images/pic_i.png" alt="" class="ui-li-thumb" />
+                            <h3 class="title_style">캠퍼스 이미지</h3>
+                      </a>
+                </li>
+                <li ><a href="#intro" >
+                            <img src="images/intro_i.png" alt="" class="ui-li-thumb"/>
+                            <h3 class="title_style">대학교소개</h3>
+                        </a>
+                </li>
+                <li><a href="video.html" rel="external">
+                            <img src="images/movie_i.png" alt="" class="ui-li-thumb"/>
+                            <h3 class="title_style">홍보동영상</h3>
+                      </a>
+                </li>
+                <li><a href="#" >
+                            <img src="images/map_i.png" alt="" class="ui-li-thumb" />
+                            <h3 class="title_style">캠퍼스맵</h3>
+                      </a>
+                </li>
+            </ul>
+        </div> <!-- content 끝-->
+    </div><!-- page 끝-->
+
+    <div data-role="page"  id="campus_images">
+          <div data-role="header" data-theme="b">
+            <a href="#main" data-icon="home" data-direction="reverse" class="ui-btn-left">Home</a>
+            <h1>캠퍼스 이미지</h1>
+          </div><!-- header 끝 -->
+
+          <div data-role="content" >
+                <div class="fotorama" data-arrows="true" data-width="100%" data-ratio="965/643" data-allowfullscreen="true" data-nav="thumbs" >
+                        <a href="pic/full/cb01.jpg"><img src="pic/thumb/ca01.jpg" data-caption="호수공원" /></a>
+                        <a href="pic/full/cb02.jpg"><img src="pic/thumb/ca02.jpg" data-caption="자유관" /></a>
+                        <a href="pic/full/cb03.jpg"><img src="pic/thumb/ca03.jpg" data-caption="성실관" /></a>
+                        <a href="pic/full/cb04.jpg"><img src="pic/thumb/ca04.jpg" data-caption="학생회관" /></a>
+                        <a href="pic/full/cb05.jpg"><img src="pic/thumb/ca05.jpg" data-caption="자유관 앞 조형물" /></a>
+                        <a href="pic/full/cb06.jpg"><img src="pic/thumb/ca06.jpg" data-caption="본관" /></a>
+                        <a href="pic/full/cb07.jpg"><img src="pic/thumb/ca07.jpg" data-caption="채플관" /></a>
+                </div>
+           </div>
+        <div data-role="footer" data-theme="b">
+            <h2>버추얼 대학교</h2>
+        </div>
+    </div><!-- page 끝-->
+
+  	<!-- 대학교 소개 페이지-->
+ 	<div data-role="page" id="intro" data-add-back-btn="true" >
+		<div data-role="header" data-theme="b" >
+        	<a href="index.html" data-icon="home" data-direction="reverse" class="ui-btn-left">Home</a>
+        	<h1>대학교 소개</h1>
+        </div>
+
+        <div data-role="content" >
+           	<img class="small"  id="pic_univ" src="images/univ.jpg" alt="">
+            <h2>&quot;<span class="bold_style">시대정신</span>을 선도하는 열린 <span class="bold_style">학문 공동체</span> 입니다. &quot;</h2>
+            <div class="clear_both"></div>
+           	<p>안녕하십니까? 버추얼 대학교에 관심을 가져주셔서 감사합니다. 버추얼 대학교는 1세기의 역사를 지니며 그 동안 많은 발전을 거듭하였습니다. </p>
+			<p>버추어 대학교는 세계에서 가장 선도적인 대학교 중의 하나로 인정받고 있습니다. 설립목적은 사회와 개인에 직접적인 기여와 성공을 준비할 수 있도록 하는 것입니다. 궁극적으로는 인류문명에 유용한 인재를 양성하는 것입니다. 오늘날 버추얼 대학교는 현재 인류가 당면하고 있는 여러 문제를 해결하고 다음 세대를 선도할 수 있는 리더가 될 수 있도록 학생들을 준비시키는 것입니다. </p>
+			<p>여러분의 미래를 버추얼 대학교에서 함께하시길 희망합니다. </p>
+			<p>총창 Luke Andrew</p>
+        </div>
+        <div data-role="footer" data-theme="b">
+            <h2>버추얼 대학교</h2>
+        </div>
+     </div>
+
+</body>
+</html>
