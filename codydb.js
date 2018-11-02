@@ -26,8 +26,7 @@ function createTable() {
  // 방명록 입력 트랜잭션 실행
  function insertCody(){
     db.transaction(function(tr){
-    	var d = new Date();
-    	var datetime = d;
+    	var datetime = new Date();
   		var comment = $('#in').val();
   		var insertSQL = 'insert into codydb(datetime, comment) values(?, ?)';
      	tr.executeSql(insertSQL, [datetime, comment], function(tr, rs){
