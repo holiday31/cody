@@ -10,6 +10,22 @@
 		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
+		<style>
+			* {
+				margin: 10px;
+				padding: 5px;
+			}
+			h3 {
+				font-family: 'a가로수';
+				color: #FF99CC;
+			}
+			h4 {
+				font-family: 'a가로수';
+				color: purple;
+			}
+
+		</style>
+
 	</head>
 	<body>
 		<div data-role="page">
@@ -23,17 +39,13 @@
 					<br/>
 					<h3>사진(각 최대 3장씩)(사진 갯수는 후에 수정할게요~)</h3><!-- 사진 갯수는 후에 수정할게요~ -->
 					<h4>상의</h4>
-					<input type="file">
-					<input type="file">
-					<input type="file">
+					<input type="file" my="myPicture" multiple>
 					<h4>하의</h4>
-					<input type="file">
-					<input type="file">
-					<input type="file">
-					<h3>글쓰기</h3>
+					<input type="file" my="myPicture" multiple> <!--다중 파일 전송-->
+					<h3>내용</h3>
 					<textarea></textarea>
 
-          <input type="submit" value="글올리기" class="post">
+                    <input type="submit" value="글올리기" class="post">
 					<input type="reset" value="재설정" class="reset">
 				</form>
 			</div>
