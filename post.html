@@ -17,35 +17,37 @@
 				<h1>옷걸이, 코디를 부탁해</h1>
 			</div>
 			<div data-role="content">
-				<h3>제목</h3>
-		        <input type="text" name="title" class="title" placeholder="글제목을 입력하세요.">
-		        <br/>
-	        	<h3>사진(각 최대 3장씩)</h3> <!-- 사진 갯수는 후에 수정할게요~ -->
-	        	<h4>상의</h4>
-		        <input type="file">
-		        <input type="file">
-		        <input type="file">
-		        <h4>하의</h4>
-		        <input type="file">
-		        <input type="file">
-		        <input type="file">
-		        <h3>글쓰기</h3>
-		        <textarea></textarea>
+				<form>
+					<h3>제목</h3>
+					<input type="text" name="title" class="title" placeholder="글제목을 입력하세요.">
+					<br/>
+					<h3>사진(각 최대 3장씩)(사진 갯수는 후에 수정할게요~)</h3><!-- 사진 갯수는 후에 수정할게요~ -->
+					<h4>상의</h4>
+					<input type="file">
+					<input type="file">
+					<input type="file">
+					<h4>하의</h4>
+					<input type="file">
+					<input type="file">
+					<input type="file">
+					<h3>글쓰기</h3>
+					<textarea></textarea>
 
-		        <input type="submit" value="글올리기" class="post">
-		        <input type="reset" value="재설정" class="reset">
+          <input type="submit" value="글올리기" class="post">
+					<input type="reset" value="재설정" class="reset">
+				</form>
 			</div>
 			<div data-role="footer" data-position="fixed" data-fullscreen="true">
 				<div data-role="navbar">
 					<ul>
 						<li>
-							<a href="#" data-icon="home">홈</a>
+							<a href="main.html" data-icon="home">홈</a>
 						</li>
 						<li>
-							<a href="#" data-icon="edit">글쓰기</a>
+							<a href="post.html" data-icon="edit">글쓰기</a>
 						</li>
 						<li>
-							<a href="#" data-icon="search">검색</a>
+							<a href="search.html" data-icon="search">검색</a>
 						</li>
 						<li>
 							<a href="#" data-icon="user">마이페이지</a>
