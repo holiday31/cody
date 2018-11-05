@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<title>옷걸이, 코디를 부탁해</title>
+
+		<!--제이쿼리 모바일 & 제이쿼리 라이브러리 파일-->
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+		<style>
+			* {
+				margin: 10px;
+				padding: 5px;
+			}
+			h3 {
+				font-family: 'a가로수';
+				color: #FF99CC;
+			}
+			h4 {
+				font-family: 'a가로수';
+				color: purple;
+			}
+
+		</style>
+
+	</head>
+	<body>
+		<div data-role="page">
+			<div data-role="header" data-position="fixed" data-fullscreen="true">
+				<h1>옷걸이, 코디를 부탁해</h1>
+			</div>
+			<div data-role="content">
+				<form>
+					<h3>제목</h3>
+					<input type="text" name="title" class="title" placeholder="글제목을 입력하세요.">
+					<br/>
+					<h3>사진(각 최대 3장씩)(사진 갯수는 후에 수정할게요~)</h3><!-- 사진 갯수는 후에 수정할게요~ -->
+					<h4>상의</h4>
+					<input type="file" my="myPicture" multiple>
+					<h4>하의</h4>
+					<input type="file" my="myPicture" multiple> <!--다중 파일 전송-->
+					<h3>내용</h3>
+					<textarea></textarea>
+
+                    <input type="submit" value="글올리기" class="post">
+					<input type="reset" value="재설정" class="reset">
+				</form>
+			</div>
+			<div data-role="footer" data-position="fixed" data-fullscreen="true">
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<a href="main.html" data-icon="home">홈</a>
+						</li>
+						<li>
+							<a href="post.html" data-icon="edit">글쓰기</a>
+						</li>
+						<li>
+							<a href="search.html" data-icon="search">검색</a>
+						</li>
+						<li>
+							<a href="#" data-icon="user">마이페이지</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
