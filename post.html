@@ -12,10 +12,10 @@
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
 	<style>
-		* {
-				margin: 10px;
-				padding: 5px;
-			}
+    	#post {
+		    margin: 10px;
+		    padding: 5px;
+    	}
 			h3 {
 				font-family: 'a가로수';
 				color: #FF99CC;
@@ -34,12 +34,12 @@
 		<div data-role="header" data-position="fixed" data-fullscreen="true">
 			<h1>옷걸이, 코디를 부탁해</h1>
 		</div>
-		<div data-role="content">
+		<div data-role="content" id="post">
 			<form>
 				<h3>제목</h3>
 				<input type="text" name="title" class="title" placeholder="글제목을 입력하세요.">
 				<br />
-				<h3>사진(각 최대 3장씩)(사진 갯수는 후에 수정할게요~)</h3><!-- 사진 갯수는 후에 수정할게요~ -->
+				<h3>사진</h3><!-- 사진 갯수는 후에 수정할게요~ -->
 				<h4>상의</h4>
 				<input type="file" my="myPicture" multiple>
 				<h4>하의</h4>
