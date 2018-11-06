@@ -4,25 +4,54 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>jQuery Mobile</title>
+		<title>옷걸이 코디를부탁해</title>
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<style>
+			* {
+					margin: 10px;
+					padding: 5px;
+				}
+				h3 {
+					font-family: 'a가로수';
+					color: #FF99CC;
+				}
+				h4 {
+					font-family: 'a가로수';
+					color: purple;
+				}
+
+			</style>
+
 	</head>
 
 <body>
 	<div data-role="page" id="page1">
 		<div data-role="header" data-position="fixed" data-fullscreen="true">
-			<a href="#page1">홈</a> <!-- 왼쪽 버튼 -->
-			<input type="text"  class="form-control" id="inputName" placeholder="아이디를 입력해 주세요" >
-			<a href="#page2">마이페이지</a> <!-- 오른쪽 버튼 -->
+			<input type="text"  class="form-control" id="inputName" placeholder="검색해주세요" >
 		</div>
 		<div data-role="content">
 			<p>content영역</p>
 			<h1>첫번째 페이지</h1>
 		</div>
 		<div data-role="footer" data-position="fixed" data-fullscreen="true">
-			<h4>페이지꼬리말</h4>
+			<div data-role="navbar">
+				<ul>
+					<li>
+						<a href="main.html" rel="external" data-icon="home">홈</a>
+					</li>
+					<li>
+						<a href="post.html" rel="external" data-icon="edit">글쓰기</a>
+					</li>
+					<li>
+						<a href="search.html" rel="external" data-icon="search">검색</a>
+					</li>
+					<li>
+						<a href="#" rel="external" data-icon="user">마이페이지</a>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 
