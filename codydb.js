@@ -12,7 +12,7 @@ function openDB() {
 // 테이블 생성 트랜잭션 실행
 function createTable() {
 	db.transaction(function(tr) {
-		var createSQL = 'create table if not exists newcodydb(datetime datetime, comment text)';
+		var createSQL = 'create table if not exists codydb(datetime datetime, comment text)';
 		tr.executeSql(createSQL, [], function() {
 			console.log('2_1_테이블생성_sql 실행 성공...');
 		}, function() {
@@ -31,13 +31,11 @@ function insertCody() {
 		//var d = new Date();
 		var datetime = new Date();
 		var comment = $('#in').val();
-		var insertSQL = 'insert into newcodydb(datetime, comment) values(?, ?)';
+		var insertSQL = 'insert into codydb(datetime, comment) values(?, ?)';
 		tr.executeSql(insertSQL, [datetime, comment], function(tr, rs) {
-			if (rs.insertId <= 10) {
 				console.log('3_ 방명록 등록...no: ' + rs.insertId);
 				alert('방명록과 시간날짜가 입력되었습니다');
 				$('#in').val('');
-			}
 		}, function(tr, err) {
 			alert('DB오류 ' + err.message + err.code);
 		});
