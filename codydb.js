@@ -44,7 +44,7 @@ function insertCody() {
 
  function selectCody(){
  db.transaction(function(tr){
- var selectSQL = 'select * from codydb limit 10';
+ var selectSQL = 'select * from codydb order by rowid desc limit 10';
  tr.executeSql(selectSQL, [], function(tr, rs){
 	 var output='';
 	 var length;
