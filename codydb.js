@@ -42,15 +42,22 @@ function insertCody() {
 	});
 }
 
-/*
  function selectCody(){
  db.transaction(function(tr){
- var selectSQL = 'select * from codydb limit 34, 44';
+ var selectSQL = 'select * from codydb limit 10';
  tr.executeSql(selectSQL, [], function(tr, rs){
- while(c < 10) {
- $('#output').val('시간,날짜: '+rs.rows.item(c++).name+' 내용: '+rs.rows.item(c++).comment);
- index++;
+	 var output='';
+	 var length;
+	 if(rs.rows.length>10)
+	 	length=10;
+	 else
+	 	length=rs.rows.length;
+		index=0;
+ while(index<length) {
+	 output+='시간,날짜: '+rs.rows.item(index).datetime+' 내용: '+rs.rows.item(index).comment+'\n';
+	 index++;
  }
+ $('#output').val(output);
  });
  });
- } */
+ }
