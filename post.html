@@ -4,6 +4,8 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<title>옷걸이, 코디를 부탁해</title>
+		<!--상단 브라우저이미지 넣음!!(이미지는 후에 바꿔도 됨!!)-->
+		<link rel="shortcut icon" type="image/x-icon" href="https://mblogthumb-phinf.pstatic.net/20150913_165/koowq_1442154212671cvGl4_JPEG/%BF%CA%B0%C9%C0%CC_%BE%C6%C0%CC%C4%DC-01.png?type=w2" />
 
 		<!--제이쿼리 모바일 & 제이쿼리 라이브러리 파일-->
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
@@ -22,6 +24,11 @@
 			h4 {
 				font-family: 'a가로수';
 				color: purple;
+			}
+
+			.ui-icon-my-edit:after {
+				background-image: url(notice-edit2.png);
+				background-size: 18px 18px;
 			}
 
 		</style>
@@ -46,7 +53,7 @@
 					<h3>내용</h3>
 					<textarea></textarea>
 
-                    <input type="submit" value="글올리기" class="post">
+ <input type="submit" value="글올리기" class="post">
 					<input type="reset" value="재설정" class="reset">
 				</form>
 			</div>
@@ -57,13 +64,13 @@
 							<a href="main.html" rel="external" data-icon="home">홈</a>
 						</li>
 						<li>
-							<a href="post.html" rel="external" data-icon="edit">글쓰기</a>
+							<a href="post.html" rel="external" data-icon="my-edit">글쓰기</a>
 						</li>
 						<li>
 							<a href="search.html" rel="external" data-icon="search">검색</a>
 						</li>
 						<li>
-							<a href="myprofile.html" rel="external" data-icon="user">마이페이지</a>
+							<a href="myprofile.html" rel="external" data-role="button" data-icon="user">마이페이지</a>
 						</li>
 					</ul>
 				</div>

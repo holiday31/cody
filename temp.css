@@ -1,0 +1,19 @@
+
+
+/*임시로 해본거!!(drecc.css는 지금은 건들이면 안될꺼같아성..)*/
+
+/* 옷걸이 회원가입창 */
+div { text-align: center; }
+h1#registerTitle { font-family: "a가을소풍M"; color: #FF9999; }
+.form-group { font-family: "a스마일M"; margin: 10px; }
+.registerButton font { font-family: "a가을소풍M"; }
+.registerButton button { padding: 7px 15px; border-radius: 8px; -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s; background-color: white; border: 2px solid black; }
+.registerButton button:hover { background-color: #FF6699; color: white; }
+div.form-group input.form-control { font-family: 'a스마일M'; width: 18%; }
+
+/*옷걸이 로그인창*/
+h1#codyName { font-family: "a가을소풍M"; color: #FF99CC; text-align: center; }
+.login { background-color: #FF99CC; }
+.nonmember { width: 13px; height: 13px; vertical-align: text-top; }
+input.text { font-family: "a가을소풍M"; width: 50%; }
