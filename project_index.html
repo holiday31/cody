@@ -12,6 +12,10 @@
 		<link href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.5.1/fotorama.css" rel="stylesheet">
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.5.1/fotorama.js"></script>
 
+		<!-- Video JS 설정 추가 -->
+		<link href="//vjs.zencdn.net/4.5/video-js.css" rel="stylesheet">
+		<script src="//vjs.zencdn.net/4.5/video.js"></script>
+
 		<!-- 프로젝트 소개 자바스크립트 설정 추가-->
 		<script src="codydb.js"></script>
 		<script type="text/javascript" >
@@ -50,6 +54,8 @@
 
 				});
 			});
+
+
 		</script>
 
 		<style type="text/css">
@@ -95,6 +101,20 @@
 				font-weight: bold;
 				color: #950000;
 			}
+
+			#video_canvas {
+				margin-top: 0px;
+				margin-right: auto;
+				margin-bottom: 0px;
+				margin-left: auto;
+				width: 320px;
+				height: 240px;
+			}
+
+			.content_style {
+				padding-right: 0px;
+				padding-left: 0px;
+			}
 		</style>
 	</head>
 
@@ -113,7 +133,7 @@
 						<a href="#intro" > <img src="" alt="" class="ui-li-thumb"/> <h3 class="title_style">Project 소개</h3> </a>
 					</li>
 					<li>
-						<a href="video.html" rel="external"> <img src="" alt="" class="ui-li-thumb"/> <h3 class="title_style">홍보동영상</h3> </a>
+						<a href="#video_value" rel="external"> <img src="" alt="" class="ui-li-thumb"/> <h3 class="title_style">홍보동영상</h3> </a>
 					</li>
 					<li>
 						<a href="#write"> <img src="" alt="" class="ui-li-thumb"/> <h3 class="title_style">방명록</h3> </a>
@@ -143,7 +163,7 @@
 				<h2>Cody Project</h2>
 			</div>
 		</div><!-- page 끝-->
-ㅁㄹㅁㄹ
+
 		<!-- 프로젝트 소개 페이지-->
 		<div data-role="page" id="intro" data-add-back-btn="true" >
 			<div data-role="header" data-theme="b" >
@@ -170,6 +190,33 @@
 			</div>
 			<div data-role="footer" data-theme="b">
 				<h2>옷걸이, 코디를 부탁해</h2>
+			</div>
+		</div>
+
+		<div data-role="page" id="video_value">
+			<div data-role="header" data-theme="b">
+				<a href="project_index.html" data-icon="home" data-direction="reverse" class="ui-btn-left">Home</a>
+				<h1>홍보용 동영상</h1>
+			</div>
+			<div data-role="content" class="content_style">
+				<div id="video_canvas">
+					<div>
+						<video class="video-js vjs-default-skin" width="320" height="240" controls preload="auto" poster="video/이미지.jpg" data-setup="{}">
+							<source src="video/동영상.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
+							<source src="video/동영상.ogv" type='video/ogg; codecs="theora, vorbis"' />
+							<source src="video/동영상.webm" type='video/webm; codecs="vp8, vorbis"' />
+						</video>
+						<p class="vjs-no-video"><strong>비디오 다운로드:</strong>
+							<a href="video/동영상.mp4" target="_blank">MP4</a>,
+							<a href="video/동영상.ogv" target="_blank">Ogg</a>,
+							<a href="video/동영상.webm" target="_blank">WebM</a>
+							<br>
+						</p>
+					</div> <!-- video-js Box 끝-->
+				</div> <!-- video canvas 끝-->
+			</div>
+			<div data-role="footer" data-theme="b">
+				<h2>cody를 부탁해</h2>
 			</div>
 		</div>
 
