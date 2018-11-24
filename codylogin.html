@@ -33,6 +33,7 @@
 		<div data-role="page" id="main">
 			<div data-role="header" data-position="fixed" data-fullscreen="true"></div>
 			<div data-role="content">
+		    <img src="image/mhanger.png" id="mhanger">
 			<h1 id="codyName">옷걸이</h1>
 			<form action="#" method="post" align="center">
 				<p class="input">
@@ -48,14 +49,17 @@
 
 					<!--체크하는 순간 아이디에는 guest라는 아이디와 임의의 비밀번호가 주어짐!(데베 이용해서..혼자생각중)-->
 					<!--문제점이 있어서 후에 고쳐보겠음!!-->
-					<input type="checkbox" name="비회원" class="nomember" data-inline="true">
-					<label for="">비회원 로그인시 체크표시합니다.</label><br/>
-
-					<input type="button" href="#" value="아이디/비밀번호 찾기" data-inline="true">
-					<!--두 버튼 중 하나는 제거할 것!-->
-					<a href="login.html">
-					<input type="button" value="회원가입" data-inline="true">
+					<!--<input type="checkbox" name="비회원" class="nomember" data-inline="true">-->
+					<a href="main.html" rel="external" class="link">
+						<input type="button" name="비회원" class="nomember" data-inline="true" value="비회원 로그인">
 					</a>
+					<!--<label for="">비회원 로그인시 체크표시합니다.</label><br/>-->
+
+					<!--<input type="button" href="#" value="아이디/비밀번호 찾기" data-inline="true"> -->
+					<!--두 버튼 중 하나는 제거할 것!-->
+					<a href="login.html" class="link">
+					   <input type="button" value="회원가입" data-inline="true">
+				    </a>
 					<input type="button" value="회원가입" onClick="location.href='login.html'" data-inline="true">
 				</p>
 			</form>

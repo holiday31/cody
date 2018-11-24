@@ -12,38 +12,33 @@
 		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
-		<style>
-			#post {
-				margin: 10px;
-				padding: 5px;
-			}
-			h3 {
-				font-family: 'a가로수';
-				color: #FF99CC;
-			}
-			h4 {
-				font-family: 'a가로수';
-				color: purple;
-			}
-
-			.ui-icon-my-edit:after {
-				background-image: url(notice-edit2.png);
-				background-size: 18px 18px;
-			}
-
-		</style>
+	    <link rel="stylesheet" href="temp.css"/>
 
 	</head>
 	<body>
-		<div data-role="page">
+		<div data-role="page" id="postPage">
 			<div data-role="header" data-position="fixed" data-fullscreen="true">
+				<a href="#" data-icon="back" data-rel="back" data-direction="reverse">Back</a>
 				<h1>옷걸이, 코디를 부탁해</h1>
 			</div>
 			<div data-role="content" id="post">
-				<form>
+				<div class="ui-body ui-body-a gap">
 					<h3>제목</h3>
 					<input type="text" name="title" class="title" placeholder="글제목을 입력하세요.">
 					<br/>
+					<h3>신체 정보</h3>
+					<fieldset class="personsize">
+					<div class="ui-block-a">
+	                    <input type="text" name="키" placeholder="키(cm)"/>
+					</div>
+					<div class="ui-block-b">
+	                    <input type="text" name="몸무게" placeholder="몸무게(kg)"/>
+					</div>
+					<div class="ui-block-c">
+	                    <input type="text" name="평소옷사이즈" placeholder="평소옷사이즈"/>
+					</div>
+				</fieldset>
+
 					<h3>사진</h3><!-- 사진 갯수는 후에 수정할게요~ -->
 					<h4>상의</h4>
 					<input type="file" my="myPicture" multiple>
@@ -51,11 +46,16 @@
 					<input type="file" my="myPicture" multiple>
 					<!--다중 파일 전송-->
 					<h3>내용</h3>
-					<textarea></textarea>
-
- <input type="submit" value="글올리기" class="post">
-					<input type="reset" value="재설정" class="reset">
-				</form>
+					<textarea placeholder="내용을 입력하시오"></textarea>
+            </div>
+				<fieldset class="ui-grid-a">
+					<div class="ui-block-a">
+	                    <input type="reset" id="btnCancel" value="취소"/>
+					</div>
+					<div class="ui-block-b">
+	                    <input type="submit" id="btnAdd" value="등록">
+					</div>
+				</fieldset>
 			</div>
 			<div data-role="footer" data-position="fixed" data-fullscreen="true">
 				<div data-role="navbar">
@@ -64,7 +64,7 @@
 							<a href="main.html" rel="external" data-icon="home">홈</a>
 						</li>
 						<li>
-							<a href="post.html" rel="external" data-icon="my-edit">글쓰기</a>
+							<a href="post.html" rel="external" data-icon="edit">글쓰기</a>
 						</li>
 						<li>
 							<a href="search.html" rel="external" data-icon="search">검색</a>
