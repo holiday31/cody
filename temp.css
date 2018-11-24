@@ -1,11 +1,16 @@
 
 
-/*임시로 해본거!!(drecc.css는 지금은 건들이면 안될꺼같아성..)*/
+/*임시로 해본거!!(dress.css는 지금은 건들이면 안될꺼같아성..)*/
+/* 웹 폰트 */
+@import url(https://fonts.googleapis.com/css?family=Black+Han+Sans);
+@import url(https://fonts.googleapis.com/css?family=Jua);
+@import url(https://fonts.googleapis.com/css?family=Do+Hyeon);
 
-/* 옷걸이 회원가입창 */
-div { text-align: center; }
-h1#registerTitle { font-family: "a가을소풍M"; color: #FF9999; }
-.form-group { font-family: "a스마일M"; margin: 10px; }
+
+/*옷걸이 회원가입창 */
+article.container { text-align: center; }
+h1#registerTitle { font-family: "Do Hyeon"; font-size: 35px; color: #FF9999; }
+.form-group { font-family: "Jua"; margin: 10px; }
 .registerButton font { font-family: "a가을소풍M"; }
 .registerButton button { padding: 7px 15px; border-radius: 8px; -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s; background-color: white; border: 2px solid black; }
@@ -13,7 +18,15 @@ h1#registerTitle { font-family: "a가을소풍M"; color: #FF9999; }
 div.form-group input.form-control { font-family: 'a스마일M'; width: 18%; }
 
 /*옷걸이 로그인창*/
-h1#codyName { font-family: "a가을소풍M"; color: #FF99CC; text-align: center; }
+img#mhanger { width: 100px; height: 100px; margin-left: auto; margin-right: auto; display: block; }
+h1#codyName { font-family: "Do Hyeon"; color: #FF99CC; text-align: center; }
 .login { background-color: #FF99CC; }
 .nonmember { width: 13px; height: 13px; vertical-align: text-top; }
 input.text { font-family: "a가을소풍M"; width: 50%; }
+a.link { text-decoration: none; }
+
+/*옷걸이 메인창*/
+
+/*옷걸이 글올리기창*/
+div#post { margin: 10px; padding: 5px; }
+div#postPage h3, h4 { font-family: 'a뉴굴림2'; }
