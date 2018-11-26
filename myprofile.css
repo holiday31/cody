@@ -15,5 +15,8 @@
 	margin-bottom: 1.5rem;
 }
 #header .avatar img{
-  border-radius: 100%;
+	/* 이미지파일 부분 'display: block 은 width,height,margin 속성을 가진다. */
+	border-radius: 100%;
+	display:block;
+
 }
