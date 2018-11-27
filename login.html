@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kr">
 
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>옷걸이 회원가입</title>
+	<!--상단 브라우저이미지 넣음!!(이미지는 후에 바꿔도 됨!!)-->
+	<link rel="shortcut icon" type="image/x-icon" href="https://mblogthumb-phinf.pstatic.net/20150913_165/koowq_1442154212671cvGl4_JPEG/%BF%CA%B0%C9%C0%CC_%BE%C6%C0%CC%C4%DC-01.png?type=w2" />
 	<!-- Bootstrap -->
 	<link href="../plugin/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<!-- font awesome -->
@@ -25,16 +27,18 @@
 	<script src="../plugin/bootstrap/js/bootstrap.min.js"></script>
 	<script src="../config/js/join.js"></script>
 
+	<link rel="stylesheet" href="login.css"/>
+
 </head>
 
 <body>
 	<article class="container">
 		<div class="page-header">
 			<div class="col-md-6 col-md-offset-3">
-				<h1 align="center">옷걸이 회원가입</h1>
+				<h1 id="registerTitle">옷걸이 회원가입</h1>
 			</div>
 		</div>
-		<div align="center" class="col-sm-6 col-md-offset-3">
+		<div class="col-sm-6 col-md-offset-3">
 			<form role="form">
 				<div class="form-group">
 					<label for="inputName">아이디</label><br />
@@ -50,12 +54,12 @@
 				</div>
 				<div class="form-group">
 					<label for="inputPasswordCheck">비밀번호 확인</label><br />
-					<input type="password" class="form-control" id="inputPasswordCheck" placeholder="비밀번호 확인을 위해 다시한번 입력 해 주세요">
+					<input type="password" class="form-control" id="inputPasswordCheck" placeholder="비밀번호를 한번 더 입력해주세요">
 				</div>
 				<div class="form-group">
 					<label for="inputMobile">휴대폰 번호</label><br />
-					<input type="tel" class="form-control" id="inputMobile" placeholder="휴대폰번호를 입력해 주세요">
-				</div><br />
+					<input type="tel" class="form-control" id="inputMobile" placeholder="휴대폰번호를 입력해주세요">
+				</div>
 
 				<div class="form-group">
 					<label>약관 동의</label>
@@ -64,18 +68,19 @@
 							<span class="fa fa-check"></span>
 							<input id="agree" type="checkbox" autocomplete="off" checked>
 						</label>
-						<a href="info.html">이용약관</a>에 동의합니다.
-					</div><br /><br />
+						<a href="info.html" rel="external">이용약관</a>에 동의합니다.
+					</div><br />
 				</div>
 
-				<div class="form-group text-center">
+				<div class="registerButton">
 					<button type="submit" class="btn btn-warning">
-						<font size="5">가입취소</font>
+						<font><a href="myprofile.html" rel="external">가입취소</a></font>
 					</button>
 					<button type="submit" id="join-submit" class="btn btn-primary">
-						<font size="5">회원가입</font>
+						<font>회원가입</font>
 					</button>
 				</div>
+
 			</form>
 		</div>
 
