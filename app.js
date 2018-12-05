@@ -20,6 +20,5 @@ app.use(bodyParser.json());
 http.listen (3000, function() {
     console.log("DDD");
 });
-
+app.use(express.static('public'));
 app.use('/', require('./Router/index'));
-

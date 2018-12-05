@@ -12,10 +12,9 @@
 		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
-		<link rel="stylesheet" href="css/cody.css"/>
-		<script type="text/javascript">
+		<link rel="stylesheet" type="text/css" href="css/cody.css"/>
+		<script>
 		$(document).ready(function(){
-				var error="";
 				$('#submit').click(function(){
 					var userid=$('#userId').val();
 					var password=$('#password').val();
@@ -55,7 +54,7 @@
 							<input type="password"  id="password" name="password" maxlength="20" size="40" class="text" placeholder="비밀번호">
 						</p>
 						<p id="loginbtn">
-							<input type="image" src="image/loginimg.png" data-role="submit" id="loginimg">
+							<input type="image" src="image/loginimg.png"  data-role="submit" id="loginimg">
 							<br/><br/>
 
 							<input type="image" src="image/nomember.png" onClick="location.href='/main'" data-role="button" name="비회원" class="nomember" id="loginimg">
