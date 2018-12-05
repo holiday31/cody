@@ -1,75 +1,86 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>User name</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
-		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-		<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
 
-		<!-- fotorama CDN 설정 추가 -->
-		<link href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.5.1/fotorama.css" rel="stylesheet">
-		<script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.5.1/fotorama.js"></script>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>User name</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Do+Hyeon&amp;subset=korean" rel="stylesheet">
 
+	<!-- fotorama CDN 설정 추가 -->
+	<link href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.5.1/fotorama.css" rel="stylesheet">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.5.1/fotorama.js"></script>
 
-	</head>
+	<style>
+	body {
+		font-family: 'Do Hyeon', sans-serif;
+	}
 
-	<body>
-		<!-- 메인 페이지-->
-		<div data-role="page" id="main" >
-			<div data-role="header" data-position="fixed" data-fullscreen="true" >
-	<input type="text"  class="form-control" id="search" placeholder="검색해주세요" >
+	</style>
+</head>
+
+<body>
+	<!-- 메인 페이지-->
+	<div data-role="page" id="main">
+		<div data-role="header" data-position="fixed" style="background-color:#C57087">
+			<h3>코디플러스</h3>
+		</div>
+		<div data-role="content">
+			<div class="fotorama" data-arrows="true" data-width="100%" data-ratio="965/643" data-allowfullscreen="true" data-nav="thumbs">
+				<a href="image/member1.jpeg"></a>
+				<a href="image/member2.jpeg"></a>
+				<a href="image/member3.jpeg"></a>
 			</div>
-			<div data-role="content">
-        <div class="fotorama" data-arrows="true" data-width="100%" data-ratio="965/643" data-allowfullscreen="true" data-nav="thumbs" >
-          <a href="image/member1.jpeg"></a>
-          <a href="image/member2.jpeg"></a>
-          <a href="image/member3.jpeg"></a>
-        </div>
-        <div id="disqus_thread"></div>
-        <script>
+			<div id="disqus_thread"></div>
+			<script>
+				/**
+				 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+				 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+				/*
+				var disqus_config = function () {
+				this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+				this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+				};
+				*/
+				(function() { // DON'T EDIT BELOW THIS LINE
+					var d = document,
+						s = d.createElement('script');
+					s.src = 'https://codyplus-2.disqus.com/embed.js';
+					s.setAttribute('data-timestamp', +new Date());
+					(d.head || d.body).appendChild(s);
+				})();
+			</script>
+			<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-        /**
-        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-        /*
-        var disqus_config = function () {
-        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-        };
-        */
-        (function() { // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
-        s.src = 'https://codyplus-2.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-        })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
+		</div>
+		<!-- content 끝-->
+		<div data-role="footer" data-position="fixed" style="background-color:#C57087">
+			<div data-role="navbar" >
+				<ul>
+					<li>
+						<a href="main.html" rel="external" data-icon="home" style="background-color:#C57087"></a>
+					</li>
+					<li>
+						<a href="search.html" rel="external"  data-icon="search" style="background-color:#C57087"></a>
+					</li>
+					<li>
+						<a href="post.html" rel="external" data-icon="edit" style="background-color:#C57087"></a>
+					</li>
+					<li>
+						<a href="like.html" rel="external" data-icon="heart" style="background-color:#C57087"></a>
+					</li>
+					<li>
+						<a href="myprofile.html" rel="external" data-icon="user" style="background-color:#C57087"></a>
+					</li>
+				</ul>
 			</div>
-			<!-- content 끝-->
-      <div data-role="footer" data-position="fixed" data-fullscreen="true">
-        <div data-role="navbar">
-          <ul>
-            <li>
-              <a href="main.html" rel="external" data-icon="home">홈</a>
-            </li>
-            <li>
-              <a href="post.html" rel="external" data-icon="edit">글쓰기</a>
-            </li>
-            <li>
-              <a href="search.html" rel="external" data-icon="search">검색</a>
-            </li>
-            <li>
-              <a href="myprofile.html" rel="external" data-icon="user">마이페이지</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-		</div><!-- page 끝-->
+		</div>
+	</div><!-- page 끝-->
 
-<script id="dsq-count-scr" src="//codyplus-2.disqus.com/count.js" async></script>
-	</body>
+	<script id="dsq-count-scr" src="//codyplus-2.disqus.com/count.js" async></script>
+</body>
+
 </html>
