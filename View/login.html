@@ -12,7 +12,31 @@
 		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
-		<link rel="stylesheet" href="cody.css"/>
+		<link rel="stylesheet" href="css/cody.css"/>
+		<script type="text/javascript">
+		$(document).ready(function(){
+				var error="";
+				$('#submit').click(function(){
+					var userid=$('#userId').val();
+					var password=$('#password').val();
+
+					if((userid.trim().length==0)||(userid==null)){
+					 alert("아이디를 입력하세요.");
+					 $("#userId").focus();
+					 return false;
+					}
+
+					else if((password.trim().length==0)||(password==null)){
+					 alert("비밀번호를 입력하세요.");
+					 $("#password").focus();
+					 return false;
+					}
+
+					else
+						return;
+				});
+			});
+		</script>
 
 	</head>
 	<body>
@@ -23,19 +47,19 @@
 				<div class="ui-body ui-body-a gap">
 					<img src="image/codyhanger.png" id="codyhanger">
 					<h1 id="codyName">코디플러스</h1>
-					<form action="#" method="post" align="center">
+					<form action="/login" method="post" align="center">
 						<p class="input">
-							<input type="text" name="userid" maxlength="20" size="40" class="text" placeholder="아이디">
+							<input type="text" id="userId" name="userid" maxlength="20" size="40" class="text" placeholder="아이디">
 						</p>
 						<p class="input">
-							<input type="password" name="password" maxlength="20" size="40" class="text" placeholder="비밀번호">
+							<input type="password"  id="password" name="password" maxlength="20" size="40" class="text" placeholder="비밀번호">
 						</p>
 						<p id="loginbtn">
 							<input type="image" src="image/loginimg.png" data-role="submit" id="loginimg">
 							<br/><br/>
 
-							<input type="image" src="image/nomember.png" onClick="location.href='main.html'" data-role="button" name="비회원" class="nomember" id="loginimg">
-							<input type="image" src="image/joinimg.png" onClick="location.href='login.html'" id="loginimg">
+							<input type="image" src="image/nomember.png" onClick="location.href='/main'" data-role="button" name="비회원" class="nomember" id="loginimg">
+							<input type="image" src="image/joinimg.png" onClick="location.href='/join'" id="loginimg">
 						</p>
 					</form>
 				</div>
