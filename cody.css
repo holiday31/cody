@@ -36,8 +36,7 @@ div#buttongrp { background-color: #F9D0DB; } /*버튼있는 부분*/
 #main {background-color: #F9D0DB; } /*로그인 페이지 전체*/
 img#codyhanger { width: 100px; height: 100px; margin-left: auto; margin-right: auto; display: block; } /*로고*/
 h1#codyName { font-family: "Jua", "Do Hyeon"; color: #C57087; text-align: center; } /*타이틀(코디플러스)*/
-.login { color: #FF99CC; } /*로그인버튼*/
-.nonmember { width: 13px; height: 13px; vertical-align: text-top; } /*비회원버튼*/
+/*.login { color: #FF99CC; } /*로그인버튼*/
+/*.nonmember { width: 13px; height: 13px; vertical-align: text-top; } /*비회원버튼*/
 input.text { font-family: "Do Hyeon"; width: 50%; } /*아이디,비밀번호 입력부분*/
 a.link { text-decoration: none; } /*회원가입 버튼 링크선 제거*/
-input#loginimg { width: 125px; height: 45px; } /*버튼 이미지 크기*/
