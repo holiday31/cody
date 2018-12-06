@@ -3,75 +3,119 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<title>옷걸이, 코디를 부탁해</title>
+		<title>코디플러스</title>
 		<!--상단 브라우저이미지 넣음!!(이미지는 후에 바꿔도 됨!!)-->
 		<link rel="shortcut icon" type="image/x-icon" href="https://mblogthumb-phinf.pstatic.net/20150913_165/koowq_1442154212671cvGl4_JPEG/%BF%CA%B0%C9%C0%CC_%BE%C6%C0%CC%C4%DC-01.png?type=w2" />
-		<link href="https://fonts.googleapis.com/css?family=Do+Hyeon&amp;subset=korean" rel="stylesheet">
+
 		<!--제이쿼리 모바일 & 제이쿼리 라이브러리 파일-->
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
 		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
+		<link rel="stylesheet" href="temp.css"/>
+
+		<script src="//code.jquery.com/jquery.min.js"></script>
+
+		<script type="text/javascript">
+			$("textarea.posttext").textinput({
+				autogrow : false
+			});
+		</script>
+
 		<style>
-				body {
-					font-family: 'Do Hyeon', sans-serif;
-					color: #FF99CC;
-				}
+			.filebox label {
+				display: inline-block;
+				padding: .5em .75em;
+				color: #999;
+				font-size: inherit;
+				line-height: normal;
+				vertical-align: middle;
+				background-color: #fdfdfd;
+				cursor: pointer;
+				border: 2px solid #F9D0DB;
+				/*border: 1px solid #ebebeb;
+				 border-bottom-color: #e2e2e2; */
+				border-radius: .25em;
+			}
+			.filebox input[type="file"] {
+				/* 파일 필드 숨기기 */
+				position: absolute;
+				width: 1px;
+				height: 1px;
+				padding: 0;
+				margin: -1px;
+				overflow: hidden;
+				clip: rect(0,0,0,0);
+				border: 0;
+			}
+			.filebox img {
+				width: 75px;
+				height: 75px;
+			}
 
-				img.landscape { width: auto; height: 100%; }
-				img.portrait { width: 100%; height: auto; }
-				.inline{
-					display:inline-block;
-				}
-				.nav-item{
-					color:#C57087;
-				}
+			input.posttext {
+				border: 1px solid #F9D0DB;
+			}
+			textarea#textarea {
+				border: 1px solid #F9D0DB;
+			}
 
-			</style>
+		</style>
+
 	</head>
 	<body>
 		<div data-role="page" id="postPage">
 			<div data-role="header" data-position="fixed" style="background-color:#C57087">
-				<h1 style="color:white">코디플러스</h1>
+				<a href="#" data-icon="back" data-rel="back" data-direction="reverse" data-iconpos="notext" style="background-color:#C57087; border: 1px solid #C57087;">Back</a>
+				<a href="#" data-icon="check" data-iconpos="notext" data-rel="submit" style="background-color:#C57087; border: 1px solid #C57087;">Submit</a>
+				<h1 id="postname">글쓰기</h1>
 			</div>
 			<div data-role="content" id="post">
 				<div class="ui-body ui-body-a gap">
-					<h3>제목</h3>
-					<input type="text" name="title" class="title" placeholder="글제목을 입력하세요.">
-					<br/>
-					<h3>신체 정보</h3>
-					<fieldset class="personsize">
-					<div class="ui-block-a">
-	                    <input type="text" name="키" placeholder="키(cm)"/>
-					</div>
-					<div class="ui-block-b">
-	                    <input type="text" name="몸무게" placeholder="몸무게(kg)"/>
-					</div>
-					<div class="ui-block-c">
-	                    <input type="text" name="평소옷사이즈" placeholder="평소옷사이즈"/>
-					</div>
-				</fieldset>
 
-					<h3>사진</h3><!-- 사진 갯수는 후에 수정할게요~ -->
-					<h4>상의</h4>
-					<input type="file" my="myPicture" multiple>
-					<h4>하의</h4>
-					<input type="file" my="myPicture" multiple>
-					<!--다중 파일 전송-->
-					<h3>내용</h3>
-					<textarea placeholder="내용을 입력하시오"></textarea>
-            </div>
-				<fieldset class="ui-grid-a">
-					<div class="ui-block-a">
-	                    <input type="reset" id="btnCancel" value="취소"/>
+					<div class="filebox">
+						<label for="ex_file"><img src="image/camera.png"></label>
+						<input type="file" id="ex_file" my="myPicture" multiple>
 					</div>
-					<div class="ui-block-b">
-	                    <input type="submit" id="btnAdd" value="등록">
+
+					<!--	<input type="file" my="myPicture" multiple class="posttext"> -->
+
+					<input type="text" name="title" class="posttext" placeholder="글제목을 입력하세요.">
+					<textarea name="textarea" id="textarea" class="posttext" placeholder="코디 고민, 데일리룩, 등 나의 스타일을 공유해보세요."></textarea>
+
+
+
+					<div>
+						<span><input type="text" name="top" class="posttext" placeholder="상의 브랜드 이름을 입력하세요."></span>
+						<span><input type="url" name="urltop" class="posttext" placeholder="상의정보(url)을 입력하세요."></span>
+						<input type="text" name="bottom" class="posttext" placeholder="하의 브랜드 이름을 입력하세요.">
+							<input type="url" name="urlbottom" class="posttext" placeholder="하의정보(url)을 입력하세요.">
+
+						<!--	<input type="text" name="top" class="posttext" placeholder="상의 브랜드 이름을 입력하세요.">
+							<input type="url" name="urltop" class="posttext" placeholder="상의정보(url)을 입력하세요.">
+							<input type="text" name="bottom" class="posttext" placeholder="하의 브랜드 이름을 입력하세요.">
+							<input type="url" name="urlbottom" class="posttext" placeholder="하의정보(url)을 입력하세요."> -->
 					</div>
-				</fieldset>
+
+					<select name="codyType" id="codyType" data-inline="true" data-mini="true" data-shadow="false">
+					<!--	data-native-menu="false" -->
+						<option value="코디 고민">코디 고민</option>
+						<option value="데일리룩">데일리룩</option>
+					</select>
+
+				</div>
+
+				<!--<fieldset class="ui-grid-a">
+				<div class="ui-block-a">
+				<input type="reset" id="btnCancel" value="취소"/>
+				</div>
+				<div class="ui-block-b">
+				<input type="submit" id="btnAdd" value="등록"/>
+				</div>
+				</fieldset> -->
 			</div>
-			<div data-role="footer" data-position="fixed" style="background-color:#C57087">
-				<div data-role="navbar" >
+			<div data-role="footer" data-position="fixed">
+				<div data-role="navbar">
 					<ul>
 						<li>
 							<a href="main.html" rel="external" data-icon="home" style="background-color:#C57087"></a>
