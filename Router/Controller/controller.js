@@ -69,7 +69,7 @@ exports.loginPOST = function(req, res)
             console.log('Error while performing Query.', err);
     });
 
-    connection.end();
+    //connection.end();
 };
 
 exports.joinPOST = function(req, res) {
