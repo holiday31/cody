@@ -6,59 +6,47 @@
 		<title>코디플러스</title>
 		<link rel="shortcut icon" type="image/x-icon" href="https://mblogthumb-phinf.pstatic.net/20150913_165/koowq_1442154212671cvGl4_JPEG/%BF%CA%B0%C9%C0%CC_%BE%C6%C0%CC%C4%DC-01.png?type=w2" />
 
-
 		<!--제이쿼리 모바일 & 제이쿼리 라이브러리 파일-->
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
 		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
-		<link rel="stylesheet" type="text/css" href="css/cody.css"/>
+		<link rel="stylesheet" href="cody.css"/>
 		<script>
-		$(document).ready(function(){
-				$('#submit').click(function(){
-					var userid=$('#userId').val();
-					var password=$('#password').val();
-
-					if((userid.trim().length==0)||(userid==null)){
-					 alert("아이디를 입력하세요.");
-					 $("#userId").focus();
-					 return false;
-					}
-
-					else if((password.trim().length==0)||(password==null)){
-					 alert("비밀번호를 입력하세요.");
-					 $("#password").focus();
-					 return false;
-					}
-
-					else
-						return;
+			$(document).ready(function() {
+				$(function() {
+					$('input[type="submit"]').css({
+						'background-color' : '#ffffff',
+						'border' : '3px solid #C57087',
+					});
 				});
 			});
+
 		</script>
 
 	</head>
 	<body>
 		<!--로그인창-->
 		<div data-role="page" id="main">
-			<br/><br/><br/>
+			<br/>
+			<br/>
+			<br/>
 			<div data-role="content" id="postcontent">
 				<div class="ui-body ui-body-a gap">
 					<img src="image/codyhanger.png" id="codyhanger">
 					<h1 id="codyName">코디플러스</h1>
-					<form action="/login" method="post" align="center">
+					<form action="#" method="post" align="center">
 						<p class="input">
-							<input type="text" id="userId" name="userid" maxlength="20" size="40" class="text" placeholder="아이디">
+							<input type="text" name="userid" maxlength="20" size="40" class="text" placeholder="아이디">
 						</p>
 						<p class="input">
-							<input type="password"  id="password" name="password" maxlength="20" size="40" class="text" placeholder="비밀번호">
+							<input type="password" name="password" maxlength="20" size="40" class="text" placeholder="비밀번호">
 						</p>
 						<p id="loginbtn">
-							<input type="image" src="image/loginimg.png"  data-role="submit" id="loginimg">
-							<br/><br/>
-
-							<input type="image" src="image/nomember.png" onClick="location.href='/main'" data-role="button" name="비회원" class="nomember" id="loginimg">
-							<input type="image" src="image/joinimg.png" onClick="location.href='/join'" id="loginimg">
+							<input type="submit" value="로그인" id="login" onClick="location.href='main.html'">
+							<br/>
+							<input type="button" onClick="location.href='main.html'" value="비회원 로그인" name="비회원" class="nomember" id="nomember" data-inline="true">
+							<input type="button" onClick="location.href='login.html'" value="회원가입" id="join" data-inline="true">
 						</p>
 					</form>
 				</div>
