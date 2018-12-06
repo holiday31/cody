@@ -19,11 +19,11 @@ exports.logout = function(req, res)
 exports.main = function(req, res)
 {
     console.log(req.session);
-
-    if(req.session.login)
-        res.render('main.html');
-    else
-        res.render('login.html');
+    res.render('main.html');
+    // if(req.session.login)
+    //     res.render('main.html');
+    // else
+    //     res.render('login.html');
 };
 
 exports.loginGET = function(req, res)
