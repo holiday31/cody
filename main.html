@@ -10,12 +10,14 @@
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&amp;subset=korean" rel="stylesheet">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
+	<link rel="stylesheet" href="main.css"/>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
 		<style>
+
 				body {
 					font-family: 'Do Hyeon', sans-serif;
 					color: #FF99CC;
@@ -48,21 +50,18 @@
  <!-- post-->
  <div class="w3-row-padding">
 
-	 <ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link">코디고민</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link active" style="color::#C57087" href="#">최신</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link active" href="#">인기</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link ">코디공유</a>
-  </li>
-
-</ul>
+	 <div class="category_menu">
+ 			<div class="cody_gomin">
+ 				<p class="menu_name select_menu">코디고민</p>
+ 				<p class="select">최신</p>
+ 				<p>인기</p>
+ 			</div>
+ 			<div class="cody_share">
+ 				<p class="menu_name">코디공유</p>
+ 				<p>최신</p>
+ 				<p>인기</p>
+ 		 </div>
+ 	</div>
 	 <div class="w3-third w3-container w3-margin-bottom" style="border-style:groove" >
 		 <p style="margin:20px">
 
@@ -108,13 +107,13 @@
 
 		</div>
 		<div data-role="footer" data-position="fixed" style="background-color:#C57087">
-			<div data-role="navbar" >
+			<div data-role="navbar">
 				<ul>
 					<li>
 						<a href="main.html" rel="external" data-icon="home" style="background-color:#C57087"></a>
 					</li>
 					<li>
-						<a href="search.html" rel="external"  data-icon="search" style="background-color:#C57087"></a>
+						<a href="search.html" rel="external" data-icon="search" style="background-color:#C57087"></a>
 					</li>
 					<li>
 						<a href="post.html" rel="external" data-icon="edit" style="background-color:#C57087"></a>

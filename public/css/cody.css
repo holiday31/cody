@@ -1,0 +1,43 @@
+
+/* 웹 폰트 */
+@import url(https://fonts.googleapis.com/css?family=Black+Han+Sans);
+@import url(https://fonts.googleapis.com/css?family=Jua);
+@import url(https://fonts.googleapis.com/css?family=Do+Hyeon);
+@import url(https://fonts.googleapis.com/css?family=Fredoka+One);
+@import url(https://fonts.googleapis.com/css?family=Nanum+Gothic);
+@import url(https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding);
+@import url(https://fonts.googleapis.com/css?family=Cute+Font);
+
+
+
+/*옷걸이 로그인창&회원가입창 둘다 해당*/
+input::placeholder { color: black; }
+input[type='button'] { border: solid 3px #C57087; background-color: white; }
+div.ui-body { background-color: white;}
+
+
+/*옷걸이 회원가입창(login.html) */
+body { background-color: #F9D0DB; } /*배경색*/
+article.container { text-align: center; }
+h1#registerTitle { font-family: "Jua", "Do Hyeon"; font-size: 35px; color: #C57087; font-size: 30px; } /*타이틀글자부분*/
+.form-group { font-family: 'Nanum Gothic Coding'; font-weight: bold; margin: 10px; }
+
+font a { text-decoration: none; color: white; }
+.registerButton font { font-family: 'Nanum Gothic Coding'; font-weight: bold; font-size: 15pt; color: white; } /*가입취소&회원가입 버튼 폰트&링크*/
+
+.registerButton button { padding: 3px 20px; width: 130px; height: 40px; background-color: #C57087; border: 2px solid #C57087; border-radius: 5px; }
+div.form-group input.form-control { height: 25px; font-family: 'Nanum Gothic Coding'; font-weight: bold; font-size: 15px; width: 45%; border: 1px solid #C57087; border-radius: 1px; } /*각각 input태그*/
+h4#codyFooter { font-family: "Do Hyeon" }
+
+div#buttongrp { background-color: #F9D0DB; } /*버튼있는 부분*/
+
+
+/*옷걸이 로그인창(codylogin.html)*/
+#main {background-color: #F9D0DB; } /*로그인 페이지 전체*/
+img#codyhanger { width: 100px; height: 100px; margin-left: auto; margin-right: auto; display: block; } /*로고*/
+h1#codyName { font-family: "Jua", "Do Hyeon"; color: #C57087; text-align: center; } /*타이틀(코디플러스)*/
+.login { color: #FF99CC; } /*로그인버튼*/
+.nonmember { width: 13px; height: 13px; vertical-align: text-top; } /*비회원버튼*/
+input.text { font-family: "Do Hyeon"; width: 50%; } /*아이디,비밀번호 입력부분*/
+a.link { text-decoration: none; } /*회원가입 버튼 링크선 제거*/
+input#loginimg { width: 125px; height: 45px; } /*버튼 이미지 크기*/
