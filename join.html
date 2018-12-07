@@ -1,89 +1,86 @@
 <!DOCTYPE html>
 <html lang="kr">
 
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>코디플러스</title>
-	<!--상단 브라우저이미지 넣음!!(이미지는 후에 바꿔도 됨!!)-->
-	<link rel="shortcut icon" type="image/x-icon" href="https://mblogthumb-phinf.pstatic.net/20150913_165/koowq_1442154212671cvGl4_JPEG/%BF%CA%B0%C9%C0%CC_%BE%C6%C0%CC%C4%DC-01.png?type=w2" />
-	<!-- Bootstrap -->
-	<link href="../plugin/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<!-- font awesome -->
-	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-	<!-- Custom style -->
-	<link rel="stylesheet" href="../plugin/bootstrap/css/style.css" media="screen" title="no title" charset="utf-8">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>코디플러스</title>
+		<!--상단 브라우저이미지 넣음!!(이미지는 후에 바꿔도 됨!!)-->
+		<link rel="shortcut icon" type="image/x-icon" href="https://mblogthumb-phinf.pstatic.net/20150913_165/koowq_1442154212671cvGl4_JPEG/%BF%CA%B0%C9%C0%CC_%BE%C6%C0%CC%C4%DC-01.png?type=w2" />
+		<!-- Bootstrap -->
+		<link href="../plugin/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<!-- font awesome -->
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+		<!-- Custom style -->
+		<link rel="stylesheet" href="../plugin/bootstrap/css/style.css" media="screen" title="no title" charset="utf-8">
 
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="../plugin/bootstrap/js/bootstrap.min.js"></script>
-	<script src="../config/js/join.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="../plugin/bootstrap/js/bootstrap.min.js"></script>
+		<script src="../config/js/join.js"></script>
 
-	<link rel="stylesheet" href="cody.css"/>
+		<link rel="stylesheet" href="cody.css"/>
+	</head>
 
-</head>
+	<body>
+		<article class="container">
+			<br/>
+			<br/>
+			<br/>
+			<div class="ui-body ui-body-a gap">
+				<div class="page-header">
+					<div class="col-md-6 col-md-offset-3">
+						<br/>
+						<h1 id="registerTitle">코디플러스 회원가입</h1>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-offset-3">
+					<form role="form" id="form">
+						<div class="form-group">
+							<input type="text" class="form-control" id="inputId" placeholder=" 아이디">
+							<input type="button" value="중복확인" id="btn_idcheck">
+						</div>
+						<div class="form-group">
+							<input type="name" class="form-control" id="InputName" placeholder=" 사용자 이름">
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control" id="inputPassword" placeholder=" 비밀번호">
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control" id="inputPasswordCheck" placeholder=" 비밀번호 확인">
+						</div>
+						<div class="form-group">
+							<input type="email" class="form-control" id="inputEmail" placeholder=" 이메일">
+						</div>
 
-<body>
-	<article class="container">
-		<br/><br/><br/>
-		<div class="ui-body ui-body-a gap">
-		<div class="page-header">
-			<div class="col-md-6 col-md-offset-3">
-				<br/>
-				<h1 id="registerTitle">코디플러스 회원가입</h1>
+						<div class="form-group">
+							<label>약관 동의</label>
+							<div data-toggle="buttons">
+								<label class="btn btn-primary active">
+									<input id="agree" type="checkbox" autocomplete="off" checked>
+								</label>
+								<a href="info.html" rel="external">이용약관</a>에 동의합니다.
+							</div>
+							<br />
+							<br/>
+						</div>
+						<div id="buttongrp">
+							<br/>
+							<div class="registerButton">
+								<button type="submit" class="btn btn-warning">
+									<font><a href="login.html" rel="external">가입취소</a></font>
+								</button>
+								<button type="submit" id="join-submit" class="btn btn-primary">
+									<font><a href="login.html" rel="external">회원가입</a></font>
+								</button>
+							</div>
+							<br/>
+							<br/>
+						</div>
+					</form>
+				</div>
 			</div>
-		</div>
-		<div class="col-sm-6 col-md-offset-3">
-			<form role="form" id="form">
-				<div class="form-group">
-					<input type="text" class="form-control" id="inputId" placeholder=" 아이디">
-				</div>
-				<div class="form-group">
-					<input type="name" class="form-control" id="InputName" placeholder=" 사용자 이름">
-				</div>
-				<div class="form-group">
-					<input type="password" class="form-control" id="inputPassword" placeholder=" 비밀번호">
-				</div>
-				<div class="form-group">
-					<input type="password" class="form-control" id="inputPasswordCheck" placeholder=" 비밀번호 확인">
-				</div>
-				<div class="form-group">
-					<input type="email" class="form-control" id="inputEmail" placeholder=" 이메일">
-				</div>
-
-				<div class="form-group">
-					<label>약관 동의</label>
-					<div data-toggle="buttons">
-					<label class="btn btn-primary active">
-							<input id="agree" type="checkbox" autocomplete="off" checked>
-					</label>
-					<a href="info.html" rel="external">이용약관</a>에 동의합니다.
-					</div><br /><br/>
-				</div>
-				<div id="buttongrp">
-					<br/>
-				<div class="registerButton">
-					<button type="submit" class="btn btn-warning">
-						<font><a href="login.html" rel="external">가입취소</a></font>
-					</button>
-					<button type="submit" id="join-submit" class="btn btn-primary">
-						<font><a href="join.html" rel="external">회원가입</a></font>
-					</button>
-				</div>
-				<br/><br/>
-				</div>
-            </form>
-		</div>
-</div>
-	</article>
-</body>
+		</article>
+	</body>
 
 </html>
