@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="kr">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<title>코디플러스</title>
+		<!--상단 브라우저이미지 넣음!!(이미지는 후에 바꿔도 됨!!)-->
+		<link rel="shortcut icon" type="image/x-icon" href="https://mblogthumb-phinf.pstatic.net/20150913_165/koowq_1442154212671cvGl4_JPEG/%BF%CA%B0%C9%C0%CC_%BE%C6%C0%CC%C4%DC-01.png?type=w2" />
+
+		<!--제이쿼리 모바일 & 제이쿼리 라이브러리 파일-->
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+		<link rel="stylesheet" href="cody.css"/>
+		<script src="post.js"></script>
+		<script>
+			$(document).ready(function() {
+				// 태그에 onchange를 부여한다.
+				$('#file').change(function() {
+					addPreview($(this));
+					//preview form 추가하기
+				});
+
+				$('#i_file').change(function(event) {
+					var tmppath = URL.createObjectURL(event.target.files[0]);
+					$("img").fadeIn("fast").attr('src', URL.createObjectURL(event.target.files[0]));
+
+					$("#disp_tmp_path").html(tmppath);
+				});
+
+			/*	$('#submit').click(function() {
+					var title = $('#title').val();
+					var content = $('#textarea').val();
+					var name = "테스트중";
+					var type = 1;
+					var datetime = new Date();
+					var imgurl = ('#disp_tmp_path').val();
+			}); */
+
+				$('#showimg').click(function() {
+					var x = event.offsetX;
+					var y = event.offsetY;
+					var coords = "X 좌표: " + x + ", Y 좌표: " + y;
+					document.getElementById("result").innerHTML = coords;
+				});
+			});
+
+		</script>
+
+	</head>
+	<body>
+		<div data-role="page" id="postPage">
+			<div data-role="header" data-position="fixed" style="background-color:#C57087">
+				<a href="#" data-icon="back" data-rel="back" data-direction="reverse" data-iconpos="notext" style="background-color:#C57087; border: 1px solid #C57087;">Back</a>
+				<a href="#" data-icon="check" data-iconpos="notext" data-rel="submit" id="submit" style="background-color:#C57087; border: 1px solid #C57087;">Submit</a>
+				<h1 id="postname">글쓰기</h1>
+			</div>
+			<div data-role="content" id="post">
+				<div class="ui-body ui-body-a gap">
+					<form>
+
+						<div class="filebox">
+							<p id="status"></p>
+							<label for="i_file"><img src="image/camera.png"></label>
+							<input type="file" id="i_file" my="myPicture" multiple/>
+						</div>
+
+						<img src="" width="250" style="display:none;" id="showimg"/>
+						<br>
+						<div id="disp_tmp_path"></div>
+						<div id="result"></div>
+
+						<input type="text" name="title" class="posttext" id="title" placeholder="글제목을 입력하세요.">
+						<textarea name="textarea" id="textarea" class="posttext" placeholder="코디 고민, 데일리룩, 등 나의 스타일을 공유해보세요."></textarea>
+						<input type="text" name="top" class="posttext" placeholder="상의 브랜드 이름을 입력하세요.">
+						<input type="url" name="urltop" class="posttext" placeholder="상의정보(url)을 입력하세요.">
+						<input type="text" name="bottom" class="posttext" placeholder="하의 브랜드 이름을 입력하세요.">
+						<input type="url" name="urlbottom" class="posttext" placeholder="하의정보(url)을 입력하세요.">
+
+						<!-- 해당 위치 안에 이미지가 쌓이게 된다.(보류) -->
+						<div id="preview"></div>
+
+							<select name="codyType" id="codyType" data-inline="true" data-mini="true" data-shadow="false">
+								<!--	data-native-menu="false" -->
+								<option value="코디 고민">고민되는 코디! 사람들에게 물어보자요.</option>
+								<option value="데일리룩">오늘 입은 옷을 기록해봐요.</option>
+								<option value="코디공유">나만의 코디를 사람들과 공유해봐요.</option>
+							</select>
+					</form>
+				</div>
+			</div>
+			<div data-role="footer" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<a href="main.html" rel="external" data-icon="home" style="background-color:#C57087"></a>
+						</li>
+						<li>
+							<a href="search.html" rel="external"  data-icon="search" style="background-color:#C57087"></a>
+						</li>
+						<li>
+							<a href="post.html" rel="external" data-icon="edit" style="background-color:#C57087"></a>
+						</li>
+						<li>
+							<a href="like.html" rel="external" data-icon="heart" style="background-color:#C57087"></a>
+						</li>
+						<li>
+							<a href="myprofile.html" rel="external" data-icon="user" style="background-color:#C57087"></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
