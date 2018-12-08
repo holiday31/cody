@@ -12,107 +12,83 @@
 		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
-		<link rel="stylesheet" href="temp.css"/>
+		<link rel="stylesheet" href="cody.css"/>
+		<script src="post.js"></script>
+		<script>
+			$(document).ready(function() {
+				// 태그에 onchange를 부여한다.
+				$('#file').change(function() {
+					addPreview($(this));
+					//preview form 추가하기
+				});
 
-		<script src="//code.jquery.com/jquery.min.js"></script>
+				$('#i_file').change(function(event) {
+					var tmppath = URL.createObjectURL(event.target.files[0]);
+					$("img").fadeIn("fast").attr('src', URL.createObjectURL(event.target.files[0]));
 
-		<script type="text/javascript">
-			$("textarea.posttext").textinput({
-				autogrow : false
+					$("#disp_tmp_path").html(tmppath);
+				});
+
+			/*	$('#submit').click(function() {
+					var title = $('#title').val();
+					var content = $('#textarea').val();
+					var name = "테스트중";
+					var type = 1;
+					var datetime = new Date();
+					var imgurl = ('#disp_tmp_path').val();
+			}); */
+
+				$('#showimg').click(function() {
+					var x = event.offsetX;
+					var y = event.offsetY;
+					var coords = "X 좌표: " + x + ", Y 좌표: " + y;
+					document.getElementById("result").innerHTML = coords;
+				});
 			});
+
 		</script>
-
-		<style>
-			.filebox label {
-				display: inline-block;
-				padding: .5em .75em;
-				color: #999;
-				font-size: inherit;
-				line-height: normal;
-				vertical-align: middle;
-				background-color: #fdfdfd;
-				cursor: pointer;
-				border: 2px solid #F9D0DB;
-				/*border: 1px solid #ebebeb;
-				 border-bottom-color: #e2e2e2; */
-				border-radius: .25em;
-			}
-			.filebox input[type="file"] {
-				/* 파일 필드 숨기기 */
-				position: absolute;
-				width: 1px;
-				height: 1px;
-				padding: 0;
-				margin: -1px;
-				overflow: hidden;
-				clip: rect(0,0,0,0);
-				border: 0;
-			}
-			.filebox img {
-				width: 75px;
-				height: 75px;
-			}
-
-			input.posttext {
-				border: 1px solid #F9D0DB;
-			}
-			textarea#textarea {
-				border: 1px solid #F9D0DB;
-			}
-
-		</style>
 
 	</head>
 	<body>
 		<div data-role="page" id="postPage">
 			<div data-role="header" data-position="fixed" style="background-color:#C57087">
 				<a href="#" data-icon="back" data-rel="back" data-direction="reverse" data-iconpos="notext" style="background-color:#C57087; border: 1px solid #C57087;">Back</a>
-				<a href="#" data-icon="check" data-iconpos="notext" data-rel="submit" style="background-color:#C57087; border: 1px solid #C57087;">Submit</a>
+				<a href="#" data-icon="check" data-iconpos="notext" data-rel="submit" id="submit" style="background-color:#C57087; border: 1px solid #C57087;">Submit</a>
 				<h1 id="postname">글쓰기</h1>
 			</div>
 			<div data-role="content" id="post">
 				<div class="ui-body ui-body-a gap">
+					<form>
 
-					<div class="filebox">
-						<label for="ex_file"><img src="image/camera.png"></label>
-						<input type="file" id="ex_file" my="myPicture" multiple>
-					</div>
+						<div class="filebox">
+							<p id="status"></p>
+							<label for="i_file"><img src="image/camera.png"></label>
+							<input type="file" id="i_file" my="myPicture" multiple/>
+						</div>
 
-					<!--	<input type="file" my="myPicture" multiple class="posttext"> -->
+						<img src="" width="250" style="display:none;" id="showimg"/>
+						<br>
+						<div id="disp_tmp_path"></div>
+						<div id="result"></div>
 
-					<input type="text" name="title" class="posttext" placeholder="글제목을 입력하세요.">
-					<textarea name="textarea" id="textarea" class="posttext" placeholder="코디 고민, 데일리룩, 등 나의 스타일을 공유해보세요."></textarea>
-
-
-
-					<div>
-						<span><input type="text" name="top" class="posttext" placeholder="상의 브랜드 이름을 입력하세요."></span>
-						<span><input type="url" name="urltop" class="posttext" placeholder="상의정보(url)을 입력하세요."></span>
+						<input type="text" name="title" class="posttext" id="title" placeholder="글제목을 입력하세요.">
+						<textarea name="textarea" id="textarea" class="posttext" placeholder="코디 고민, 데일리룩, 등 나의 스타일을 공유해보세요."></textarea>
+						<input type="text" name="top" class="posttext" placeholder="상의 브랜드 이름을 입력하세요.">
+						<input type="url" name="urltop" class="posttext" placeholder="상의정보(url)을 입력하세요.">
 						<input type="text" name="bottom" class="posttext" placeholder="하의 브랜드 이름을 입력하세요.">
-							<input type="url" name="urlbottom" class="posttext" placeholder="하의정보(url)을 입력하세요.">
+						<input type="url" name="urlbottom" class="posttext" placeholder="하의정보(url)을 입력하세요.">
 
-						<!--	<input type="text" name="top" class="posttext" placeholder="상의 브랜드 이름을 입력하세요.">
-							<input type="url" name="urltop" class="posttext" placeholder="상의정보(url)을 입력하세요.">
-							<input type="text" name="bottom" class="posttext" placeholder="하의 브랜드 이름을 입력하세요.">
-							<input type="url" name="urlbottom" class="posttext" placeholder="하의정보(url)을 입력하세요."> -->
-					</div>
+						<!-- 해당 위치 안에 이미지가 쌓이게 된다.(보류) -->
+						<div id="preview"></div>
 
-					<select name="codyType" id="codyType" data-inline="true" data-mini="true" data-shadow="false">
-					<!--	data-native-menu="false" -->
-						<option value="코디 고민">코디 고민</option>
-						<option value="데일리룩">데일리룩</option>
-					</select>
-
+							<select name="codyType" id="codyType" data-inline="true" data-mini="true" data-shadow="false">
+								<!--	data-native-menu="false" -->
+								<option value="코디 고민">고민되는 코디! 사람들에게 물어보자요.</option>
+								<option value="데일리룩">오늘 입은 옷을 기록해봐요.</option>
+								<option value="코디공유">나만의 코디를 사람들과 공유해봐요.</option>
+							</select>
+					</form>
 				</div>
-
-				<!--<fieldset class="ui-grid-a">
-				<div class="ui-block-a">
-				<input type="reset" id="btnCancel" value="취소"/>
-				</div>
-				<div class="ui-block-b">
-				<input type="submit" id="btnAdd" value="등록"/>
-				</div>
-				</fieldset> -->
 			</div>
 			<div data-role="footer" data-position="fixed">
 				<div data-role="navbar">
