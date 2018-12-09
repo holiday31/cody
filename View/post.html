@@ -40,7 +40,7 @@
 				});
 
 				$('#submit').click(function(e) {
-					var error="";
+					var error = "";
 					var title = $("#title").val();
 					var content = $("#postarea").val();
 					var top = $('#top').val();
@@ -51,6 +51,7 @@
 					var topy = $("#result2").html();
 					var bottomx = $("#result3").html();
 					var bottomy = $("#result4").html();
+					var image = $("showing").attr("src");
 
 					if ($("#title").val() == '') {
 						alert('제목을 입력하세요.');
@@ -58,34 +59,14 @@
 						// 커서를 넘기는 즉, 포커스를 다음 요소로 넘김.
 						return false;
 					}
-
+					 else if ($("#showimg").attr("src") == '') {
+						alert('이미지을 첨부하세요.');
+						$("#showimg").focus();
+						return false;
+					}
 					else if ($("#postarea").val() == '') {
 						alert('내용을 입력하세요.');
 						$("#postarea").focus();
-						return false;
-					}
-
-					else if ($("#codyType option:selected").val() == "데일리룩" || $("#codyType option:selected").val() == "코디공유") {
-						if ($("#top").val() == '') {
-							alert('상의을 입력하세요.');
-							$("#top").focus();
-							return false;
-						}
-						else if ($("#urltop").val() == '') {
-							alert('상의정보주소을 입력하세요.');
-							$("#urltop").focus();
-							return false;
-						}
-						else if ($("#bottom").val() == '') {
-							alert('하의을 입력하세요.');
-							$("#bottom").focus();
-							return false;
-						}
-						else if ($("#urlbottom").val() == '') {
-							alert('하의정보주소을 입력하세요.');
-							$("#urlbottom").focus();
-							return false;
-						}
 						return false;
 					}
 					else if ($("#result1").html() == '' && $("#result2").html() == '') {
@@ -94,13 +75,31 @@
 						$("#result2").focus();
 						return false;
 					}
-					else if ($("#result3").html() == '' && $("#result4").html() == '') {
+					 else if ($("#result3").html() == '' && $("#result4").html() == '') {
 						alert('하의에 버튼을 놓을 위치를 클릭하세요.');
 						$("#result3").focus();
 						$("#result4").focus();
 						return false;
 					}
-					else {
+					else if ($("#codyType option:selected").val() == "데일리룩" || $("#codyType option:selected").val() == "코디공유") {
+						if ($("#top").val() == '') {
+							alert('상의을 입력하세요.');
+							$("#top").focus();
+							return false;
+						} else if ($("#urltop").val() == '') {
+							alert('상의정보주소을 입력하세요.');
+							$("#urltop").focus();
+							return false;
+						} else if ($("#bottom").val() == '') {
+							alert('하의을 입력하세요.');
+							$("#bottom").focus();
+							return false;
+						} else if ($("#urlbottom").val() == '') {
+							alert('하의정보주소을 입력하세요.');
+							$("#urlbottom").focus();
+							return false;
+						}
+					}else {
 						return;
 					}
 				});
