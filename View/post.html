@@ -16,11 +16,6 @@
 		<script src="post.js"></script>
 		<script>
 			$(document).ready(function() {
-				// 태그에 onchange를 부여한다.
-				$('#file').change(function() {
-					addPreview($(this));
-					//preview form 추가하기
-				});
 
 				$('#i_file').change(function(event) {
 					var tmppath = URL.createObjectURL(event.target.files[0]);
@@ -29,23 +24,24 @@
 					$("#disp_tmp_path").html(tmppath);
 				});
 
-			/*	$('#submit').click(function() {
-					var title = $('#title').val();
-					var content = $('#textarea').val();
-					var name = "테스트중";
-					var type = 1;
-					var datetime = new Date();
-					var imgurl = ('#disp_tmp_path').val();
-			}); */
-
+				var count = 0;
 				$('#showimg').click(function() {
 					var x = event.offsetX;
 					var y = event.offsetY;
-					var coords = "X 좌표: " + x + ", Y 좌표: " + y;
-					document.getElementById("result").innerHTML = coords;
+					if (count % 2 == 0) {
+						document.getElementById("result1").innerHTML = x;
+						document.getElementById("result2").innerHTML = y;
+						count += 1;
+					} else if (count % 2 == 1) {
+						var coords3 = x;
+						var coords4 = y;
+						document.getElementById("result3").innerHTML = coords3;
+						document.getElementById("result4").innerHTML = coords4;
+						count += 1;
+					}
 				});
-			});
 
+			});
 		</script>
 
 	</head>
@@ -53,7 +49,7 @@
 		<div data-role="page" id="postPage">
 			<div data-role="header" data-position="fixed" style="background-color:#C57087">
 				<a href="#" data-icon="back" data-rel="back" data-direction="reverse" data-iconpos="notext" style="background-color:#C57087; border: 1px solid #C57087;">Back</a>
-				<a href="#" data-icon="check" data-iconpos="notext" data-rel="submit" id="submit" style="background-color:#C57087; border: 1px solid #C57087;">Submit</a>
+				<a href="main.html" data-icon="check" data-iconpos="notext" data-rel="submit" id="submit" style="background-color:#C57087; border: 1px solid #C57087;">Submit</a>
 				<h1 id="postname">글쓰기</h1>
 			</div>
 			<div data-role="content" id="post">
@@ -66,27 +62,31 @@
 							<input type="file" id="i_file" my="myPicture" multiple/>
 						</div>
 
-						<img src="" width="250" style="display:none;" id="showimg"/>
+						<img src="" width="250" style="display:none;" id="showimg"/><!--로컬에 있는 이미지가 보여지는 영역-->
+
 						<br>
 						<div id="disp_tmp_path"></div>
-						<div id="result"></div>
+						<div class="xy">
+							<span>상의 x,y좌표: </span><span id="result1"></span>/<span id="result2"></span>
+						</div>
+						<div class="xy">
+							<span>하의 x,y좌표: </span><span id="result3"></span>/<span id="result4"></span>
+						</div>
+
+						<select name="codyType" id="codyType" data-inline="true" data-mini="true" data-shadow="false">
+							<!--	data-native-menu="false" -->
+							<option value="코디고민" id="option1">고민되는 코디! 사람들에게 물어봐요.</option>
+							<option value="데일리룩" id="option2">오늘 입은 옷을 기록해봐요.</option>
+							<option value="코디공유" id="option3">나만의 코디를 사람들과 공유해봐요.</option>
+						</select>
 
 						<input type="text" name="title" class="posttext" id="title" placeholder="글제목을 입력하세요.">
-						<textarea name="textarea" id="textarea" class="posttext" placeholder="코디 고민, 데일리룩, 등 나의 스타일을 공유해보세요."></textarea>
-						<input type="text" name="top" class="posttext" placeholder="상의 브랜드 이름을 입력하세요.">
-						<input type="url" name="urltop" class="posttext" placeholder="상의정보(url)을 입력하세요.">
-						<input type="text" name="bottom" class="posttext" placeholder="하의 브랜드 이름을 입력하세요.">
-						<input type="url" name="urlbottom" class="posttext" placeholder="하의정보(url)을 입력하세요.">
+						<textarea name="textarea" id="postarea" class="posttext" placeholder="코디 고민, 데일리룩, 등 나의 스타일을 공유해보세요."></textarea>
+						<input type="text" name="top" id="top" class="posttext" placeholder="상의 브랜드 이름을 입력하세요.">
+						<input type="url" name="urltop" id="urltop" class="posttext" placeholder="상의정보(url)을 입력하세요.">
+						<input type="text" name="bottom" id="bottom" class="posttext" placeholder="하의 브랜드 이름을 입력하세요.">
+						<input type="url" name="urlbottom" id="urlbottom" class="posttext" placeholder="하의정보(url)을 입력하세요.">
 
-						<!-- 해당 위치 안에 이미지가 쌓이게 된다.(보류) -->
-						<div id="preview"></div>
-
-							<select name="codyType" id="codyType" data-inline="true" data-mini="true" data-shadow="false">
-								<!--	data-native-menu="false" -->
-								<option value="코디 고민">고민되는 코디! 사람들에게 물어보자요.</option>
-								<option value="데일리룩">오늘 입은 옷을 기록해봐요.</option>
-								<option value="코디공유">나만의 코디를 사람들과 공유해봐요.</option>
-							</select>
 					</form>
 				</div>
 			</div>
