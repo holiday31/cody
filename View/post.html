@@ -40,6 +40,7 @@
 				});
 
 				$('#submit').click(function(e) {
+					var error="";
 					var title = $("#title").val();
 					var content = $("#postarea").val();
 					var top = $('#top').val();
@@ -127,16 +128,16 @@
 							<input type="file" id="i_file" my="myPicture" multiple/>
 						</div>
 
-						<img src="" width="250" style="display:none;" id="showimg"/><!--로컬에 있는 이미지가 보여지는 영역-->
+						<img src="" width="250" style="display:none;" id="showimg" name="image"/><!--로컬에 있는 이미지가 보여지는 영역-->
 
 						<br>
 						<div id="disp_tmp_path"></div>
 						<div id="shortpath"></div>
 						<div class="xy">
-							<span>상의 x,y좌표: </span><span id="result1"></span>/<span id="result2"></span>
+							<span>상의 x,y좌표: </span><span id="result1" name="topx"></span>/<span id="result2" name="topy"></span>
 						</div>
 						<div class="xy">
-							<span>하의 x,y좌표: </span><span id="result3"></span>/<span id="result4"></span>
+							<span>하의 x,y좌표: </span><span id="result3" name="bottomx"></span>/<span id="result4" name="bottomy"></span>
 						</div>
 						<select name="codyType" id="codyType" data-inline="true" data-mini="true" data-shadow="false">
 							<option value="코디고민" id="option1">고민되는 코디! 사람들에게 물어보자요.</option>
@@ -152,7 +153,7 @@
 						<input type="url" name="urlbottom" id="urlbottom" class="posttext" placeholder="하의정보(url)을 입력하세요.">
 
 
-						<a href="/" rel="external"><input type="submit" id="submit" data-inline="true" style="background-color:#C57087; border: 1px solid #C57087;" value="Submit"></a>
+						<input type="submit" id="submit" data-inline="true" style="background-color:#C57087; border: 1px solid #C57087;" value="Submit">
 
 					</form>
 				</div>
