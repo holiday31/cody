@@ -19,32 +19,28 @@ div.ui-body { background-color: white;}
 
 /*옷걸이 회원가입창(join.html) */
 article.container { text-align: center; }
-h1#registerTitle { font-family: "Jua", "Do Hyeon"; font-size: 35px; color: #C57087; font-size: 30px; } /*타이틀글자부분*/
+/*타이틀글자부분*/
+h1#registerTitle { font-family: "Jua", "Do Hyeon"; font-size: 35px; color: #C57087; font-size: 30px; }
 .form-group { font-family: 'Nanum Gothic Coding'; font-weight: bold; margin: 10px; }
-
 font a { text-decoration: none; color: white; }
-.registerButton font { font-family: 'Nanum Gothic Coding'; font-weight: bold; font-size: 15pt; color: white; } /*가입취소&회원가입 버튼 폰트&링크*/
-
+/*가입취소&회원가입 버튼 폰트&링크*/
+.registerButton font { font-family: 'Nanum Gothic Coding'; font-weight: bold; font-size: 15pt; color: white; }
 .registerButton button { padding: 3px 20px; width: 130px; height: 40px; background-color: #C57087; border: 2px solid #C57087; border-radius: 5px; }
-div.form-group input.form-control { height: 25px; font-family: 'Nanum Gothic Coding'; font-weight: bold; font-size: 15px; width: 45%; border: 1px solid #C57087; border-radius: 1px; } /*각각 input태그*/
+/*각각 input태그*/
+div.form-group input.form-control { height: 25px; font-family: 'Nanum Gothic Coding'; font-weight: bold; font-size: 15px; width: 45%; border: 1px solid #C57087; border-radius: 1px; }
 h4#codyFooter { font-family: "Do Hyeon" }
-
-div#buttongrp { background-color: #F9D0DB; } /*버튼있는 부분*/
+/*버튼그룹(버튼있는 부분)*/
+div#buttongrp { background-color: #F9D0DB; }
  /*아이디 중복 확인 버튼*/
-input#btn_idcheck { border: solid 1px #C57087; background-color: #C57087; font-family: 'Nanum Gothic Coding'; font-weight: bold; color: white; font-size: 15px; padding: 3px 10px; border-radius: 1px; margin-left:-90px; height: 29px; }
+input#btn_idcheck, input#btn_emailcheck { border: solid 1px #C57087; background-color: #C57087; font-family: 'Nanum Gothic Coding';
+ font-weight: bold; color: white; font-size: 15px; padding: 3px 10px; border-radius: 1px;
+  margin-left:-90px; height: 29px; }
 
 
 /*옷걸이 로그인창(login.html)*/
 #main {background-color: #F9D0DB; } /*로그인 페이지 전체*/
 img#codyhanger { width: 100px; height: 100px; margin-left: auto; margin-right: auto; display: block; } /*로고*/
 h1#codyName { font-family: "Jua", "Do Hyeon"; color: #C57087; text-align: center; } /*타이틀(코디플러스)*/
-<<<<<<< HEAD:View/css/cody.css
-.login { color: #FF99CC; } /*로그인버튼*/
-.nonmember { width: 13px; height: 13px; vertical-align: text-top; } /*비회원버튼*/
-input.text { font-family: "Do Hyeon"; width: 50%; } /*아이디,비밀번호 입력부분*/
-a.link { text-decoration: none; } /*회원가입 버튼 링크선 제거*/
-input#loginimg { width: 125px; height: 45px; } /*버튼 이미지 크기*/
-=======
 input.text { font-family: "Do Hyeon"; width: 50%; } /*아이디,비밀번호 입력부분*/
 a.link { text-decoration: none; } /*회원가입 버튼 링크선 제거*/
 
@@ -81,7 +77,13 @@ select#codyType { background-color:#F9D0DB; font-size: 15px;border: 1px solid #F
 			}
 .filebox img { width: 75px; height: 75px; }
 input.posttext { border: 1px solid #F9D0DB; }
-textarea#textarea { border: 1px solid #F9D0DB; }
-div#disp_tmp_path {font-family: "Fredoka One"}
-div#result {font-family: "Jua"}
->>>>>>> c032e1e0ca06bd421cda77003c2f4eb4958ba4ef:cody.css
+textarea#postarea { border: 1px solid #F9D0DB; }
+div#disp_tmp_path, div#shortpath {font-family: "Fredoka One"}
+div.xy, #result1, #result2, #result3, #result4 {font-family: "Jua"}
+
+/*검색창(search.html)*/
+#search { font-family: 'Do Hyeon', sans-serif; }
+h3 { text-align: center; border-width: 1rem; }
+input { text-align: center; font-family: "Jua";}
+span.popular { margin: 10px; padding: 5px; border: 1px solid #C57087; border-radius: 3px; font-family: "Jua"; }
+input::placeholder { color: black; font-family: "Jua"; }

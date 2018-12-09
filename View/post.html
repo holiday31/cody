@@ -13,10 +13,8 @@
 		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
 		<link rel="stylesheet" href="cody.css"/>
-		<script src="post.js"></script>
 		<script>
 			$(document).ready(function() {
-
 				$('#i_file').change(function(event) {
 					var tmppath = URL.createObjectURL(event.target.files[0]);
 					$("img").fadeIn("fast").attr('src', URL.createObjectURL(event.target.files[0]));
@@ -41,6 +39,72 @@
 					}
 				});
 
+				$('#submit').click(function(e) {
+
+					var title = $("#title").val();
+					var content = $("#postarea").val();
+					var top = $('#top').val();
+					var urltop = $("#urltop").val();
+					var bottom = $('#bottom').val();
+					var urlbottom = $("#urlbottom").val();
+					var topx = $("#result1").html();
+					var topy = $("#result2").html();
+					var bottomx = $("#result3").html();
+					var bottomy = $("#result4").html();
+
+					if ($("#title").val() == '') {
+						alert('제목을 입력하세요.');
+						$("#title").focus();
+						// 커서를 넘기는 즉, 포커스를 다음 요소로 넘김.
+						return false;
+					}
+
+					else if ($("#postarea").val() == '') {
+						alert('내용을 입력하세요.');
+						$("#postarea").focus();
+						return false;
+					}
+
+					else if ($("#codyType option:selected").val() == "데일리룩" || $("#codyType option:selected").val() == "코디공유") {
+						if ($("#top").val() == '') {
+							alert('상의을 입력하세요.');
+							$("#top").focus();
+							return false;
+						}
+						else if ($("#urltop").val() == '') {
+							alert('상의정보주소을 입력하세요.');
+							$("#urltop").focus();
+							return false;
+						}
+						else if ($("#bottom").val() == '') {
+							alert('하의을 입력하세요.');
+							$("#bottom").focus();
+							return false;
+						}
+						else if ($("#urlbottom").val() == '') {
+							alert('하의정보주소을 입력하세요.');
+							$("#urlbottom").focus();
+							return false;
+						}
+						return false;
+					}
+					else if ($("#result1").html() == '' && $("#result2").html() == '') {
+						alert('상의에 버튼을 놓을 위치를 클릭하세요.');
+						$("#result1").focus();
+						$("#result2").focus();
+						return false;
+					}
+					else if ($("#result3").html() == '' && $("#result4").html() == '') {
+						alert('하의에 버튼을 놓을 위치를 클릭하세요.');
+						$("#result3").focus();
+						$("#result4").focus();
+						return false;
+					}
+					else {
+						return;
+					}
+				});
+
 			});
 		</script>
 
@@ -49,12 +113,12 @@
 		<div data-role="page" id="postPage">
 			<div data-role="header" data-position="fixed" style="background-color:#C57087">
 				<a href="#" data-icon="back" data-rel="back" data-direction="reverse" data-iconpos="notext" style="background-color:#C57087; border: 1px solid #C57087;">Back</a>
-				<a href="main.html" data-icon="check" data-iconpos="notext" data-rel="submit" id="submit" style="background-color:#C57087; border: 1px solid #C57087;">Submit</a>
+				<a href="/main" rel="external" data-icon="check" data-iconpos="notext" data-rel="submit" id="submit" style="background-color:#C57087; border: 1px solid #C57087;">Submit</a>
 				<h1 id="postname">글쓰기</h1>
 			</div>
 			<div data-role="content" id="post">
 				<div class="ui-body ui-body-a gap">
-					<form>
+					<form action="/post" method="post">
 
 						<div class="filebox">
 							<p id="status"></p>
@@ -66,16 +130,15 @@
 
 						<br>
 						<div id="disp_tmp_path"></div>
+						<div id="shortpath"></div>
 						<div class="xy">
 							<span>상의 x,y좌표: </span><span id="result1"></span>/<span id="result2"></span>
 						</div>
 						<div class="xy">
 							<span>하의 x,y좌표: </span><span id="result3"></span>/<span id="result4"></span>
 						</div>
-
 						<select name="codyType" id="codyType" data-inline="true" data-mini="true" data-shadow="false">
-							<!--	data-native-menu="false" -->
-							<option value="코디고민" id="option1">고민되는 코디! 사람들에게 물어봐요.</option>
+							<option value="코디고민" id="option1">고민되는 코디! 사람들에게 물어보자요.</option>
 							<option value="데일리룩" id="option2">오늘 입은 옷을 기록해봐요.</option>
 							<option value="코디공유" id="option3">나만의 코디를 사람들과 공유해봐요.</option>
 						</select>
