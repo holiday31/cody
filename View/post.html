@@ -124,7 +124,7 @@
 						<div class="filebox">
 							<p id="status"></p>
 							<label for="i_file"><img src="image/camera.png"></label>
-							<input type="file" id="i_file" my="myPicture" accept=".gif, .jpg, .png, .jpeg, .bmp" multiple/>
+							<input type="file" name="img" id="i_file" my="myPicture" accept=".gif, .jpg, .png, .jpeg, .bmp" multiple/>
 						</div>
 
 						<img src="" width="250" style="display:none;" id="showimg" name="image"/><!--로컬에 있는 이미지가 보여지는 영역-->
@@ -139,9 +139,9 @@
 							<span>하의 x,y좌표: </span><span id="result3" name="bottomx"></span>/<span id="result4" name="bottomy"></span>
 						</div>
 						<select name="codyType" id="codyType" data-inline="true" data-mini="true" data-shadow="false">
-							<option value="코디고민" id="option1">고민되는 코디! 사람들에게 물어보자요.</option>
-							<option value="데일리룩" id="option2">오늘 입은 옷을 기록해봐요.</option>
-							<option value="코디공유" id="option3">나만의 코디를 사람들과 공유해봐요.</option>
+							<option value="1" id="option1">고민되는 코디! 사람들에게 물어보자요.</option>
+							<option value="2" id="option2">오늘 입은 옷을 기록해봐요.</option>
+							<option value="3" id="option3">나만의 코디를 사람들과 공유해봐요.</option>
 						</select>
 
 						<input type="text" name="title" class="posttext" id="title" placeholder="글제목을 입력하세요.">
