@@ -1,0 +1,13 @@
+.thumbnails img{
+    border-top-left-radius: 0.3rem;
+    border-top-right-radius: 0.3rem;
+    border-bottom-left-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
+    margin-top: 5px;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-bottom: 5px;
+  }
+  .ui-content .ui-listview, .ui-panel-inner>.ui-listview{
+    margin: auto;
+  }
