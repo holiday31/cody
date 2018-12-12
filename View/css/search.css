@@ -7,6 +7,8 @@
     margin-left: 3px;
     margin-right: 3px;
     margin-bottom: 5px;
+    max-width: 100%;
+
   }
   .ui-content .ui-listview, .ui-panel-inner>.ui-listview{
     margin: auto;
