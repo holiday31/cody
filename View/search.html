@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html lang="kr">
 
-<head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="shortcut icon" type="image/x-icon" href="https://mblogthumb-phinf.pstatic.net/20150913_165/koowq_1442154212671cvGl4_JPEG/%BF%CA%B0%C9%C0%CC_%BE%C6%C0%CC%C4%DC-01.png?type=w2" />
-	<!--제이쿼리 모바일 & 제이쿼리 라이브러리 파일-->
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-	<link rel="stylesheet" href="css/search.css">
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<link href="https://fonts.googleapis.com/css?family=Do+Hyeon&amp;subset=korean" rel="stylesheet">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" type="image/x-icon" href="https://mblogthumb-phinf.pstatic.net/20150913_165/koowq_1442154212671cvGl4_JPEG/%BF%CA%B0%C9%C0%CC_%BE%C6%C0%CC%C4%DC-01.png?type=w2" />
+		<!--제이쿼리 모바일 & 제이쿼리 라이브러리 파일-->
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
-	<!--Bootstrap 파일-->
-	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-		<!--	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link href="https://fonts.googleapis.com/css?family=Do+Hyeon&amp;subset=korean" rel="stylesheet">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+		<!--Bootstrap 파일-->
+		<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+		<!--	<script src="https://caode.jquery.com/jquery-3.3.1.slim.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> -->
 
-	<!--HTML5 웹 폰트 파일-->
-	<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Do+Hyeon&amp;subset=korean" rel="stylesheet">
-	<link rel="stylesheet" href="css/cody.css" />
+		<!--HTML5 웹 폰트 파일-->
+		<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Do+Hyeon&amp;subset=korean" rel="stylesheet">
+		<link rel="stylesheet" href="css/cody.css"/>
 
-	<script>
-		$('document').ready(function() {
+		<script>
+			$('document').ready(function() {
 				//ENTER키만 눌렀을 때 반응
 				$("#mySearch").keydown(function(key) {
 					//e.preventDefault();
@@ -62,86 +62,64 @@
 				});
 			});
 		</script>
+	</head>
 
-</head>
-
-<body>
-	<div data-role="page" id="search">
-		<div data-role="header" data-position="fixed" style="background-color:#C57087">
-			<h1 style="color:white">코디플러스</h1>
-		</div>
-		<div data-role="content">
-			<form action="/search" method="post">
-				<h3>검색하세요.</h3>
-				<input type="search" id="mySearch" name="search" placeholder="브랜드명를 입력해 주세요.">
-				<section>
-					<h3>인기검색어</h3>
-					<div id="rank-list" style="text-align: center;">
-						<span id="rank1" class="popular"> 유니클로 </span>
-						<span id="rank2" class="popular"> soup </span>
-						<span id="rank3" class="popular"> NIKE </span>
-						<span id="rank4" class="popular"> 아디다스 </span>
-						<span id="rank5" class="popular"> oioi </span>
+	<body>
+		<div data-role="page" id="search">
+			<div data-role="header" data-position="fixed" style="background-color:#C57087">
+				<h1 style="color:white">코디플러스</h1>
+			</div>
+			<div data-role="content">
+				<form action="/search" method="post">
+					<h3>검색하세요.</h3>
+					<input type="search" id="mySearch" name="search" placeholder="브랜드명를 입력해 주세요.">
+					<aside>
+						<h3>인기검색어</h3>
+						<div id="rank-list" style="text-align: center;">
+							<span id="rank1" class="popular"> 유니클로 </span>
+							<span id="rank2" class="popular"> soup </span>
+							<span id="rank3" class="popular"> NIKE </span>
+							<span id="rank4" class="popular"> 아디다스 </span>
+							<span id="rank5" class="popular"> oioi </span>
+						</div>
+					</aside>
+					<br/>
+					<div class="support-grid"></div>
+					<div class="band">
+						<div class="item-1">
+							<a href="https://design.tutsplus.com/articles/international-artist-feature-malaysia--cms-26852" class="card"> <div class="thumb" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/flex-1.jpg);"></div> </a>
+						</div>
+						<div class="item-2">
+							<a href="https://webdesign.tutsplus.com/articles/how-to-conduct-remote-usability-testing--cms-27045" class="card"> <div class="thumb" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/users-2.png);"></div> </a>
+						</div>
+						<div class="item-3">
+							<a href="https://design.tutsplus.com/articles/envato-tuts-community-challenge-created-by-you-july-edition--cms-26724" class="card"> <div class="thumb" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/flex-5.jpg);"></div> </a>
+						</div>
 					</div>
-				</section>
-				<br />
-				<section class="thumbnails">
-					<div data-role="listview">
-						<a href="image/fulls/01.jpg">
-							<img src="image/thumbs/01.jpg" width="100px" height="100px" ; alt="" />
-						</a>
-						<a href="image/fulls/02.jpg">
-							<img src="image/thumbs/02.jpg" width="100px" height="100px" ; alt="" />
-						</a>
-						<a href="image/fulls/03.jpg">
-							<img src="image/thumbs/03.jpg" width="100px" height="100px" ; alt="" />
-						</a>
-						<a href="image/fulls/04.jpg">
-							<img src="image/thumbs/04.jpg" width="100px" height="100px" ; alt="" />
-						</a>
-						<a href="image/fulls/05.jpg">
-							<img src="image/thumbs/05.jpg" width="100px" height="100px" ; alt="" />
-						</a>
-						<a href="image/fulls/06.jpg">
-							<img src="image/thumbs/06.jpg" width="100px" height="100px" ; alt="" />
-						</a>
-						<a href="image/fulls/06.jpg">
-							<img src="image/thumbs/06.jpg" width="100px" height="100px" ; alt="" />
-						</a>
-						<a href="image/fulls/06.jpg">
-							<img src="image/thumbs/06.jpg" width="100px" height="100px" ; alt="" />
-						</a>
-						<a href="image/fulls/06.jpg">
-							<img src="image/thumbs/06.jpg" width="100px" height="100px" ; alt="" />
-						</a>
-					</div>
-
-				</section>
-			</form>
-
-		</div>
-		<div data-role="footer" data-position="fixed" style="background-color:#C57087">
-			<div data-role="navbar">
-				<ul>
-					<li>
-						<a href="main.html" rel="external" data-icon="home" style="background-color:#C57087"></a>
-					</li>
-					<li>
-						<a href="search.html" rel="external" data-icon="search" style="background-color:#C57087"></a>
-					</li>
-					<li>
-						<a href="post.html" rel="external" data-icon="edit" style="background-color:#C57087"></a>
-					</li>
-					<li>
-						<a href="like.html" rel="external" data-icon="heart" style="background-color:#C57087"></a>
-					</li>
-					<li>
-						<a href="myprofile.html" rel="external" data-icon="user" style="background-color:#C57087"></a>
-					</li>
-				</ul>
+				</form>
+			</div>
+			<div data-role="footer" data-position="fixed" style="background-color:#C57087">
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<a href="/" rel="external" data-icon="home" style="background-color:#C57087"></a>
+						</li>
+						<li>
+							<a href="/search" rel="external"  data-icon="search" style="background-color:#C57087"></a>
+						</li>
+						<li>
+							<a href="/post" rel="external" data-icon="edit" style="background-color:#C57087"></a>
+						</li>
+						<li>
+							<a href="/like" rel="external" data-icon="heart" style="background-color:#C57087"></a>
+						</li>
+						<li>
+							<a href="/myprofile" rel="external" data-icon="user" style="background-color:#C57087"></a>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div>
-	</div>
-</body>
+	</body>
 
 </html>
