@@ -15,7 +15,7 @@
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.5.1/fotorama.js"></script>
 
 	<style>
-	body {
+		body {
 		font-family: 'Do Hyeon', sans-serif;
 	}
 
@@ -34,37 +34,49 @@
 				<a href="image/member2.jpeg"></a>
 				<a href="image/member3.jpeg"></a>
 			</div>
-			<div id="disqus_thread"></div>
-			<script>
-				/**
-				 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-				 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-				/*
-				var disqus_config = function () {
-				this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-				this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-				};
-				*/
-				(function() { // DON'T EDIT BELOW THIS LINE
-					var d = document,
-						s = d.createElement('script');
-					s.src = 'https://codyplus-2.disqus.com/embed.js';
-					s.setAttribute('data-timestamp', +new Date());
-					(d.head || d.body).appendChild(s);
-				})();
-			</script>
-			<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
+			<table width="300" border="2" bordercolor="#C57087" align="center">
+				<thead>
+					<caption> 댓글달기 </caption>
+				</thead>
+				<tbody>
+					<form action="write_ok.jsp" method="post" encType="multiplart/form-data">
+						<tr>
+							<th>제목: </th>
+							<td><input type="text" placeholder="제목을 입력하세요. " name="subject" /></td>
+						</tr>
+						<tr>
+							<th>내용: </th>
+							<td><textarea cols="10" placeholder="내용을 입력하세요. " name="content"></textarea></td>
+						</tr>
+						<tr>
+							<th>첨부파일: </th>
+							<td>
+								<div class="filebox">
+									<p id="status"></p>
+									<label for="i_file"><img src="image/camera.png"></label>
+									<input type="file" name="img" id="i_file" my="myPicture" accept=".gif, .jpg, .png, .jpeg, .bmp" multiple />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<input type="button" value="등록" onclick="sendData()" />
+								<input type="button" value="reset" />
+							</td>
+						</tr>
+					</form>
+				</tbody>
+			</table>
 		</div>
 		<!-- content 끝-->
 		<div data-role="footer" data-position="fixed" style="background-color:#C57087">
-			<div data-role="navbar" >
+			<div data-role="navbar">
 				<ul>
 					<li>
 						<a href="main.html" rel="external" data-icon="home" style="background-color:#C57087"></a>
 					</li>
 					<li>
-						<a href="search.html" rel="external"  data-icon="search" style="background-color:#C57087"></a>
+						<a href="search.html" rel="external" data-icon="search" style="background-color:#C57087"></a>
 					</li>
 					<li>
 						<a href="post.html" rel="external" data-icon="edit" style="background-color:#C57087"></a>
