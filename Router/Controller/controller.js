@@ -55,6 +55,19 @@ exports.postGET = function(req, res) {
     res.render('post.html');
 };
 
+exports.searchGET = function(req, res) {
+    res.render('search.html');
+};
+
+exports.myprofileGET = function(req, res) {
+    res.render('myprofile.html');
+};
+
+exports.likeGET = function(req, res) {
+    res.render('like.html');
+};
+
+
 
 
 exports.loginPOST = function(req, res)
@@ -129,9 +142,9 @@ exports.postPOST = function(req, res)
     var _topy = req.body.topy;
     var _bottomx = req.body.bottomx;
     var _bottomy = req.body.bottomy;
-
+    var _imgurl='uploads/'+req.file.filename;
     connection.query('insert into post values(null,?,?,?,?,?,?,?,?,?,?,0,0,0,0)'
-        ,[_title,_content,_date,_userId,_typeId,_top,_bottom,_topurl,_bottomurl,'/']//,_topx,_topy,_bottomx,_bottomy
+        ,[_title,_content,_date,_userId,_typeId,_top,_bottom,_topurl,_bottomurl,_imgurl]//,_topx,_topy,_bottomx,_bottomy
         ,function(err){
          if (!err){
            console.log(req.file);
@@ -148,14 +161,14 @@ exports.postPOST = function(req, res)
 
 
 
-exports.imgupload = function(req, res)
-{
-    // var file = req.file;
+// exports.imgupload = function(req, res)
+// {
 
-    // let result = {
-    //     originalName : file.originalName,
-    //     size: file.size
-    // };
+//     // let result = {
+//     //     originalName : file.originalName,
+//     //     size: file.size
+//     // };
 
-    // res.json(result);
-};
+//     // res.json(result);
+//     res.send({url:req.file.filename});
+// };

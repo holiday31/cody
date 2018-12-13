@@ -17,18 +17,19 @@
 
 
 			$(document).ready(function() {
+
 			// 	$('.upload').click(function() {
-			// 		var form = $('#i_file')[0];
-       		// 		var formData = new FormData(form);
+			// 		// var form = $('#i_file')[0];
+       		// 		// var formData = new FormData(form);
 
 			// 		$.ajax({
 			// 			url: '/imgupload',
-			// 			data: formData,
+			// 			dataType: json,
 			// 			processData: false,
 			// 			contentType: false,
 			// 			type: 'POST',
 			// 			success: function (data) {
-			// 				console.log("이미지 업로드 성공");
+			// 				$("#imgurl").attr('value', data.url);
 			// 			},
 			// 			error: function (err) {
             //     			console.log(err);
@@ -140,23 +141,23 @@
 			</div>
 			<div data-role="content" id="post">
 				<div class="ui-body ui-body-a gap">
-						<form action="/imgupload" method="post" enctype="multipart/form-data" data-ajax="false">
+						<!-- <form action="/imgupload" method="post" enctype="multipart/form-data" data-ajax="false"> -->
+
+							<!-- <a>
+								<div class="upload" style="width: 150px; height: 30px; background: #C57087; color: white; text-align: center; line-height: 30px;">이미지 업로드</div>
+							</a> -->
+							<!-- <input class="upload" type="submit" data-inline="true" style="background-color:#C57087; border: 1px solid #C57087;" value="이미지 업로드">
+						</form> -->
+
+						<form action="/post" method="post" id="postForm"  enctype="multipart/form-data" data-ajax="false">
 
 							<div class="filebox">
 								<p id="status"></p>
 								<label for="i_file"><img src="image/camera.png"></label>
 								<input type="file" name="img" id="i_file" my="myPicture" accept=".gif, .jpg, .png, .jpeg, .bmp"/>
 							</div>
-
-							<!-- <a>
-								<div class="upload" style="width: 150px; height: 30px; background: #C57087; color: white; text-align: center; line-height: 30px;">이미지 업로드</div>
-							</a> -->
-							<input type="submit" data-inline="true" style="background-color:#C57087; border: 1px solid #C57087;" value="이미지 업로드">
-						</form>
-
-						<form action="/post" method="post" id="postForm">
 						<img src="" width="250" style="display:none;" id="showimg" name="image"/><!--로컬에 있는 이미지가 보여지는 영역-->
-
+						<input type="text" name="imgurl" id="imgurl" >
 						<br>
 						<div id="disp_tmp_path"></div>
 						<div id="shortpath"></div>
@@ -190,16 +191,16 @@
 							<a href="/" rel="external" data-icon="home" style="background-color:#C57087"></a>
 						</li>
 						<li>
-							<a href="search.html" rel="external"  data-icon="search" style="background-color:#C57087"></a>
+							<a href="/search" rel="external"  data-icon="search" style="background-color:#C57087"></a>
 						</li>
 						<li>
 							<a href="/post" rel="external" data-icon="edit" style="background-color:#C57087"></a>
 						</li>
 						<li>
-							<a href="like.html" rel="external" data-icon="heart" style="background-color:#C57087"></a>
+							<a href="/like" rel="external" data-icon="heart" style="background-color:#C57087"></a>
 						</li>
 						<li>
-							<a href="myprofile.html" rel="external" data-icon="user" style="background-color:#C57087"></a>
+							<a href="/myprofile" rel="external" data-icon="user" style="background-color:#C57087"></a>
 						</li>
 					</ul>
 				</div>
