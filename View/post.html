@@ -14,29 +14,26 @@
 
 		<link rel="stylesheet" href="css/cody.css"/>
 		<script>
-
-
 			$(document).ready(function() {
 
-			// 	$('.upload').click(function() {
-			// 		// var form = $('#i_file')[0];
-       		// 		// var formData = new FormData(form);
+				// 	$('.upload').click(function() {
+				// 		// var form = $('#i_file')[0];
+				// 		// var formData = new FormData(form);
 
-			// 		$.ajax({
-			// 			url: '/imgupload',
-			// 			dataType: json,
-			// 			processData: false,
-			// 			contentType: false,
-			// 			type: 'POST',
-			// 			success: function (data) {
-			// 				$("#imgurl").attr('value', data.url);
-			// 			},
-			// 			error: function (err) {
-            //     			console.log(err);
-            // }
-			// 		});
-			// 	});
-
+				// 		$.ajax({
+				// 			url: '/imgupload',
+				// 			dataType: json,
+				// 			processData: false,
+				// 			contentType: false,
+				// 			type: 'POST',
+				// 			success: function (data) {
+				// 				$("#imgurl").attr('value', data.url);
+				// 			},
+				// 			error: function (err) {
+				//     			console.log(err);
+				// }
+				// 		});
+				// 	});
 
 				$('#fileBtn').click(function() {
 
@@ -56,12 +53,16 @@
 						document.getElementById("result1").innerHTML = x;
 						document.getElementById("result2").innerHTML = y;
 						count += 1;
+						$('#result1').attr('value', x);
+						$('#result2').attr('value', y);
+
 					} else if (count % 2 == 1) {
-						var coords3 = x;
-						var coords4 = y;
-						document.getElementById("result3").innerHTML = coords3;
-						document.getElementById("result4").innerHTML = coords4;
+						document.getElementById("result3").innerHTML = x;
+						document.getElementById("result4").innerHTML = y;
 						count += 1;
+						$('#result3').attr('value', x);
+						$('#result4').attr('value', y);
+
 					}
 				});
 
@@ -76,34 +77,34 @@
 					var topurl = $("#urltop").val();
 					var bottomurl = $("#urlbottom").val();
 					var imgpath = $("showing").attr("src");
-					var topx = parseInt($("#result1").html());
-					var topy = parseInt($("#result2").html());
-					var bottomx = parseInt($("#result3").html());
-					var bottomy = parseInt($("#result4").html());
+					var topx = parseInt($("#result1").val());
+					var topy = parseInt($("#result2").val());
+					var bottomx = parseInt($("#result3").val());
+					var bottomy = parseInt($("#result4").val());
 
-					if ((title.trim().length==0)||(title==null)) {
+					if ((title.trim().length == 0) || (title == null)) {
 						alert('제목을 입력하세요.');
 						$("#title").focus();
 						// 커서를 넘기는 즉, 포커스를 다음 요소로 넘김.
 						return false;
-					} else if ((content.trim().length==0)||(content==null)) {
+					} else if ((content.trim().length == 0) || (content == null)) {
 						alert('내용을 입력하세요.');
 						$("#postarea").focus();
 						return false;
 					} else if (parseInt($("#codyType option:selected").val()) == 2 || parseInt($("#codyType option:selected").val()) == 3) {
-						if ((top.trim().length==0)||(top==null)) {
+						if ((top.trim().length == 0) || (top == null)) {
 							alert('상의을 입력하세요.');
 							$("#top").focus();
 							return false;
-						} else if ((topurl.trim().length==0)||(topurl==null)) {
+						} else if ((topurl.trim().length == 0) || (topurl == null)) {
 							alert('상의정보주소을 입력하세요.');
 							$("#urltop").focus();
 							return false;
-						} else if ((bottom.trim().length==0)||(bottom==null)) {
+						} else if ((bottom.trim().length == 0) || (bottom == null)) {
 							alert('하의을 입력하세요.');
 							$("#bottom").focus();
 							return false;
-						} else if ((bottomurl.trim().length==0)||(bottomurl==null)) {
+						} else if ((bottomurl.trim().length == 0) || (bottomurl == null)) {
 							alert('하의정보주소을 입력하세요.');
 							$("#urlbottom").focus();
 							return false;
@@ -124,7 +125,6 @@
 						return false;
 					} else {
 
-
 						return;
 					}
 				});
@@ -141,32 +141,41 @@
 			</div>
 			<div data-role="content" id="post">
 				<div class="ui-body ui-body-a gap">
-						<!-- <form action="/imgupload" method="post" enctype="multipart/form-data" data-ajax="false"> -->
+					<!-- <form action="/imgupload" method="post" enctype="multipart/form-data" data-ajax="false"> -->
 
-							<!-- <a>
-								<div class="upload" style="width: 150px; height: 30px; background: #C57087; color: white; text-align: center; line-height: 30px;">이미지 업로드</div>
-							</a> -->
-							<!-- <input class="upload" type="submit" data-inline="true" style="background-color:#C57087; border: 1px solid #C57087;" value="이미지 업로드">
-						</form> -->
+					<!-- <a>
+					<div class="upload" style="width: 150px; height: 30px; background: #C57087; color: white; text-align: center; line-height: 30px;">이미지 업로드</div>
+					</a> -->
+					<!-- <input class="upload" type="submit" data-inline="true" style="background-color:#C57087; border: 1px solid #C57087;" value="이미지 업로드">
+					</form> -->
 
-						<form action="/post" method="post" id="postForm"  enctype="multipart/form-data" data-ajax="false">
+					<form action="/post" method="post" id="postForm"  enctype="multipart/form-data" data-ajax="false">
 
-							<div class="filebox">
-								<p id="status"></p>
-								<label for="i_file"><img src="image/camera.png"></label>
-								<input type="file" name="img" id="i_file" my="myPicture" accept=".gif, .jpg, .png, .jpeg, .bmp"/>
-							</div>
+						<div class="filebox">
+							<p id="status"></p>
+							<label for="i_file"><img src="image/camera.png"></label>
+							<input type="file" name="img" id="i_file" my="myPicture" accept=".gif, .jpg, .png, .jpeg, .bmp"/>
+						</div>
 						<img src="" width="250" style="display:none;" id="showimg" name="image"/><!--로컬에 있는 이미지가 보여지는 영역-->
 						<input type="text" name="imgurl" id="imgurl" >
 						<br>
 						<div id="disp_tmp_path"></div>
 						<div id="shortpath"></div>
 						<div class="xy">
-							<span>상의 x,y좌표: </span><span id="result1" name="topx"></span>/<span id="result2" name="topy"></span>
+							<span>상의 x,y좌표</span>
+							<input type="text" name="topx" id="result1" class="posttext" data-inline="true">
+							</input>
+							<input type="text" name="topy" id="result2" class="posttext" data-inline="true">
+							</input>
 						</div>
 						<div class="xy">
-							<span>하의 x,y좌표: </span><span id="result3" name="bottomx"></span>/<span id="result4" name="bottomy"></span>
+							<span>하의 x,y좌표</span>
+							<input type="text" name="topx" id="result3" class="posttext" data-inline="true">
+							</input>
+							<input type="text" name="topy" id="result4" class="posttext" data-inline="true">
+							</input>
 						</div>
+
 						<select name="codyType" id="codyType" data-inline="true" data-mini="true" data-shadow="false">
 							<option value=1 id="option1">고민되는 코디! 사람들에게 물어봐요.</option>
 							<option value=2 id="option2">오늘 입은 옷을 기록해봐요.</option>
