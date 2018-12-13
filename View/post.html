@@ -113,12 +113,12 @@
 						alert('이미지을 첨부하세요.');
 						$("#showimg").focus();
 						return false;
-					} else if ($.trim($("#result1").html()) == '' && $.trim($("#result2").html()) == '') {
+					} else if ($.trim($("#result1").val()) == '' && $.trim($("#result2").val()) == '') {
 						alert('상의에 버튼을 놓을 위치를 클릭하세요.');
 						$("#result1").focus();
 						$("#result2").focus();
 						return false;
-					} else if ($.trim($("#result3").html()) == '' && $.trim($("#result4").html()) == '') {
+					} else if ($.trim($("#result3").val()) == '' && $.trim($("#result4").val()) == '') {
 						alert('하의에 버튼을 놓을 위치를 클릭하세요.');
 						$("#result3").focus();
 						$("#result4").focus();
@@ -157,7 +157,10 @@
 							<input type="file" name="img" id="i_file" my="myPicture" accept=".gif, .jpg, .png, .jpeg, .bmp"/>
 						</div>
 						<img src="" width="250" style="display:none;" id="showimg" name="image"/><!--로컬에 있는 이미지가 보여지는 영역-->
+<<<<<<< HEAD
+=======
 					
+>>>>>>> 9dbe710b9acd3ef8ab0776fcf39f248d4275d3b9
 						<br>
 						<div id="disp_tmp_path"></div>
 						<div id="shortpath"></div>
