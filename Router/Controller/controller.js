@@ -1,11 +1,12 @@
 var mysql      = require('mysql');
+var fs = require('fs')
 var connection = mysql.createConnection({
-  host     : 'codyplus.cmkwzw7x9dy7.ap-northeast-2.rds.amazonaws.com',
-  user     : 'codyplus',
-  password : 'cody1234',
-  port     : 3306,
-  database : 'codyplus'
-});
+    host     : 'codyplus.cmkwzw7x9dy7.ap-northeast-2.rds.amazonaws.com',
+    user     : 'codyplus',
+    password : 'cody1234',
+    port     : 3306,
+    database : 'codyplus'
+  });
 
 connection.connect();
 
@@ -13,13 +14,28 @@ exports.logout = function(req, res)
 {
     req.session.destroy();
     console.log(req.session);
-    res.render('main.html');
+    res.redirect('/');
 };
 
 exports.main = function(req, res)
 {
     console.log(req.session);
     res.render('main.html');
+
+
+    connection.query('select * from post order by postid desc'
+    ,function(err,rows){
+        if (!err){
+            console.log("rows : " + JSON.stringify(rows));
+            res.render('main.html', {
+                rows: rows[0]
+            })
+           }
+        else{
+            console.log('<main load>Error while performing Query.', err);
+        }
+    });
+
     // if(req.session.login)
     //     res.render('main.html');
     // else
@@ -34,6 +50,12 @@ exports.loginGET = function(req, res)
 exports.joinGET = function(req, res) {
     res.render('join.html');
 };
+
+exports.postGET = function(req, res) {
+    res.render('post.html');
+};
+
+
 
 exports.loginPOST = function(req, res)
 {
@@ -53,7 +75,7 @@ exports.loginPOST = function(req, res)
                 req.session.msg = "아이디 혹은 비밀번호를 잘못 입력하셨습니다.";
 
                 //res.location('/login');
-                res.render("login.html");
+                res.redirect("/login");
             }
             else
             {
@@ -62,15 +84,17 @@ exports.loginPOST = function(req, res)
                 req.session.id = _id;
 
                 //res.location('/');
-                res.render('main.html');
+                res.redirect('/');
             }
         }
         else
-            console.log('Error while performing Query.', err);
+            console.log('<loginPOST> Error while performing Query.', err);
     });
 
     //connection.end();
 };
+
+
 
 exports.joinPOST = function(req, res) {
     var _id = req.body.userId;
@@ -80,10 +104,58 @@ exports.joinPOST = function(req, res) {
     connection.query('insert into user values(?,?,?,?)', [_id, _pw, _name, _email],function(err) {
 
         if (!err){
-         res.render("login.html");
+         res.redirect("/login");
+         //res.render("login.html");
         }
         else{
-         console.log('Error while performing Query.', err);
+         console.log('<joinPOST>Error while performing Query.', err);
         }
     });
+};
+
+
+exports.postPOST = function(req, res)
+{
+    var _title = req.body.title;
+    var _content = req.body.textarea;
+    var _date = new Date();
+    var _userId = "test";
+    var _typeId = req.body.codyType;
+    var _top = req.body.top;
+    var _bottom = req.body.bottom;
+    var _topurl = req.body.urltop;
+    var _bottomurl = req.body.urlbottom;
+    var _topx = req.body.topx;
+    var _topy = req.body.topy;
+    var _bottomx = req.body.bottomx;
+    var _bottomy = req.body.bottomy;
+
+    connection.query('insert into post values(null,?,?,?,?,?,?,?,?,?,?,0,0,0,0)'
+        ,[_title,_content,_date,_userId,_typeId,_top,_bottom,_topurl,_bottomurl,'/']//,_topx,_topy,_bottomx,_bottomy
+        ,function(err){
+         if (!err){
+           console.log(req.file);
+           res.render("main.html");
+         }
+            // res.redirect("/");
+           // res.render("main.html");
+        else{
+            console.log('<upload>Error while performing Query.', err);
+        }
+    });
+};
+
+
+
+
+exports.imgupload = function(req, res)
+{
+    // var file = req.file;
+
+    // let result = {
+    //     originalName : file.originalName,
+    //     size: file.size
+    // };
+
+    // res.json(result);
 };

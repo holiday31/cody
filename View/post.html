@@ -14,11 +14,36 @@
 
 		<link rel="stylesheet" href="css/cody.css"/>
 		<script>
+
+
 			$(document).ready(function() {
+			// 	$('.upload').click(function() {
+			// 		var form = $('#i_file')[0];
+       		// 		var formData = new FormData(form);
+
+			// 		$.ajax({
+			// 			url: '/imgupload',
+			// 			data: formData,
+			// 			processData: false,
+			// 			contentType: false,
+			// 			type: 'POST',
+			// 			success: function (data) {
+			// 				console.log("이미지 업로드 성공");
+			// 			},
+			// 			error: function (err) {
+            //     			console.log(err);
+            // }
+			// 		});
+			// 	});
+
+
+				$('#fileBtn').click(function() {
+
+				});
+
 				$('#i_file').change(function(event) {
 					var tmppath = URL.createObjectURL(event.target.files[0]);
 					$("img").fadeIn("fast").attr('src', URL.createObjectURL(event.target.files[0]));
-
 					$("#disp_tmp_path").html(tmppath);
 				});
 
@@ -97,6 +122,8 @@
 						$("#result4").focus();
 						return false;
 					} else {
+
+
 						return;
 					}
 				});
@@ -113,14 +140,21 @@
 			</div>
 			<div data-role="content" id="post">
 				<div class="ui-body ui-body-a gap">
-					<form role="form" method="post" action="/post" id="postForm">
+						<form action="/imgupload" method="post" enctype="multipart/form-data" data-ajax="false">
 
-						<div class="filebox">
-							<p id="status"></p>
-							<label for="i_file"><img src="image/camera.png"></label>
-							<input type="file" name="img" id="i_file" my="myPicture" accept=".gif, .jpg, .png, .jpeg, .bmp" multiple/>
-						</div>
+							<div class="filebox">
+								<p id="status"></p>
+								<label for="i_file"><img src="image/camera.png"></label>
+								<input type="file" name="img" id="i_file" my="myPicture" accept=".gif, .jpg, .png, .jpeg, .bmp"/>
+							</div>
 
+							<!-- <a>
+								<div class="upload" style="width: 150px; height: 30px; background: #C57087; color: white; text-align: center; line-height: 30px;">이미지 업로드</div>
+							</a> -->
+							<input type="submit" data-inline="true" style="background-color:#C57087; border: 1px solid #C57087;" value="이미지 업로드">
+						</form>
+
+						<form action="/post" method="post" id="postForm">
 						<img src="" width="250" style="display:none;" id="showimg" name="image"/><!--로컬에 있는 이미지가 보여지는 영역-->
 
 						<br>
@@ -133,9 +167,9 @@
 							<span>하의 x,y좌표: </span><span id="result3" name="bottomx"></span>/<span id="result4" name="bottomy"></span>
 						</div>
 						<select name="codyType" id="codyType" data-inline="true" data-mini="true" data-shadow="false">
-							<option value="1" id="option1">고민되는 코디! 사람들에게 물어봐요.</option>
-							<option value="2" id="option2">오늘 입은 옷을 기록해봐요.</option>
-							<option value="3" id="option3">나만의 코디를 사람들과 공유해봐요.</option>
+							<option value=1 id="option1">고민되는 코디! 사람들에게 물어봐요.</option>
+							<option value=2 id="option2">오늘 입은 옷을 기록해봐요.</option>
+							<option value=3 id="option3">나만의 코디를 사람들과 공유해봐요.</option>
 						</select>
 
 						<input type="text" name="title" class="posttext" id="title" placeholder="글제목을 입력하세요.">
@@ -153,13 +187,13 @@
 				<div data-role="navbar">
 					<ul>
 						<li>
-							<a href="main.html" rel="external" data-icon="home" style="background-color:#C57087"></a>
+							<a href="/" rel="external" data-icon="home" style="background-color:#C57087"></a>
 						</li>
 						<li>
 							<a href="search.html" rel="external"  data-icon="search" style="background-color:#C57087"></a>
 						</li>
 						<li>
-							<a href="post.html" rel="external" data-icon="edit" style="background-color:#C57087"></a>
+							<a href="/post" rel="external" data-icon="edit" style="background-color:#C57087"></a>
 						</li>
 						<li>
 							<a href="like.html" rel="external" data-icon="heart" style="background-color:#C57087"></a>
