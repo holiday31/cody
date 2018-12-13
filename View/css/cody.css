@@ -86,7 +86,7 @@ h3 { text-align: center; border-width: 1rem; }
 input { text-align: center; font-family: "Jua";}
 section { border: 1px solid #F9D0DB; border-radius: 2px;}
 aside { border: 1px solid #F9D0DB; float: right; border-radius: 2px; }
-span.popular { margin: 30px; padding: 2px; border: 1px solid #C57087; border-radius: 3px; font-family: "Jua";}
+span.popular { margin: 10px; padding: 2px; border: 1px solid #C57087; border-radius: 3px; font-family: "Jua";}
 }}
 
 input::placeholder { color: black; font-family: "Jua"; }
