@@ -1,4 +1,3 @@
-
 /* 웹 폰트 */
 @import url(https://fonts.googleapis.com/css?family=Black+Han+Sans);
 @import url(https://fonts.googleapis.com/css?family=Jua);
@@ -8,36 +7,166 @@
 @import url(https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding);
 @import url(https://fonts.googleapis.com/css?family=Cute+Font);
 
-
+/*모든html공통부분*/
+body { background-color: #F9D0DB; } /*배경색*/
+input::placeholder { color: black; }
 
 /*옷걸이 로그인창&회원가입창 둘다 해당*/
-input::placeholder { color: black; }
 input[type='button'] { border: solid 3px #C57087; background-color: white; }
 div.ui-body { background-color: white;}
 
 
-/*옷걸이 회원가입창(login.html) */
-body { background-color: #F9D0DB; } /*배경색*/
+/*옷걸이 회원가입창(join.html) */
 article.container { text-align: center; }
-h1#registerTitle { font-family: "Jua", "Do Hyeon"; font-size: 35px; color: #C57087; font-size: 30px; } /*타이틀글자부분*/
+/*타이틀글자부분*/
+h1#registerTitle { font-family: "Jua", "Do Hyeon"; font-size: 35px; color: #C57087; font-size: 30px; }
 .form-group { font-family: 'Nanum Gothic Coding'; font-weight: bold; margin: 10px; }
-
 font a { text-decoration: none; color: white; }
-.registerButton font { font-family: 'Nanum Gothic Coding'; font-weight: bold; font-size: 15pt; color: white; } /*가입취소&회원가입 버튼 폰트&링크*/
-
+/*가입취소&회원가입 버튼 폰트&링크*/
+.registerButton font { font-family: 'Nanum Gothic Coding'; font-weight: bold; font-size: 15pt; color: white; }
 .registerButton button { padding: 3px 20px; width: 130px; height: 40px; background-color: #C57087; border: 2px solid #C57087; border-radius: 5px; }
-div.form-group input.form-control { height: 25px; font-family: 'Nanum Gothic Coding'; font-weight: bold; font-size: 15px; width: 45%; border: 1px solid #C57087; border-radius: 1px; } /*각각 input태그*/
+/*각각 input태그*/
+div.form-group input.form-control { height: 25px; font-family: 'Nanum Gothic Coding'; font-weight: bold; font-size: 15px; width: 45%; border: 1px solid #C57087; border-radius: 1px; }
 h4#codyFooter { font-family: "Do Hyeon" }
+/*버튼그룹(버튼있는 부분)*/
+div#buttongrp { background-color: #F9D0DB; }
+ /*아이디 중복 확인 버튼*/
+input#btn_idcheck, input#btn_emailcheck { border: solid 1px #C57087; background-color: #C57087; font-family: 'Nanum Gothic Coding';
+ font-weight: bold; color: white; font-size: 15px; padding: 3px 10px; border-radius: 1px;
+  margin-left:-90px; height: 29px; }
 
-div#buttongrp { background-color: #F9D0DB; } /*버튼있는 부분*/
 
-
-/*옷걸이 로그인창(codylogin.html)*/
+/*옷걸이 로그인창(login.html)*/
 #main {background-color: #F9D0DB; } /*로그인 페이지 전체*/
 img#codyhanger { width: 100px; height: 100px; margin-left: auto; margin-right: auto; display: block; } /*로고*/
 h1#codyName { font-family: "Jua", "Do Hyeon"; color: #C57087; text-align: center; } /*타이틀(코디플러스)*/
-.login { color: #FF99CC; } /*로그인버튼*/
-.nonmember { width: 13px; height: 13px; vertical-align: text-top; } /*비회원버튼*/
 input.text { font-family: "Do Hyeon"; width: 50%; } /*아이디,비밀번호 입력부분*/
 a.link { text-decoration: none; } /*회원가입 버튼 링크선 제거*/
-input#loginimg { width: 125px; height: 45px; } /*버튼 이미지 크기*/
+
+/*옷걸이 글올리기창(post.html)*/
+textarea::placeholder { color: black; }
+div#post, div.gap { border: 1px solid white; }
+div.gap { border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px; }
+div#postPage h3, div#postPage h4 { font-family: 'Jua'; }
+h1#postname { color: white; font-family: "Nanum Gothic"; }
+.posttext { font-family: "Jua"; }
+select#codyType { background-color:#F9D0DB; font-size: 15px;border: 1px solid #F9D0DB; font-family: "Jua";}
+.filebox label {
+				display: inline-block;
+				padding: .5em .75em;
+				color: #999;
+				font-size: inherit;
+				line-height: normal;
+				vertical-align: middle;
+				background-color: #fdfdfd;
+				cursor: pointer;
+				border: 2px solid #F9D0DB;
+				border-radius: .25em;
+			}
+.filebox input[type="file"] {
+				/* 파일 필드 숨기기 */
+				position: absolute;
+				width: 1px;
+				height: 1px;
+				padding: 0;
+				margin: -1px;
+				overflow: hidden;
+				clip: rect(0,0,0,0);
+				border: 0;
+			}
+.filebox img { width: 75px; height: 75px; }
+input.posttext { border: 1px solid #F9D0DB; }
+textarea#postarea { border: 1px solid #F9D0DB; }
+div#disp_tmp_path, div#shortpath {font-family: "Fredoka One"}
+div.xy, #result1, #result2, #result3, #result4 {font-family: "Jua"}
+
+/*검색창(search.html)*/
+#search { font-family: 'Do Hyeon', sans-serif; }
+h3 { text-align: center; border-width: 1rem; }
+input { text-align: center; font-family: "Jua";}
+section { border: 1px solid #F9D0DB; border-radius: 2px;}
+aside { border: 1px solid #F9D0DB; float: right; border-radius: 2px; }
+span.popular { margin: 30px; padding: 2px; border: 1px solid #C57087; border-radius: 3px; font-family: "Jua";}
+
+input::placeholder { color: black; font-family: "Jua"; }
+.band {
+				width: 90%;
+				max-width: 1240px;
+				margin: 0 auto;
+				display: grid;
+				grid-template-columns: 1fr;
+				grid-template-rows: auto;
+				grid-gap: 20px;
+			}
+
+			@media only screen and (min-width: 500px) {
+				.band {
+					grid-template-columns: 1fr 1fr;
+				}
+				.item-1 {
+					grid-column: 1/span 2;
+				}
+				.item-1 h1 {
+					font-size: 30px;
+				}
+			}
+
+			@media only screen and (min-width: 850px) {
+				.band {
+					grid-template-columns: 1fr 1fr 1fr 1fr;
+				}
+			}
+
+			/* card */
+
+			.card {
+				min-height: 100%;
+				background: white;
+				box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+				display: flex;
+				flex-direction: column;
+				text-decoration: none;
+				color: #444;
+				position: relative;
+				top: 0;
+				transition: all .1s ease-in;
+			}
+
+			.card:hover {
+				top: -2px;
+				box-shadow: 0 4px 5px rgba(0,0,0,0.2);
+			}
+
+			.card article {
+				padding: 20px;
+				display: flex;
+				flex: 1;
+				justify-content: space-between;
+				flex-direction: column;
+			}
+			.card .thumb {
+				padding-bottom: 60%;
+				background-size: cover;
+				background-position: center center;
+			}
+
+			.card p {
+				flex: 1; /* make p grow to fill available space*/
+				line-height: 1.4;
+			}
+
+			/* typography */
+			h1 {
+				font-size: 20px;
+				margin: 0;
+				color: #333;
+			}
+
+			.card span {
+				font-size: 12px;
+				font-weight: bold;
+				color: #999;
+				text-transform: uppercase;
+				letter-spacing: .05em;
+				margin: 2em 0 0 0;
+			}
