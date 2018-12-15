@@ -15,6 +15,10 @@
 		<link rel="stylesheet" href="css/cody.css"/>
 		<script>
 			$(document).ready(function() {
+				if(parseInt($("#codyType option:selected").val()) == 1) {
+						$('div.plus').hide();
+						$('div.xy').hide();
+				}
 
 				// 	$('.upload').click(function() {
 				// 		// var form = $('#i_file')[0];
@@ -39,9 +43,23 @@
 
 				});
 
+				$('#codyType').click(function() {
+					if(parseInt($("#codyType option:selected").val()) == 2 || parseInt($("#codyType option:selected").val()) == 3) {
+					    $('div.plus').show();
+						$('div.xy').show();
+					}
+					else {
+						$('div.plus').hide();
+						$('div.xy').hide();
+					}
+				});
+
 				$('#i_file').change(function(event) {
 					var tmppath = URL.createObjectURL(event.target.files[0]);
 					$("img").fadeIn("fast").attr('src', URL.createObjectURL(event.target.files[0]));
+					//$("#showimg").fadeIn("fast").attr('src', $('#i_file').src);
+					//$("#disp_tmp_path").html($('#i_file').src);
+					//$("#shortpath").html(location.href);
 					$("#disp_tmp_path").html(tmppath);
 				});
 
@@ -54,6 +72,8 @@
 						//document.getElementById("result2").innerHTML = y;
 						document.getElementById("result1").value = x;
 						document.getElementById("result2").value = y;
+						$('#result1').attr('value', x);
+						$('#result2').attr('value', y);
 						count += 1;
 
 					} else if (count % 2 == 1) {
@@ -61,10 +81,9 @@
 						//document.getElementById("result4").innerHTML = y;
 						document.getElementById("result3").value = x;
 						document.getElementById("result4").value = y;
-						count += 1;
 						$('#result3').attr('value', x);
 						$('#result4').attr('value', y);
-
+						count += 1;
 					}
 				});
 
@@ -84,16 +103,25 @@
 					var bottomx = parseInt($("#result3").val());
 					var bottomy = parseInt($("#result4").val());
 
+					console.log($("#result1").val());
+
 					if ((title.trim().length == 0) || (title == null)) {
 						alert('제목을 입력하세요.');
 						$("#title").focus();
 						// 커서를 넘기는 즉, 포커스를 다음 요소로 넘김.
 						return false;
-					} else if ((content.trim().length == 0) || (content == null)) {
+					}
+					else if ((content.trim().length == 0) || (content == null)) {
 						alert('내용을 입력하세요.');
 						$("#postarea").focus();
 						return false;
-					} else if (parseInt($("#codyType option:selected").val()) == 2 || parseInt($("#codyType option:selected").val()) == 3) {
+					}
+					else if ($.trim($("#showimg").attr("src")) == '') {
+						alert('이미지을 첨부하세요.');
+						$("#showimg").focus();
+						return false;
+					}
+					else if (parseInt($("#codyType option:selected").val()) == 2 || parseInt($("#codyType option:selected").val()) == 3) {
 						if ((top.trim().length == 0) || (top == null)) {
 							alert('상의을 입력하세요.');
 							$("#top").focus();
@@ -110,25 +138,21 @@
 							alert('하의정보주소을 입력하세요.');
 							$("#urlbottom").focus();
 							return false;
-						}
-					} else if ($.trim($("#showimg").attr("src")) == '') {
-						alert('이미지을 첨부하세요.');
-						$("#showimg").focus();
-						return false;
-					} else if ($.trim($("#result1").val()) == '' && $.trim($("#result2").val()) == '') {
-						alert('상의에 버튼을 놓을 위치를 클릭하세요.');
-						$("#result1").focus();
-						$("#result2").focus();
-						return false;
-					} else if ($.trim($("#result3").val()) == '' && $.trim($("#result4").val()) == '') {
-						alert('하의에 버튼을 놓을 위치를 클릭하세요.');
-						$("#result3").focus();
-						$("#result4").focus();
-						return false;
-					} else {
-
-						return;
-					}
+						} else if ($.trim($("#result1").val()) == '' && $.trim($("#result2").val()) == '') {
+						    alert('상의에 버튼을 놓을 위치를 클릭하세요.');
+						    $("#result1").focus();
+						    $("#result2").focus();
+						    return false;
+					    } else if ($.trim($("#result3").val()) == '' && $.trim($("#result4").val()) == '') {
+						    alert('하의에 버튼을 놓을 위치를 클릭하세요.');
+						    $("#result3").focus();
+						    $("#result4").focus();
+						    return false;
+				     	}
+				     }
+				     else {
+				     	return;
+					 }
 				});
 			});
 		</script>
@@ -152,6 +176,12 @@
 					</form> -->
 
 					<form action="/post" method="post" id="postForm"  enctype="multipart/form-data" data-ajax="false">
+
+						<select name="codyType" id="codyType" data-inline="true" data-mini="true" data-shadow="false">
+							<option value=1 id="option1">고민되는 코디! 사람들에게 물어봐요.</option>
+							<option value=2 id="option2">오늘 입은 옷을 기록해봐요.</option>
+							<option value=3 id="option3">나만의 코디를 사람들과 공유해봐요.</option>
+						</select>
 
 						<div class="filebox">
 							<p id="status"></p>
@@ -177,18 +207,14 @@
 							</input>
 						</div>
 
-						<select name="codyType" id="codyType" data-inline="true" data-mini="true" data-shadow="false">
-							<option value=1 id="option1">고민되는 코디! 사람들에게 물어봐요.</option>
-							<option value=2 id="option2">오늘 입은 옷을 기록해봐요.</option>
-							<option value=3 id="option3">나만의 코디를 사람들과 공유해봐요.</option>
-						</select>
-
 						<input type="text" name="title" class="posttext" id="title" placeholder="글제목을 입력하세요.">
 						<textarea name="textarea" id="postarea" class="posttext" placeholder="코디 고민, 데일리룩, 등 나의 스타일을 공유해보세요."></textarea>
+						<div class="plus">
 						<input type="text" name="top" id="top" class="posttext" placeholder="상의 브랜드 이름을 입력하세요.">
 						<input type="url" name="urltop" id="urltop" class="posttext" placeholder="상의정보(url)을 입력하세요.">
 						<input type="text" name="bottom" id="bottom" class="posttext" placeholder="하의 브랜드 이름을 입력하세요.">
 						<input type="url" name="urlbottom" id="urlbottom" class="posttext" placeholder="하의정보(url)을 입력하세요.">
+						</div>
 
 						<input type="submit" id="submit" data-inline="true" style="background-color:#C57087; border: 1px solid #C57087;" value="Submit">
 					</form>
