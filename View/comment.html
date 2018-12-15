@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>comment</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Do+Hyeon&amp;subset=korean" rel="stylesheet">
+
+
+	<style>
+		body {
+		font-family: 'Do Hyeon', sans-serif;
+	}
+
+	</style>
+</head>
+
+<body>
+	<!-- 메인 페이지-->
+	<div data-role="page" id="main">
+		<table width="300" border="2" bordercolor="#C57087" align="center">
+			<thead>
+				<caption> 댓글달기 </caption>
+			</thead>
+			<tbody>
+				<form action="write_ok.jsp" method="post" encType="multiplart/form-data">
+					<tr>
+						<th>제목: </th>
+						<td><input type="text" placeholder="제목을 입력하세요. " name="subject" /></td>
+					</tr>					<tr>
+						<th>내용: </th>
+						<td><textarea cols="10" placeholder="내용을 입력하세요. " name="content"></textarea></td>
+					</tr>
+					<tr>
+						<th>첨부파일: </th>
+						<td>
+							<div class="filebox">
+								<p id="status"></p>
+								<label for="i_file"><img src="image/camera.png"></label>
+								<input type="file" name="img" id="i_file" my="myPicture" accept=".gif, .jpg, .png, .jpeg, .bmp" multiple />
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<input type="button" value="등록" onclick="sendData()" />
+						</td>
+					</tr>
+				</form>
+			</tbody>
+		</table>
+	</div>
+
+</body>
+
+</html>
