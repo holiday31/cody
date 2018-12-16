@@ -20,14 +20,14 @@ exports.logout = function(req, res)
 
 exports.mainList = function(req, res)
 {
-	connection.query('select p.userId,p.date,p.typeId,p.imgpath from post p order by p.postid desc'
+	connection.query('select p.userId,p.date,p.typeId,p.imgpath,p.likecnt,p.dislike from post p order by p.postid desc'
 	,function(err,rows){
 			if (!err){
 
 			var arr = [];
 
 			for(var i=0; i<rows.length; i++){
-				arr.push({userId: rows[i].userId, date: rows[i].date, typeId:rows[i].typeId, imgpath:rows[i].imgpath});
+				arr.push({userId: rows[i].userId, date: rows[i].date, typeId:rows[i].typeId, imgpath:rows[i].imgpath, like:rows[i].likecnt, dislike:rows[i].dislike});
 			}
 
 			var result = {

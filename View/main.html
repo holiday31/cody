@@ -136,8 +136,9 @@
 						var date=result.data[i].date;
 						var typeId=result.data[i].typeId;
 						var imgpath=result.data[i].imgpath;
-
-						console.log("userId:"+userId+"\ndate:"+date+"\ntypeId:"+typeId+"\nimgpath:"+imgpath);
+						var like=result.data[i].like;
+						var dislike=result.data[i].dislike;
+						console.log("userId:"+userId+"\ndate:"+date+"\ntypeId:"+typeId+"\nimgpath:"+imgpath+'\nlike:'+like+'\ndislike:'+dislike);
 					}
 
 						},
