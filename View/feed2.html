@@ -5,6 +5,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>코디플러스</title>
+		<link rel="shortcut icon" type="image/x-icon" href="https://mblogthumb-phinf.pstatic.net/20150913_165/koowq_1442154212671cvGl4_JPEG/%BF%CA%B0%C9%C0%CC_%BE%C6%C0%CC%C4%DC-01.png?type=w2" />
 
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -23,6 +24,19 @@
 
 		<script>
 			$(document).ready(function() {
+
+				//상의 좌표 놓을 곳 설정(데이터 받아서 설정할 것)
+				var tx = "150";
+				var ty = "45";
+				var topcoords = tx+","+ty+",15"; // x, y, 반지름(15로 지정)
+				document.getElementById("top").coords = topcoords;
+
+				//하의 좌표 놓을 곳 설정
+				var bx = "150";
+				var by = "185";
+				var bottomcoords = bx+","+by+",15";
+				document.getElementById("bottom").coords = bottomcoords;
+
 				$(function() {
 					$('.map').maphilight({
 						fillColor : '008800'
@@ -68,8 +82,8 @@
 				<div class="card" style="width: 18rem; margin:0 auto">
 					<img class="map card-img-top" src="image/post/postImg4.jpg" alt="Card image cap" usemap="#postimg" border="0">
 					<map name="postimg" id="postimg">
-						<area id="top" shape="circle" coords="150,55,15" title="top" href="#" target="_blank" data-maphilight='{"fillColor":"F9D0DB","shadow":true,"shadowBackground":"F9D0DB","alwaysOn":true}'>
-						<area id="bottom" shape="circle" coords="150,175,15" title="bottom" href="#" target="_blank" data-maphilight='{"fillColor":"F9D0DB","shadow":true,"shadowBackground":"F9D0DB","alwaysOn":true}'>
+						<area id="top" shape="circle" title="top" href="#" target="_blank" data-maphilight='{"fillColor":"F9D0DB","shadow":true,"shadowBackground":"F9D0DB","alwaysOn":true}'>
+						<area id="bottom" shape="circle" title="bottom" href="#" target="_blank" data-maphilight='{"fillColor":"F9D0DB","shadow":true,"shadowBackground":"F9D0DB","alwaysOn":true}'>
 					</map>
 					<div class="card-body">
 						<h5 class="card-title">title</h5>
@@ -103,20 +117,20 @@
 				<div data-role="navbar" >
 					<ul>
 						<li>
-						<a href="/" rel="external" data-icon="home" style="background-color:#C57087"></a>
-					</li>
-					<li>
-						<a href="/search" rel="external"  data-icon="search" style="background-color:#C57087"></a>
-					</li>
-					<li>
-						<a href="/post" rel="external" data-icon="edit" style="background-color:#C57087"></a>
-					</li>
-					<li>
-						<a href="/like" rel="external" data-icon="heart" style="background-color:#C57087"></a>
-					</li>
-					<li>
-						<a href="/myprofile" rel="external" data-icon="user" style="background-color:#C57087"></a>
-					</li>
+							<a href="/" rel="external" data-icon="home" style="background-color:#C57087"></a>
+						</li>
+						<li>
+							<a href="/search" rel="external"  data-icon="search" style="background-color:#C57087"></a>
+						</li>
+						<li>
+							<a href="/post" rel="external" data-icon="edit" style="background-color:#C57087"></a>
+						</li>
+						<li>
+							<a href="/like" rel="external" data-icon="heart" style="background-color:#C57087"></a>
+						</li>
+						<li>
+							<a href="/myprofile" rel="external" data-icon="user" style="background-color:#C57087"></a>
+						</li>
 					</ul>
 				</div>
 			</div>
