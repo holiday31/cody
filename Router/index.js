@@ -14,6 +14,8 @@ const router = require('express').Router();
 const controller = require('./Controller/controller');
 
 router.get('/', controller.main);
+router.get('/proc/main', controller.mainList);
+
 router.get('/login', controller.loginGET);
 router.get('/logout', controller.logout);
 router.get('/join', controller.joinGET);

@@ -5,7 +5,8 @@ var connection = mysql.createConnection({
     user     : 'codyplus',
     password : 'cody1234',
     port     : 3306,
-    database : 'codyplus'
+    database : 'codyplus',
+    multipleStatements: true
   });
 
 connection.connect();
@@ -17,24 +18,36 @@ exports.logout = function(req, res)
     res.redirect('/');
 };
 
+exports.mainList = function(req, res)
+{
+	connection.query('select p.userId,p.date,p.typeId,p.imgpath from post p order by p.postid desc'
+	,function(err,rows){
+			if (!err){
+
+			var arr = [];
+
+			for(var i=0; i<rows.length; i++){
+				arr.push({userId: rows[i].userId, date: rows[i].date, typeId:rows[i].typeId, imgpath:rows[i].imgpath});
+			}
+
+			var result = {
+				data: arr
+			}
+
+			res.send(result);
+		   }
+		else{
+			console.log('<main load>Error while performing Query.', err);
+		}
+	});
+}
+
 exports.main = function(req, res)
 {
     console.log(req.session);
     res.render('main.html');
 
 
-    connection.query('select * from post order by postid desc'
-    ,function(err,rows){
-        if (!err){
-            console.log("rows : " + JSON.stringify(rows));
-            res.render('main.html', {
-                rows: rows[0]
-            })
-           }
-        else{
-            console.log('<main load>Error while performing Query.', err);
-        }
-    });
 
     // if(req.session.login)
     //     res.render('main.html');
@@ -143,8 +156,8 @@ exports.postPOST = function(req, res)
     var _bottomx = req.body.bottomx;
     var _bottomy = req.body.bottomy;
     var _imgurl='uploads/'+req.file.filename;
-    connection.query('insert into post values(null,?,?,?,?,?,?,?,?,?,?,0,0,0,0)'
-        ,[_title,_content,_date,_userId,_typeId,_top,_bottom,_topurl,_bottomurl,_imgurl]//,_topx,_topy,_bottomx,_bottomy
+    connection.query('insert into post values(null,?,?,?,?,?,?,?,?,?,?,0,0,0,0,0,0);'
+        ,[_title,_content,_date,_userId,_typeId,_top,_bottom,_topurl,_bottomurl,_imgurl]//,_topx,_topy,_bottomx,_bottomy,like,dislike
         ,function(err){
          if (!err){
            console.log(req.file);
