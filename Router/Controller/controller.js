@@ -157,7 +157,7 @@ exports.postPOST = function(req, res)
     var _bottomy = req.body.bottomy;
     var _imgurl='uploads/'+req.file.filename;
     connection.query('insert into post values(null,?,?,?,?,?,?,?,?,?,?,0,0,?,?,?,?);'
-        ,[_title,_content,_date,_userId,_typeId,_top,_bottom,_topurl,_bottomurl,_imgurl]//,_topx,_topy,_bottomx,_bottomy,like,dislike
+        ,[_title,_content,_date,_userId,_typeId,_top,_bottom,_topurl,_bottomurl,_imgurl,_topx,_topy,_bottomx,_bottomy]//,_topx,_topy,_bottomx,_bottomy,like,dislike
         ,function(err){
          if (!err){
            console.log(req.file);
