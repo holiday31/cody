@@ -129,7 +129,7 @@
 										var dislike = result.data[i].dislike;
 										if (stop == false) {
 											var $img = $('#images div.w3-third').clone();
-											$img.find("img").attr("src", imgpath);
+											$img.find("img").attr("src", '..'+imgpath);
 											//이미지 변경
 											$img.find("span#user").text(userId);
 											// 사용자 변경
