@@ -18,7 +18,10 @@
             function fetchPage(name) {
                 fetch(name).then(function(response) {
                     response.text().then(function(text) {
-                        document.querySelector('section').innerHTML = text;
+                        if(document.querySelector('section').innerHTML.length > 0)
+                            document.querySelector('section').innerHTML = "";
+                        else
+                            document.querySelector('section').innerHTML = text;
                     })
                 });
             }

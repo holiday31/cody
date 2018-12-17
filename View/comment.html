@@ -1,120 +1,56 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 
     <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>코디플러스</title>
-        <link rel="shortcut icon" type="image/x-icon" href="https://mblogthumb-phinf.pstatic.net/20150913_165/koowq_1442154212671cvGl4_JPEG/%BF%CA%B0%C9%C0%CC_%BE%C6%C0%CC%C4%DC-01.png?type=w2" />
-        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>comment</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&amp;subset=korean" rel="stylesheet">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-        <script>
-            function fetchPage(name) {
-                fetch(name).then(function(response) {
-                    response.text().then(function(text) {
-                        document.querySelector('section').innerHTML = text;
-                    })
-                });
-            }
-        </script>
 
         <style>
             body {
                 font-family: 'Do Hyeon', sans-serif;
             }
-             #icon input {
-                align: center;
-                width: 25px;
-                height: 25px;
-                margin: 10px;
-            }
 
-            section {
-                position: relative;
-            }
-
-            section td input, section td textarea {
-                position: relative;
-                resize: none;
-                width: 100%;
-            }
-
-
-            label {
-                text-align: center;
-            }
-
-            label img {
-                width: 50%;
-            }
         </style>
-
     </head>
 
     <body>
-        <div data-role="page" id="page1">
-            <div data-role="header" data-position="fixed" style="background-color:#C57087">
-                <h1 style="color:white">user1</h1>
-                <a href="main.html" rel="external" data-icon="arrow-l" data-iconpos="notext" style="background-color:#C57087"></a>
-            </div>
-            <div data-role="content">
+        <!-- 메인 페이지-->
+        <table style="position: relative; width: 100%;" border="2" bordercolor="#C57087" align="center">
 
-                <div class="card" style="width: 18rem;margin:0 auto">
-                    <img class="card-img-top" src="image/post/postImg1.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">title</h5>
-                        <p class="card-text">
-                            contents
-                        </p>
-                        <p class="card-text" style="text-align:right">
-                            1h ago
-                        </p>
-                        <div class="card-body" id="icon">
-                            <input type="image" src="image/like.png" data-role=none>
-                            0</input>
-                            <input type="image" src="image/dislike.png" data-role=none>
-                            0</input>
-                            <input type="image" src="image/chat.png" data-role=none onclick="fetchPage('comment.html');">
-                            0</input>
-
-                        </div>
-                        <section>
-
-                        </section>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div data-role="footer" data-position="fixed" style="background-color:#C57087">
-                <div data-role="navbar">
-                    <ul>
-                        <li>
-                            <a href="/" rel="external" data-icon="home" style="background-color:#C57087"></a>
-                        </li>
-                        <li>
-                            <a href="/search" rel="external" data-icon="search" style="background-color:#C57087"></a>
-                        </li>
-                        <li>
-                            <a href="/post" rel="external" data-icon="edit" style="background-color:#C57087"></a>
-                        </li>
-                        <li>
-                            <a href="/like" rel="external" data-icon="heart" style="background-color:#C57087"></a>
-                        </li>
-                        <li>
-                            <a href="/myprofile" rel="external" data-icon="user" style="background-color:#C57087"></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+            <tbody>
+                <form action="write_ok.jsp" method="post" encType="multiplart/form-data">
+                    <tr>
+                        <th>제목 </th>
+                        <td>
+                        <input type="text" placeholder="제목을 입력하세요."width="30" name="subject" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>내용 </th>
+                        <td>                        <textarea cols="10" placeholder="내용을 입력하세요. " name="content"></textarea></td>
+                    </tr>
+                    <tr>
+                        <th>첨부파일 </th>
+                        <td>
+                        <div class="filebox">
+                            <p id="status"></p>
+                            <label for="i_file"><img src="image/camera.png"></label>
+                            <input type="file" name="img" id="i_file" my="myPicture" accept=".gif, .jpg, .png, .jpeg, .bmp" multiple />
+                        </div></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                        <input type="button" value="등록" onclick="sendData()" />
+                        </td>
+                    </tr>
+                </form>
+            </tbody>
+        </table>
 
     </body>
 
