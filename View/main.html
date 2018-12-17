@@ -129,7 +129,7 @@
 										var dislike = result.data[i].dislike;
 										if (stop == false) {
 											var $img = $('#images div.w3-third').clone();
-											$img.find("img").attr("src", imgpath);
+											$img.find("#img").attr("src", imgpath);
 											//이미지 변경
 											$img.find("span#user").text(userId);
 											// 사용자 변경
@@ -221,7 +221,7 @@
 							<span id="user">user1</span>
 							<span style="float:right" id="time">1h ago</span>
 						</p>
-						<img src="image/post/postImg1.png" alt="Norway" style="width:100%" class="w3-hover-opacity">
+						<img src="image/post/postImg1.png" alt="Norway" id="img" style="width:100%" class="w3-hover-opacity">
 						<div class="w3-container w3-white">
 							<input type="image" src="image/like.png" data-role=none style="width:25px; height:25px;margin:10px">
 							<span id="like">0</span>
