@@ -28,13 +28,31 @@
             body {
                 font-family: 'Do Hyeon', sans-serif;
             }
-            input {
+             #icon input {
                 align: center;
                 width: 25px;
                 height: 25px;
                 margin: 10px;
             }
 
+            section {
+                position: relative;
+            }
+
+            section td input, section td textarea {
+                position: relative;
+                resize: none;
+                width: 100%;
+            }
+
+
+            label {
+                text-align: center;
+            }
+
+            label img {
+                width: 50%;
+            }
         </style>
 
     </head>
@@ -57,7 +75,7 @@
                         <p class="card-text" style="text-align:right">
                             1h ago
                         </p>
-                        <div class="card-body">
+                        <div class="card-body" id="icon">
                             <input type="image" src="image/like.png" data-role=none>
                             0</input>
                             <input type="image" src="image/dislike.png" data-role=none>
@@ -67,7 +85,7 @@
 
                         </div>
                         <section>
-                          
+
                         </section>
                     </div>
 
