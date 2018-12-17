@@ -9,7 +9,16 @@
     margin-bottom: 5px;
     max-width: 100%;
 
+
+
   }
   .ui-content .ui-listview, .ui-panel-inner>.ui-listview{
     margin: auto;
+
+
+  }
+
+  .searchImg{
+    width: calc(33% - 16px);
+    height: 26vw;
   }
