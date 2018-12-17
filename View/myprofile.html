@@ -23,13 +23,54 @@
 			font-family: 'a가로수';
 			color: purple;
 		}
-
-		.loginImg {
-			width: calc(33% - 16px);
-			height: 28vw;
-		}
 	</style>
+<script>
+	$(document).ready(function() {
+				//main 들어갈때 데이터 받아오기
+				$.ajax({
+				url : "/proc/main", // /main 에서 받아옴
+				contentType: 'application/json; charset=utf-8',
+				dataType :"json", // 데이터타입을 json 으로 받아옴
+				method:"get",
+						success : function(result) {
+					for(var i = 0; i < result.data.length; i ++) {
+						var userId=result.data[i].userId;
+						var date=result.data[i].date;
+						var typeId=result.data[i].typeId;
+						var imgpath=result.data[i].imgpath;
+						var like=result.data[i].like;
+						var dislike=result.data[i].dislike;
+						console.log("userId:"+userId+"\ndate:"+date+"\ntypeId:"+typeId+"\nimgpath:"+imgpath+'\nlike:'+like+'\ndislike:'+dislike);
+					}
 
+						},
+						error : function(request,status,e) {
+					console.log("ajax error");
+					console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+e);
+						}
+				});
+				$(document).ready(function() {
+				//main 들어갈때 데이터 받아오기
+				$.ajax({
+				url : "/proc/profile", // /main 에서 받아옴
+				contentType: 'application/json; charset=utf-8',
+				dataType :"json", // 데이터타입을 json 으로 받아옴
+				method:"get",
+						success : function(result) {
+					for(var i = 0; i < result.data.length; i ++) {
+						var imgpath=result.data[i].imgpath;
+
+						console.log("imgpath:"+imgpath);
+					}
+
+						},
+						error : function(request,status,e) {
+					console.log("ajax error");
+					console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+e);
+						}
+				});
+				});
+</script>
 
 
 </head>
@@ -38,7 +79,7 @@
 	<div data-role="page" id="page1" align="center">
 		<div data-role="header" id="header" style="background-color:#C57087">
 			<h1 style="color:white">코디플러스</h1>
-			<span class="avatar"><img src="image/codyhanger.png" alt="" /></span>
+			<span class="avatar"><img src="image/avatar.jpg" alt="" /></span>
 			<h1><a href="/login" rel="external" data-role="button">로그인 하기</a></h1>
 			<h1 class="case-info-contact">
 				서비스 문의하기<br>
@@ -50,22 +91,22 @@
 			<section class="thumbnails">
 				<div data-role="listview">
 					<a href="image/fulls/01.jpg">
-						<img class="loginImg" src="image/thumbs/01.jpg" alt="" />
+						<img src="image/thumbs/01.jpg" width="100px" height="100px" ; alt="" />
 					</a>
 					<a href="image/fulls/02.jpg">
-						<img class="loginImg" src="image/thumbs/02.jpg" alt="" />
+						<img src="image/thumbs/02.jpg" width="100px" height="100px" ; alt="" />
 					</a>
 					<a href="image/fulls/03.jpg">
-						<img class="loginImg" src="image/thumbs/03.jpg" alt="" />
+						<img src="image/thumbs/03.jpg" width="100px" height="100px" ; alt="" />
 					</a>
 					<a href="image/fulls/04.jpg">
-						<img class="loginImg" src="image/thumbs/04.jpg" alt="" />
+						<img src="image/thumbs/04.jpg" width="100px" height="100px" ; alt="" />
 					</a>
 					<a href="image/fulls/05.jpg">
-						<img class="loginImg" src="image/thumbs/05.jpg"  alt="" />
+						<img src="image/thumbs/05.jpg" width="100px" height="100px" ; alt="" />
 					</a>
 					<a href="image/fulls/06.jpg">
-						<img class="loginImg" src="image/thumbs/06.jpg" alt="" />
+						<img src="image/thumbs/06.jpg" width="100px" height="100px" ; alt="" />
 					</a>
 				</div>
 

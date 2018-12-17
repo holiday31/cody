@@ -47,18 +47,27 @@ exports.main = function(req, res)
     console.log(req.session);
     res.render('main.html');
 
-
-
     // if(req.session.login)
     //     res.render('main.html');
     // else
     //     res.render('login.html');
 };
 
+exports.menuList = function(req, res)
+{
+    console.log(req.session);
+
+};
+
+
+
+
 exports.loginGET = function(req, res)
 {
     res.render('login.html');
 };
+
+
 
 exports.joinGET = function(req, res) {
     res.render('join.html');
@@ -72,9 +81,55 @@ exports.searchGET = function(req, res) {
     res.render('search.html');
 };
 
+exports.searchList = function(req, res) {
+    var _userId=req.body.userId;
+    connection.query('select p.imgpath from post p where=?',[_userId]
+	,function(err,rows){
+			if (!err){
+			var arr = [];
+			for(var i=0; i<rows.length; i++){
+				arr.push({_imgpath});
+			}
+			var result = {
+				data: arr
+			}
+			res.send(result);
+		   }
+		else{
+			console.log('<search load>Error while performing Query.', err);
+		}
+	});
+};
+
 exports.myprofileGET = function(req, res) {
+    // if(req.session.login)
+    //     res.render('main.html');
+    // else
+    //     res.render('login.html');
     res.render('myprofile.html');
 };
+
+
+exports.profileList = function(req, res) {
+    var _userId=req.body.userId;
+    connection.query('select p.imgpath from post p where=?',[_userId]
+	,function(err,rows){
+			if (!err){
+			var arr = [];
+			for(var i=0; i<rows.length; i++){
+				arr.push({_userId});
+			}
+			var result = {
+				data: arr
+            }
+			res.send(result);
+		   }
+		else{
+			console.log('<profile load>Error while performing Query.', err);
+		}
+	});
+};
+
 
 exports.likeGET = function(req, res) {
     res.render('like.html');
@@ -110,7 +165,7 @@ exports.loginPOST = function(req, res)
                 req.session.id = _id;
 
                 //res.location('/');
-                res.redirect('/');
+                res.redirect("/");
             }
         }
         else
@@ -156,8 +211,8 @@ exports.postPOST = function(req, res)
     var _bottomx = req.body.bottomx;
     var _bottomy = req.body.bottomy;
     var _imgurl='uploads/'+req.file.filename;
-    connection.query('insert into post values(null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,0,0);'
-        ,[_title,_content,_date,_userId,_typeId,_top,_bottom,_topurl,_bottomurl,_imgurl,_topx,_topy,_bottomx,_bottomy]//,_topx,_topy,_bottomx,_bottomy,like,dislike
+    connection.query('insert into post values(null,?,?,?,?,?,?,?,?,?,?,0,0,0,0,0,0);'
+        ,[_title,_content,_date,_userId,_typeId,_top,_bottom,_topurl,_bottomurl,_imgurl]//,_topx,_topy,_bottomx,_bottomy,like,dislike
         ,function(err){
          if (!err){
            console.log(req.file);
