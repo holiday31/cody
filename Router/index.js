@@ -15,15 +15,16 @@ const controller = require('./Controller/controller');
 
 router.get('/', controller.main);
 router.get('/proc/main', controller.mainList);
-
+router.get('/proc/menu', controller.menuList);
 router.get('/login', controller.loginGET);
 router.get('/logout', controller.logout);
 router.get('/join', controller.joinGET);
 router.get('/post',controller.postGET);
 router.get('/search', controller.searchGET);
+router.post('/proc/search', controller.searchList);
 router.get('/myprofile', controller.myprofileGET);
+router.get('/proc/myprofile', controller.profileList);
 router.get('/like', controller.likeGET);
-
 router.post('/login', controller.loginPOST);
 router.post('/join', controller.joinPOST);
 // router.post('/imgupload',upload.single('img'), controller.imgupload);
