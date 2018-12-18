@@ -17,21 +17,6 @@
 		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-endless-scroll/1.8.0/js/jquery.endless-scroll.min.js"></script>
-		<!--<script src="jqueryEndLessScroll.js"></script> -->
-		<!--<script>
-		$(document).ready(function() {
-		$('#mainPage').scroll(function() {
-		var scrollHeight = $(window).scrollTop() + $(window).height();
-		var documentHeight = $(document).height();
-		if(scrollHeight == documentHeight - 200) {
-		for(var i = 0; i < 10; i++) {
-		var $img = $('#images div').clone();
-		$('#images').appendTo($img);
-		}
-		}
-		});
-		});
-		</script> -->
 
 		<script>
 (function($) {
@@ -125,28 +110,72 @@
 		   //스크립트 부분
 		    $.mobile.ajaxEnabled = false;
 			$(document).ready(function() {
-				//main 들어갈때 데이터 받아오기
-				$.ajax({
-				url : "/proc/main", // /main 에서 받아옴
-				contentType: 'application/json; charset=utf-8',
-				dataType :"json", // 데이터타입을 json 으로 받아옴
-				method:"get",
-						success : function(result) {
-					for(var i = 0; i < result.data.length; i ++) {
-						var userId=result.data[i].userId;
-						var date=result.data[i].date;
-						var typeId=result.data[i].typeId;
-						var imgpath=result.data[i].imgpath;
-						var like=result.data[i].like;
-						var dislike=result.data[i].dislike;
-						console.log("userId:"+userId+"\ndate:"+date+"\ntypeId:"+typeId+"\nimgpath:"+imgpath+'\nlike:'+like+'\ndislike:'+dislike);
-					}
+				stop = false;
+				$(document).endlessScroll({
+					inflowPixels : 300,
+					callback : function() {
+						//main 들어갈때 데이터 받아오기
+						$.ajax({
+							url : "/proc/main", // /main 에서 받아옴
+							contentType : 'application/json; charset=utf-8',
+							dataType : "json", // 데이터타입을 json 으로 받아옴
+							method : "get",
+							success : function(result) {
+							for (var i = 0; i < result.data.length; i++) {
+								var userId = result.data[i].userId;
+								var date = result.data[i].date;
+								var typeId = result.data[i].typeId;
+								var imgpath = result.data[i].imgpath;
+								var like = result.data[i].like;
+								var dislike = result.data[i].dislike;
+								if (stop == false) {
+									var $img = $('#images div.w3-third').clone().removeClass();
+									$img.find("img").attr("src", "/"+imgpath);
+									console.log("../"+imgpath);
+									//이미지 변경
+									$img.find("span#user").text(userId);
+									// 사용자 변경
+									$img.find("span#type").text(typeId);
+									// 사용자 변경
+									$img.find("span#time").text(date);
+									// 시간 변경
+									var new_like = null;
+									new_like = "likecl"+i.toString();
+									var new_dislike = null;
+									new_dislike = "dislikecl"+i.toString();
+									//좋아요/별로에요 아이디 값 달리 주기
 
-						},
-						error : function(request,status,e) {
-					console.log("ajax error");
-					console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+e);
-						}
+									$img.find("input#liketo").addClass(new_like);
+									$img.find("input#disliketo").addClass(new_dislike);
+
+									var new_likecnt = null;
+									new_likecnt = "likecnt"+i.toString();
+									var new_dislikecnt = null;
+									new_dislikecnt = "dislikecnt"+i.toString();
+
+									$img.find("span#like").addClass(new_likecnt);
+									$img.find("span#dislike").addClass(new_dislikecnt);
+
+									$img.find("span#like").html(like);
+									//좋아요수 변경
+									$img.find("span#dislike").val(dislike);
+									//별로에요수 변경
+									console.log($('span#like').html());
+									$('#images').append($img);
+										//이어서 붙이기
+									if (i + 1 == result.data.length) {
+										stop = true;
+									}
+
+										}
+									}
+							},
+							error : function(request, status, e) {
+								console.log("ajax error");
+								console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + e);
+							}
+						});
+					}
 				});
 
 
@@ -182,19 +211,58 @@
 					$('#hotA').removeClass('select');
 					$('#hotB').removeClass('select');
 				});
-
-
-
-
-				$(document).endlessScroll({
-					inflowPixels : 300,
-					callback : function() {
-						//var $img = $('#images div:nth-last-child(3)').clone();
-						var $img = $('#images div.w3-third').clone(); //선택한 요소의 복사본을 만듦
-						$('#images').append($img);
-					}
-				});
 			});
+
+			function llclick() { //좋아요 클릭시 이벤트 함수
+				var classname = $(event.target).attr('class');
+				console.log(classname);
+				var classname1 = $(event.target).next().attr('class');
+				console.log(classname1);
+				if($(event.target).attr('src')==("image/like.png")) {
+					if($(event.target).next().next().attr('src')!='image/dislike_click.png') {
+						//싫어요를 안눌렀을 경우
+						$(event.target).attr("src", 'image/like_click.png');
+
+						if($(event.target).next().is("."+classname1)==true) {
+							cnt = parseInt($(event.target).next().html());
+							cnt += 1;
+							$(event.target).next().html(cnt);
+						}
+					}
+				}
+				else if($(event.target).attr('src')==("image/like_click.png")){
+					$(event.target).attr("src", 'image/like.png');
+					if($(event.target).next().is("."+classname1)==true) {
+						cnt = parseInt($(event.target).next().html());
+						cnt -= 1;
+						$(event.target).next().html(cnt);
+					}
+				}
+		 }
+
+			function dlclick() { //싫어요 클릭시 이벤트 함수
+				var classname2 = $(event.target).next().attr('class');
+				console.log(classname2);
+				if($(event.target).attr('src')==("image/dislike.png")) {
+					if($(event.target).prev().prev().attr('src')!='image/like_click.png') {
+						//좋아요를 안눌렀을 경우
+					$(event.target).attr("src", 'image/dislike_click.png');
+					if($(event.target).next().is("."+classname2)==true) {
+						cnt = parseInt($(event.target).next().html());
+						cnt += 1;
+						$(event.target).next().html(cnt);
+					}
+				}
+				}
+				else if($(event.target).attr('src')==("image/dislike_click.png")){
+					$(event.target).attr("src", 'image/dislike.png');
+					if($(event.target).next().is("."+classname2)==true) {
+						cnt = parseInt($(event.target).next().html());
+						cnt -= 1;
+						$(event.target).next().html(cnt);
+					}
+				}
+		 }
 		</script>
 
 		<style>
@@ -243,53 +311,25 @@
 				</div>
 
 				<div class="w3-row-padding" id="images">
-						<div class="w3-third w3-container w3-margin-bottom" style="border-style:groove" >
-							<p style="margin:20px">
-								<span >user1</span>
-								<span style="float:right">1h ago</span>
-							</p>
-							<img src="image/post/postImg1.png" alt="Norway" style="width:100%" class="w3-hover-opacity">
-							<div class="w3-container w3-white">
-								<input type="image" src="image/like.png" data-role=none style="width:25px; height:25px;margin:10px">
-								0
-								<input type="image" src="image/dislike.png" data-role=none style="width:25px; height:25px;margin:10px">
-								0
-								<input type="image" src="image/chat.png" data-role=none style="width:25px; height:325x;margin:10px">
-								0
-							</div>
+					<div class="w3-third w3-container w3-margin-bottom" style="border-style:groove" >
+						<p style="margin:20px">
+							<span id="user">user1</span>
+							<span id="type" name="type" style="display:none;"></span>
+							<span style="float:right" id="time">1h ago</span>
+						</p>
+						<img src="image/post/postImg1.png" alt="Norway" style="width:100%" class="w3-hover-opacity">
+						<div class="w3-container w3-white">
+							<input type="image" id="liketo" src="image/like.png" data-role=none style="width:25px; height:25px;margin:10px" onclick="llclick();">
+							<span id="like">0</span>
+							<input type="image" id="disliketo" src="image/dislike.png" data-role=none style="width:25px; height:25px;margin:10px" onclick="dlclick();">
+							<span id="dislike">0</span>
+							<input type="image" src="image/chat.png" data-role=none style="width:25px; height:325x;margin:10px" disabled>
+							<span>0</span>
 						</div>
-						<div class="w3-third w3-container w3-margin-bottom" style="border-style:groove">
-							<p style="margin:20px">
-								<span >user2</span>
-								<span style="float:right">1h ago</span>
-							</p>
-							<img src="image/post/postImg2.png"alt="Norway" style="width:100%" class="w3-hover-opacity">
-							<div class="w3-container w3-white">
-								<input type="image" src="image/like.png" data-role=none style="width:25px; height:25px;margin:10px">
-								0
-								<input type="image" src="image/dislike.png" data-role=none style="width:25px; height:25px;margin:10px">
-								0
-								<input type="image" src="image/chat.png" data-role=none style="width:25px; height:325x;margin:10px">
-								0
-							</div>
-						</div>
-						<div class="w3-third w3-container"style="border-style:groove">
-							<p style="margin:20px">
-								<span >user3</span>
-								<span style="float:right">1h ago</span>
-							</p>
-							<img src="image/post/postImg3.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity">
-							<div class="w3-container w3-white">
-								<input type="image" src="image/like.png" data-role=none style="width:25px; height:25px;margin:10px">
-								0
-								<input type="image" src="image/dislike.png" data-role=none style="width:25px; height:25px;margin:10px">
-								0
-								<input type="image" src="image/chat.png" data-role=none style="width:25px; height:325x;margin:10px">
-								0
-							</div>
-						</div>
-
+					</div>
 				</div>
+			</div>
+
 				<div data-role="footer" data-position="fixed" style="background-color:#C57087">
 					<div data-role="navbar">
 						<ul>
