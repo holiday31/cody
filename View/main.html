@@ -131,7 +131,6 @@
 								if (stop == false) {
 									var $img = $('#images div.w3-third').clone().removeClass();
 									$img.find("img").attr("src", "/"+imgpath);
-									console.log("../"+imgpath);
 									//이미지 변경
 									$img.find("span#user").text(userId);
 									// 사용자 변경
@@ -158,9 +157,8 @@
 
 									$img.find("span#like").html(like);
 									//좋아요수 변경
-									$img.find("span#dislike").val(dislike);
+									$img.find("span#dislike").html(dislike);
 									//별로에요수 변경
-									console.log($('span#like').html());
 									$('#images').append($img);
 										//이어서 붙이기
 									if (i + 1 == result.data.length) {
@@ -215,9 +213,8 @@
 
 			function llclick() { //좋아요 클릭시 이벤트 함수
 				var classname = $(event.target).attr('class');
-				console.log(classname);
 				var classname1 = $(event.target).next().attr('class');
-				console.log(classname1);
+
 				if($(event.target).attr('src')==("image/like.png")) {
 					if($(event.target).next().next().attr('src')!='image/dislike_click.png') {
 						//싫어요를 안눌렀을 경우
@@ -242,7 +239,6 @@
 
 			function dlclick() { //싫어요 클릭시 이벤트 함수
 				var classname2 = $(event.target).next().attr('class');
-				console.log(classname2);
 				if($(event.target).attr('src')==("image/dislike.png")) {
 					if($(event.target).prev().prev().attr('src')!='image/like_click.png') {
 						//좋아요를 안눌렀을 경우
