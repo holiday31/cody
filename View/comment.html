@@ -1,51 +1,109 @@
 <!DOCTYPE HTML>
 <html>
 
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>comment</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
-        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-        <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&amp;subset=korean" rel="stylesheet">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>comment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&amp;subset=korean" rel="stylesheet">
 
-        <style>
-            body {
+  <script type="text/javascript">
+      $(document).ready(function(){
+
+        var reply_count = 0; //원래 DB에 저장하고 저장 아이디 번호를 넘겨줘야 하는데 DB 없이 댓글 소스만 있어 DB 에서 아이디 증가하는것처럼 스크립트에서 순번을 생성
+        var status = false; //수정과 대댓글을 동시에 적용 못하도록
+
+          $("#list").click(function(){
+            alert("게시판 리스트로 이동");
+              //location.href = "/board/list";
+          });
+
+          //댓글 저장
+          $("#reply_save").click(function(){
+
+              //널 검사
+              if($("#reply_content").val().trim() == ""){
+                  alert("내용을 입력하세요.");
+                  $("#reply_content").focus();
+                  return false;
+              }
+
+              var reply_content = $("#reply_content").val().replace("\n", "<br>"); //개행처리
+
+              //값 셋팅
+              var objParams = {
+                      reply_writer    : $("#reply_writer").val(),
+                      reply_content   : reply_content
+              };
+
+              var reply_id;
+
+              reply_id = reply_count++;//DB에 저장했다 하고 순번을 생성
+
+              var reply_area = $("#reply_area");
+
+              var reply =
+              '<tr reply_type="main">'+
+              '   <td width="820px">'+
+              reply_content+
+              '   </td>'+
+
+
+
+              '</tr>';
+
+               if($('#reply_area').contents().size()==0){
+                   $('#reply_area').append(reply);
+               }else{
+                   $('#reply_area tr:last').after(reply);
+               }
+
+              //댓글 초기화
+              $("#reply_writer").val("");
+              $("#reply_content").val("");
+
+          });
+
+      });
+  </script>
+  <style>
+    body {
                 font-family: 'Do Hyeon', sans-serif;
             }
 
         </style>
-    </head>
+</head>
 
-    <body>
-        <!-- 메인 페이지-->
-        <table border="1" style="position: relative; width: 100%;" id="reply_area">
-            <tr reply_type="all"><!-- 뒤에 댓글 붙이기 쉽게 선언 -->
-                <td colspan="4"></td>
-            </tr>
-            <!-- 댓글이 들어갈 공간 -->
-        </table>
+<body>
+  <!-- 메인 페이지-->
 
-        <table style="position: relative; width: 100%;" border="2" bordercolor="#C57087" align="center">
+  <table border="1" style="position: relative; width: 100%;" id="reply_area">
+    <tr reply_type="all">
+      <!-- 뒤에 댓글 붙이기 쉽게 선언 -->
+      <td colspan="4"></td>
+    </tr>
+    <!-- 댓글이 들어갈 공간 -->
+  </table>
 
-            <tbody>
-                <form action="write_ok.jsp" method="post" encType="multiplart/form-data">
-                    <tr>
-                        <th>댓글 </th>
-                        <td>
-                        <input type="text" placeholder="댓글을 입력하세요."width="30" name="subject" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                        <input type="button" value="등록" onclick="sendData()" />
-                        </td>
-                    </tr>
-                </form>
-            </tbody>
-        </table>
+  <table style="position: relative; width: 100%;" border="2" bordercolor="#C57087" align="center">
 
-    </body>
+    <tbody>
+      <form action="write_ok.json" method="post" encType="multiplart/form-data">
+
+        <tr>
+            <td>
+                <textarea id="reply_content" name="reply_content" rows="4" cols="50" placeholder="댓글을 입력하세요."></textarea>
+                <button id="reply_save" name="reply_save">댓글 등록</button>
+            </td>
+        </tr>
+
+      </form>
+    </tbody>
+  </table>
+
+</body>
 
 </html>
