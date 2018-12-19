@@ -185,6 +185,7 @@ exports.feedload2 = function(req, res)
 
 exports.cmtcreate = function(req, res)
 {
+    if(req.session.login){
     var _userId=req.session.userId;
     var _postId=req.body.postId;
     var _comment=req.body.comment;
@@ -195,10 +196,14 @@ exports.cmtcreate = function(req, res)
 			    res.send();
 		   }
 		else{
-			console.log('<cmt create>Error while performing Query.', err);
+			   console.log('<cmt create>Error while performing Query.', err);
 		}
 	});
+}
+  else
+    res.render("login.html");
 };
+
 exports.comment = function(req, res)
 {
   var _postId=req.body.postId;
