@@ -183,6 +183,23 @@ exports.feedload2 = function(req, res)
 	});
 };
 
+exports.cmtcreate = function(req, res)
+{
+    var _userId=req.session.userId;
+    var _postId=req.body.postId;
+    var _comment=req.body.comment;
+    var _imgurl=req.body.imgurl;
+    connection.query('insert into (null,?,?,?,?)',[_userId,_postId,_comment,_imgurl]
+    ,function(err){
+			if (!err){
+			    res.send();
+		   }
+		else{
+			console.log('<cmt create>Error while performing Query.', err);
+		}
+	});
+};
+
 
 
 
@@ -357,18 +374,3 @@ exports.postPOST = function(req, res)
         }
     });
 };
-
-
-
-
-// exports.imgupload = function(req, res)
-// {
-
-//     // let result = {
-//     //     originalName : file.originalName,
-//     //     size: file.size
-//     // };
-
-//     // res.json(result);
-//     res.send({url:req.file.filename});
-// };
