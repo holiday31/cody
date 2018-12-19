@@ -46,11 +46,11 @@ exports.mainList = function(req, res) //메뉴 코디고민 최신
 
 exports.main = function(req, res)
 {
-    console.log(req.session);
-    if(req.session.login)
-        res.render('main.html');
-    else
-        res.render('login.html');
+
+//    if(req.session.login)
+//         res.render('main.html');
+//     else
+//         res.render('login.html');
     res.render('main.html');
 
 };
@@ -146,7 +146,11 @@ exports.joinGET = function(req, res) {
 };
 
 exports.postGET = function(req, res) {
-    res.render('post.html');
+       if(req.session.login)
+        res.render('post.html');
+       else
+        res.render('login.html');
+
 };
 
 exports.searchGET = function(req, res) {
@@ -196,7 +200,7 @@ exports.profileList = function(req, res) {
 			}
 			var result = {
                 data: arr,
-                current_user: _userId
+                userId: _userId
             }
             console.log(JSON.stringify(result));
 			res.send(result);
@@ -278,7 +282,7 @@ exports.postPOST = function(req, res)
     var _title = req.body.title;
     var _content = req.body.textarea;
     var _date = new Date();
-    var _userId = "test";
+    var _userId = req.session.userId;
     var _typeId = req.body.codyType;
     var _top = req.body.top;
     var _bottom = req.body.bottom;
@@ -288,7 +292,7 @@ exports.postPOST = function(req, res)
     var _topy = req.body.topy;
     var _bottomx = req.body.bottomx;
     var _bottomy = req.body.bottomy;
-    var _imgurl=req.file.filename;
+   var _imgurl=req.file.filename;
     connection.query('insert into post values(null,?,?,?,?,?,?,?,?,?,?,0,0,0,0,0,0);'
         ,[_title,_content,_date,_userId,_typeId,_top,_bottom,_topurl,_bottomurl,_imgurl]//,_topx,_topy,_bottomx,_bottomy,like,dislike
         ,function(err){
