@@ -131,7 +131,57 @@ exports.hotB = function(req, res) //메뉴 코디공유 인기
 	});
 
 };
+exports.feed = function(req, res)
+{
+    res.render('feed.html');
+};
+exports.feed2 = function(req, res)
+{
+    res.render('feed2.html');
+};
+exports.feedload = function(req, res)
+{
+    var _postId=req.body.postId;
+    connection.query('select distinct p.* ,count(c.commentId) as comment from post p inner join comment c on p.postId=c.postId where p.postId=?',[_postId]
+    ,function(err,row){
+			if (!err){
+			var arr = [];
+			arr.push({userId: row.userId, date: rows.date,imgpath:row.imgpath, like:row.likecnt, dislike:row.dislike,comment:row.comment});
 
+			var result = {
+				data: arr
+			}
+
+			res.send(result);
+		   }
+		else{
+			console.log('<feed load>Error while performing Query.', err);
+		}
+	});
+};
+exports.feedload2 = function(req, res)
+{
+    var _postId=req.body.postId;
+    connection.query('select distinct p.* ,count(c.commentId) as comment from post p inner join comment c on p.postId=c.postId where p.postId=?',[_postId]
+	,function(err,row){
+			if (!err){
+
+                var arr = [];
+                arr.push({userId: row.userId, date: rows.date,imgpath:row.imgpath,topurl:row.topurl,bottomurl:row._bottomurl,
+
+                    topx:row.topx,topy:row.topy,bottomx:row.bottomx,bottomy:row.bottomy,like:row.likecnt, dislike:row.dislike,comment:row.comment});
+
+                var result = {
+                    data: arr
+                }
+
+			res.send(result);
+		   }
+		else{
+			console.log('<feed load>Error while performing Query.', err);
+		}
+	});
+};
 
 
 
@@ -292,7 +342,7 @@ exports.postPOST = function(req, res)
     var _topy = req.body.topy;
     var _bottomx = req.body.bottomx;
     var _bottomy = req.body.bottomy;
-   var _imgurl=req.file.filename;
+    var _imgurl=req.file.filename;
     connection.query('insert into post values(null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,0,0);'
         ,[_title,_content,_date,_userId,_typeId,_top,_bottom,_topurl,_bottomurl,_imgurl,_topx,_topy,_bottomx,_bottomy]//,_topx,_topy,_bottomx,_bottomy,like,dislike
         ,function(err){
