@@ -24,6 +24,7 @@
 			color: purple;
 		}
 	</style>
+<<<<<<< HEAD
 	<script>
 		$(document).ready(function() {
 					//main 들어갈때 데이터 받아오기
@@ -59,10 +60,25 @@
 							success: function(result) {
 								for (var i = 0; i < result.data.length; i++) {
 									var imgpath = result.data[i].imgpath;
+=======
+<script>
+				$.mobile.ajaxEnabled = false;
+				$(document).ready(function() {
+
+				$.ajax({
+				url : "/proc/myprofile",
+				contentType: 'application/json; charset=utf-8',
+				dataType :"json",
+				method:"get",
+						success : function(result) {
+					for(var i = 0; i < result.data.length; i ++) {
+						var imgpath=result.data[i].imgpath;
+>>>>>>> 76ee002573161bf6a692a3e55a64d0a5998ffff2
 
 									console.log("imgpath:" + imgpath);
 								}
 
+<<<<<<< HEAD
 							},
 							error: function(request, status, e) {
 								console.log("ajax error");
@@ -71,6 +87,17 @@
 						});
 					});
 	</script>
+=======
+						},
+						error : function(request,status,e) {
+					console.log("ajax error");
+					console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+e);
+						}
+				});
+			});
+
+</script>
+>>>>>>> 76ee002573161bf6a692a3e55a64d0a5998ffff2
 
 
 </head>

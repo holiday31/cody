@@ -82,13 +82,13 @@ exports.searchGET = function(req, res) {
 };
 
 exports.searchList = function(req, res) {
-    var _userId=req.body.userId;
-    connection.query('select p.imgpath from post p where=?',[_userId]
+    var _search=req.body.search;
+    connection.query('select p.imgpath from post p where top= ? or bottom=?',[_search,_search]
 	,function(err,rows){
 			if (!err){
 			var arr = [];
 			for(var i=0; i<rows.length; i++){
-				arr.push({_imgpath});
+				arr.push({imgpath: rows[i].imgpath});
 			}
 			var result = {
 				data: arr
@@ -111,17 +111,18 @@ exports.myprofileGET = function(req, res) {
 
 
 exports.profileList = function(req, res) {
-    var _userId=req.body.userId;
-    connection.query('select p.imgpath from post p where=?',[_userId]
-	,function(err,rows){
+    // var _userId=req.body.userId;
+    var _userId="test";
+    connection.query('select p.imgpath from post p where userId=?',[_userId],function(err,rows){
 			if (!err){
 			var arr = [];
 			for(var i=0; i<rows.length; i++){
-				arr.push({_userId});
+				arr.push({imgpath: rows[i].imgpath});
 			}
 			var result = {
 				data: arr
             }
+            console.log(JSON.stringify(result));
 			res.send(result);
 		   }
 		else{
