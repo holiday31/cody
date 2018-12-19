@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 
+<<<<<<< HEAD
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -16,6 +17,49 @@
   <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
   <script>
     function fetchPage(name) {
+=======
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>코디플러스</title>
+        <link rel="shortcut icon" type="image/x-icon" href="https://mblogthumb-phinf.pstatic.net/20150913_165/koowq_1442154212671cvGl4_JPEG/%BF%CA%B0%C9%C0%CC_%BE%C6%C0%CC%C4%DC-01.png?type=w2" />
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&amp;subset=korean" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <script>
+            $.mobile.ajaxEnabled = false;
+      			$(document).ready(function() {
+      				//feed 데이터 받아오기
+      				$.ajax({
+      				url : "/proc/feedlist", // /main 에서 받아옴
+      				contentType: 'application/json; charset=utf-8',
+      				dataType :"json", // 데이터타입을 json 으로 받아옴
+      				method:"get",
+      						success : function(result) {
+      						var userId=result.data.userId;
+      						var date=result.data.date;
+      						var imgpath=result.data.imgpath;
+      						var like=result.data.like;
+      						var dislike=result.data.dislike;
+                  var comment=result.data.comment;
+      						console.log("userId:"+userId+"\ndate:"+date+"\ntypeId:"+typeId+"\nimgpath:"+imgpath+'\nlike:'+like+'\ndislike:'+dislike+'\ncomment:'+comment);
+      					}
+
+      						},
+      						error : function(request,status,e) {
+          					console.log("ajax error");
+          					console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+e);
+      						}
+      				});
+
+
+            function fetchPage(name) {
+>>>>>>> c1693d7b1d6342d1b87402d4658e9636671b72ad
                 fetch(name).then(function(response) {
                     response.text().then(function(text) {
                         if(document.querySelector('section').innerHTML.length > 0)

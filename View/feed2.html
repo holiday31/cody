@@ -23,8 +23,37 @@
 		<script type = "text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/maphilight/1.4.0/jquery.maphilight.min.js"></script>
 
 		<script>
-			$(document).ready(function() {
 
+				$.mobile.ajaxEnabled = false;
+				$(document).ready(function() {
+					//feed2 데이터 받아오기
+					$.ajax({
+					url : "/proc/feedlist2", // /main 에서 받아옴
+					contentType: 'application/json; charset=utf-8',
+					dataType :"json", // 데이터타입을 json 으로 받아옴
+					method:"get",
+							success : function(result) {
+							var userId=result.data.userId;
+							var date=result.data.date;
+							var imgpath=result.data.imgpath;
+							var like=result.data.like;
+							var dislike=result.data.dislike;
+							var comment=result.data.comment;
+							var topurl=result.data.topurl;
+							var bottomurl=result.data.bottomurl;
+							var topx=result.data.topx;
+							var topy=result.data.topy;
+							var bottomx=result.data.bottomx;
+							var bottomy=result.data.bottomy;
+							console.log("userId:"+userId+"\ndate:"+date+"\ntypeId:"+typeId+"\nimgpath:"+imgpath+'\nlike:'+like+'\ndislike:'+dislike+'\ncomment:'+comment
+						+'\ntopurl:'+topurl+'\nbottomurl:'+bottomurl+'\ntopx:'+topx+'\ntopy:'+topy+'\nbottomx:'+bottomx+'\nbottomy:'+bottomy);
+						}
+
+							},
+							error : function(request,status,e) {
+								console.log("ajax error");
+								console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+e);
+							}
 				//상의 좌표 놓을 곳 설정(데이터 받아서 설정할 것)
 				var tx = "150";
 				var ty = "45";
