@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 <!DOCTYPE HTML>
 <html>
 
@@ -11,28 +9,7 @@
         <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&amp;subset=korean" rel="stylesheet">
-        <script type="text/javascript">
-        $.mobile.ajaxEnabled = false;
-           $(document).ready(function() {
-              $.ajax({ //댓글 목록 받아오기
-              url : "/proc/comment",
-              contentType: 'application/json; charset=utf-8',
-              dataType :"json", // 데이터타입을 json 으로 받아옴
-              method:"get",
-                    success : function(result) {
-                    var userId=result.data.userId;
-                    var date=result.data.date;
-                    var comment=result.data.comment;
 
-                    console.log("userId:"+userId+"\ndate:"+date+'\ncomment:'+comment);
-                    },
-                    error : function(request,status,e) {
-                     console.log("ajax error");
-                     console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+e);
-                    }
-            });
-          });
-        </script>
         <style>
             body {
                 font-family: 'Do Hyeon', sans-serif;
@@ -43,7 +20,7 @@
 
     <body>
         <!-- 메인 페이지-->
-        <table border="1" width="1200px" id="reply_area">
+        <table border="1" style="position: relative; width: 100%;" id="reply_area">
             <tr reply_type="all"><!-- 뒤에 댓글 붙이기 쉽게 선언 -->
                 <td colspan="4"></td>
             </tr>
@@ -53,16 +30,16 @@
         <table style="position: relative; width: 100%;" border="2" bordercolor="#C57087" align="center">
 
             <tbody>
-                <form action="/proc/cmtcreate" method="post" encType="multiplart/form-data">
+                <form action="write_ok.jsp" method="post" encType="multiplart/form-data">
                     <tr>
                         <th>댓글 </th>
                         <td>
-                        <input type="text" name="comment" placeholder="댓글을 입력하세요."width="30" name="subject" />
+                        <input type="text" placeholder="댓글을 입력하세요."width="30" name="subject" />
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
-                        <input type="submit" value="등록" onclick="sendData()" />
+                        <input type="button" value="등록" onclick="sendData()" />
                         </td>
                     </tr>
                 </form>
@@ -72,4 +49,3 @@
     </body>
 
 </html>
->>>>>>> 3854ba6d1a5786e1cb775c972b95b0030db12992
