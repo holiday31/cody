@@ -188,8 +188,8 @@ exports.cmtcreate = function(req, res)
     var _userId=req.session.userId;
     var _postId=req.body.postId;
     var _comment=req.body.comment;
-    var _imgurl=req.body.imgurl;
-    connection.query('insert into (null,?,?,?,?)',[_userId,_postId,_comment,_imgurl]
+    var _date=new Date();
+    connection.query('insert into (null,?,?,?,?)',[_userId,_postId,_comment,_date]
     ,function(err){
 			if (!err){
 			    res.send();
@@ -199,7 +199,19 @@ exports.cmtcreate = function(req, res)
 		}
 	});
 };
+exports.comment = function(req, res)
+{
+  var _postId=req.body.postId;
+  connection.query('select * from comment where postId=?',[_postId]
+  ,function(err,rows){
+    if (!err){
 
+     }
+  else{
+    console.log('<comment load>Error while performing Query.', err);
+  }
+});
+};
 
 
 
