@@ -205,7 +205,15 @@ exports.comment = function(req, res)
   connection.query('select * from comment where postId=?',[_postId]
   ,function(err,rows){
     if (!err){
+      var arr = [];
+      for(var i=0; i<rows.length; i++){
+        arr.push({userId: rows[i].userId, date: rows[i].date,comment: rows[i].comment});
+      }
+      var result = {
+        data: arr
+      }
 
+      res.send(result);
      }
   else{
     console.log('<comment load>Error while performing Query.', err);
@@ -248,7 +256,7 @@ exports.searchList = function(req, res) {
 			var result = {
 				data: arr
 			}
-			res.send(result);
+			res.render('search.html',result);
 		   }
 		else{
 			console.log('<search load>Error while performing Query.', err);
