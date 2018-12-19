@@ -108,13 +108,14 @@
 
 			})(jQuery);
 		   //스크립트 부분
-		    $.mobile.ajaxEnabled = false;
+		   $.mobile.ajaxEnabled = false;
 			$(document).ready(function() {
 				stop = false;
 				$(document).endlessScroll({
 					inflowPixels : 300,
 					callback : function() {
 						//main 들어갈때 데이터 받아오기
+						 
 						$.ajax({
 							url : "/proc/main", // /main 에서 받아옴
 							contentType : 'application/json; charset=utf-8',

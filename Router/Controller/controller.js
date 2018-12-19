@@ -1,5 +1,6 @@
 var mysql      = require('mysql');
-var fs = require('fs')
+var fs = require('fs');
+
 var connection = mysql.createConnection({
     host     : 'codyplus.cmkwzw7x9dy7.ap-northeast-2.rds.amazonaws.com',
     user     : 'codyplus',
@@ -46,12 +47,12 @@ exports.mainList = function(req, res) //메뉴 코디고민 최신
 exports.main = function(req, res)
 {
     console.log(req.session);
+    if(req.session.login)
+        res.render('main.html');
+    else
+        res.render('login.html');
     res.render('main.html');
 
-    // if(req.session.login)
-    //     res.render('main.html');
-    // else
-    //     res.render('login.html');
 };
 
 
@@ -140,8 +141,6 @@ exports.loginGET = function(req, res)
     res.render('login.html');
 };
 
-
-
 exports.joinGET = function(req, res) {
     res.render('join.html');
 };
@@ -184,8 +183,11 @@ exports.myprofileGET = function(req, res) {
 
 
 exports.profileList = function(req, res) {
-    // var _userId=req.body.userId;
-    var _userId="test";
+    var _userId;
+        if(req.session.login)
+            _userId=req.session.userId;
+        else
+            _userId="admin";
     connection.query('select p.imgpath from post p where userId=?',[_userId],function(err,rows){
 			if (!err){
 			var arr = [];
@@ -193,7 +195,8 @@ exports.profileList = function(req, res) {
 				arr.push({imgpath: rows[i].imgpath});
 			}
 			var result = {
-				data: arr
+                data: arr,
+                current_user: _userId
             }
             console.log(JSON.stringify(result));
 			res.send(result);
@@ -236,8 +239,9 @@ exports.loginPOST = function(req, res)
             {
                 console.log("로그인 성공");
                 req.session.login = true;
-                req.session.id = _id;
-
+                req.session.userId = _id;
+                console.log(req.session);
+                console.log(req.session.userId);
                 //res.location('/');
                 res.redirect("/");
             }
