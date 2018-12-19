@@ -18,9 +18,10 @@ exports.logout = function(req, res)
     res.redirect('/');
 };
 
-exports.mainList = function(req, res)
+exports.mainList = function(req, res) //메뉴 코디고민 최신
 {
-	connection.query('select p.userId,p.date,p.typeId,p.imgpath,p.likecnt,p.dislike from post p order by p.postid desc'
+
+	connection.query('select userId,date,typeId,imgpath,likecnt,dislike from post typeId=1 order by postid desc'
 	,function(err,rows){
 			if (!err){
 
@@ -53,11 +54,83 @@ exports.main = function(req, res)
     //     res.render('login.html');
 };
 
-exports.menuList = function(req, res)
+
+
+exports.newB = function(req, res) //메뉴 코디공유 최신
 {
-    console.log(req.session);
+    connection.query('select userId,date,typeId,imgpath,likecnt,dislike from post where typeId=2 order by postid desc'
+	,function(err,rows){
+			if (!err){
+
+			var arr = [];
+
+			for(var i=0; i<rows.length; i++){
+				arr.push({userId: rows[i].userId, date: rows[i].date, typeId:rows[i].typeId, imgpath:rows[i].imgpath, like:rows[i].likecnt, dislike:rows[i].dislike});
+			}
+
+			var result = {
+				data: arr
+			}
+
+			res.send(result);
+		   }
+		else{
+			console.log('<main load>Error while performing Query.', err);
+		}
+	});
 
 };
+
+exports.hotA = function(req, res) //메뉴 코디고민 인기
+{
+    connection.query('select userId,date,typeId,imgpath,likecnt,dislike from post where typeId=1 order by likecnt desc'
+	,function(err,rows){
+			if (!err){
+
+			var arr = [];
+
+			for(var i=0; i<rows.length; i++){
+				arr.push({userId: rows[i].userId, date: rows[i].date, typeId:rows[i].typeId, imgpath:rows[i].imgpath, like:rows[i].likecnt, dislike:rows[i].dislike});
+			}
+
+			var result = {
+				data: arr
+			}
+
+			res.send(result);
+		   }
+		else{
+			console.log('<main load>Error while performing Query.', err);
+		}
+	});
+
+};
+
+exports.hotB = function(req, res) //메뉴 코디공유 인기
+{
+    connection.query('select userId,date,typeId,imgpath,likecnt,dislike from post where typeId=2 order by likecnt desc'
+	,function(err,rows){
+			if (!err){
+
+			var arr = [];
+
+			for(var i=0; i<rows.length; i++){
+				arr.push({userId: rows[i].userId, date: rows[i].date, typeId:rows[i].typeId, imgpath:rows[i].imgpath, like:rows[i].likecnt, dislike:rows[i].dislike});
+			}
+
+			var result = {
+				data: arr
+			}
+
+			res.send(result);
+		   }
+		else{
+			console.log('<main load>Error while performing Query.', err);
+		}
+	});
+
+};
+
 
 
 

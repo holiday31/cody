@@ -15,7 +15,11 @@ const controller = require('./Controller/controller');
 
 router.get('/', controller.main);
 router.get('/proc/main', controller.mainList);
-router.get('/proc/menu', controller.menuList);
+
+router.get('/proc/hotA', controller.hotA);
+router.get('/proc/newB', controller.newB);
+router.get('/proc/hotB', controller.hotB);
+
 router.get('/login', controller.loginGET);
 router.get('/logout', controller.logout);
 router.get('/join', controller.joinGET);
