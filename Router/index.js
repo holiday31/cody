@@ -2,7 +2,7 @@ const multer = require('multer');
 // 기타 express 코드
 let storageSetting = multer.diskStorage({
   destination: function(req, file, callback) {
-    callback(null, 'uploads/');
+    callback(null, 'public/');
   },
   filename: function(req, file, callback) {
     callback(null,  Date.now() + "-" + file.originalname);
