@@ -21,7 +21,7 @@ exports.logout = function(req, res)
 exports.mainList = function(req, res) //메뉴 코디고민 최신
 {
 
-	connection.query('select userId,date,typeId,imgpath,likecnt,dislike from post typeId=1 order by postid desc'
+	connection.query('select userId,date,typeId,imgpath,likecnt,dislike from post where typeId=1 order by postid desc'
 	,function(err,rows){
 			if (!err){
 
