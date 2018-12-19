@@ -184,6 +184,29 @@
 					$('#newB').removeClass('select');
 					$('#hotA').removeClass('select');
 					$('#hotB').removeClass('select');
+
+					$.ajax({
+					url : "/proc/main", // /main 에서 받아옴
+					contentType: 'application/json; charset=utf-8',
+					dataType :"json", // 데이터타입을 json 으로 받아옴
+					method:"get",
+						success : function(result) {
+					for(var i = 0; i < result.data.length; i ++) {
+						var userId=result.data[i].userId;
+						var date=result.data[i].date;
+						var typeId=result.data[i].typeId;
+						var imgpath=result.data[i].imgpath;
+						var like=result.data[i].like;
+						var dislike=result.data[i].dislike;
+						console.log("userId:"+userId+"\ndate:"+date+"\ntypeId:"+typeId+"\nimgpath:"+imgpath+'\nlike:'+like+'\ndislike:'+dislike);
+					}
+
+						},
+						error : function(request,status,e) {
+					console.log("ajax error");
+					console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+e);
+						}
+				});
 				});
 				$('#hotA').click(function(){
 					$('.cody_gomin .menu_name').addClass('select_menu');
@@ -192,6 +215,29 @@
 					$('#newA').removeClass('select');
 					$('#newB').removeClass('select');
 					$('#hotB').removeClass('select');
+
+					$.ajax({
+					url : "/proc/hotA", // /main 에서 받아옴
+					contentType: 'application/json; charset=utf-8',
+					dataType :"json", // 데이터타입을 json 으로 받아옴
+					method:"get",
+						success : function(result) {
+					for(var i = 0; i < result.data.length; i ++) {
+						var userId=result.data[i].userId;
+						var date=result.data[i].date;
+						var typeId=result.data[i].typeId;
+						var imgpath=result.data[i].imgpath;
+						var like=result.data[i].like;
+						var dislike=result.data[i].dislike;
+						console.log("userId:"+userId+"\ndate:"+date+"\ntypeId:"+typeId+"\nimgpath:"+imgpath+'\nlike:'+like+'\ndislike:'+dislike);
+					}
+
+						},
+						error : function(request,status,e) {
+					console.log("ajax error");
+					console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+e);
+						}
+				});
 				});
 				$('#newB').click(function(){
 					$('.cody_share .menu_name').addClass('select_menu');
@@ -200,6 +246,29 @@
 					$('#newA').removeClass('select');
 					$('#hotA').removeClass('select');
 					$('#hotB').removeClass('select');
+
+					$.ajax({
+					url : "/proc/newB", // /main 에서 받아옴
+					contentType: 'application/json; charset=utf-8',
+					dataType :"json", // 데이터타입을 json 으로 받아옴
+					method:"get",
+						success : function(result) {
+					for(var i = 0; i < result.data.length; i ++) {
+						var userId=result.data[i].userId;
+						var date=result.data[i].date;
+						var typeId=result.data[i].typeId;
+						var imgpath=result.data[i].imgpath;
+						var like=result.data[i].like;
+						var dislike=result.data[i].dislike;
+						console.log("userId:"+userId+"\ndate:"+date+"\ntypeId:"+typeId+"\nimgpath:"+imgpath+'\nlike:'+like+'\ndislike:'+dislike);
+					}
+
+						},
+						error : function(request,status,e) {
+					console.log("ajax error");
+					console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+e);
+						}
+				});
 				});
 				$('#hotB').click(function(){
 					$('.cody_share .menu_name').addClass('select_menu');
@@ -207,7 +276,30 @@
 					$('#hotB').addClass('select');
 					$('#newB').removeClass('select');
 					$('#hotA').removeClass('select');
-					$('#hotB').removeClass('select');
+					$('#newA').removeClass('select');
+
+					$.ajax({
+					url : "/proc/hotB", // /main 에서 받아옴
+					contentType: 'application/json; charset=utf-8',
+					dataType :"json", // 데이터타입을 json 으로 받아옴
+					method:"get",
+						success : function(result) {
+					for(var i = 0; i < result.data.length; i ++) {
+						var userId=result.data[i].userId;
+						var date=result.data[i].date;
+						var typeId=result.data[i].typeId;
+						var imgpath=result.data[i].imgpath;
+						var like=result.data[i].like;
+						var dislike=result.data[i].dislike;
+						console.log("userId:"+userId+"\ndate:"+date+"\ntypeId:"+typeId+"\nimgpath:"+imgpath+'\nlike:'+like+'\ndislike:'+dislike);
+					}
+
+						},
+						error : function(request,status,e) {
+					console.log("ajax error");
+					console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+e);
+						}
+				});
 				});
 			});
 

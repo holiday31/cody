@@ -24,32 +24,33 @@
 			color: purple;
 		}
 	</style>
-<script>
-				$.mobile.ajaxEnabled = false;
-				$(document).ready(function() {
-
-				$.ajax({
-				url : "/proc/myprofile",
+	<script>
+		$(document).ready(function() {
+			//main 들어갈때 데이터 받아오기
+			$.ajax({
+				url: "/proc/main", // /main 에서 받아옴
 				contentType: 'application/json; charset=utf-8',
-				dataType :"json",
-				method:"get",
-						success : function(result) {
-					for(var i = 0; i < result.data.length; i ++) {
-						var imgpath=result.data[i].imgpath;
-
-						console.log("imgpath:"+imgpath);
+				dataType: "json", // 데이터타입을 json 으로 받아옴
+				method: "get",
+				success: function(result) {
+					for (var i = 0; i < result.data.length; i++) {
+						var userId = result.data[i].userId;
+						var date = result.data[i].date;
+						var typeId = result.data[i].typeId;
+						var imgpath = result.data[i].imgpath;
+						var like = result.data[i].like;
+						var dislike = result.data[i].dislike;
+						console.log("userId:" + userId + "\ndate:" + date + "\ntypeId:" + typeId + "\nimgpath:" + imgpath + '\nlike:' + like + '\ndislike:' + dislike);
 					}
 
-						},
-						error : function(request,status,e) {
+				},
+				error: function(request, status, e) {
 					console.log("ajax error");
-					console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+e);
-						}
-				});
+					console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + e);
+				}
 			});
-
-</script>
-
+		});
+	</script>
 
 </head>
 
@@ -57,7 +58,7 @@
 	<div data-role="page" id="page1" align="center">
 		<div data-role="header" id="header" style="background-color:#C57087">
 			<h1 style="color:white">코디플러스</h1>
-			<span class="avatar"><img src="image/avatar.jpg" alt="" /></span>
+			<span class="avatar"><img src="image/codyhanger.png" alt="" /></span>
 			<h1><a href="/login" rel="external" data-role="button">로그인 하기</a></h1>
 			<h1 class="case-info-contact">
 				서비스 문의하기<br>
@@ -68,23 +69,32 @@
 		<div data-role="content" id="content">
 			<section class="thumbnails">
 				<div data-role="listview">
-					<a href="image/fulls/01.jpg">
-						<img src="image/thumbs/01.jpg" width="100px" height="100px" ; alt="" />
+					<a href="image/fulls/1.jpg">
+						<img class="profileImg" src="image/thumbs/1.jpg" alt="" />
 					</a>
-					<a href="image/fulls/02.jpg">
-						<img src="image/thumbs/02.jpg" width="100px" height="100px" ; alt="" />
+					<a href="image/fulls/2.jpg">
+						<img class="profileImg" src="image/thumbs/2.jpg" alt="" />
 					</a>
-					<a href="image/fulls/03.jpg">
-						<img src="image/thumbs/03.jpg" width="100px" height="100px" ; alt="" />
+					<a href="image/fulls/3.jpg">
+						<img class="profileImg" src="image/thumbs/3.jpg" alt="" />
 					</a>
-					<a href="image/fulls/04.jpg">
-						<img src="image/thumbs/04.jpg" width="100px" height="100px" ; alt="" />
+					<a href="image/fulls/4.jpg">
+						<img class="profileImg" src="image/thumbs/4.jpg" alt="" />
 					</a>
-					<a href="image/fulls/05.jpg">
-						<img src="image/thumbs/05.jpg" width="100px" height="100px" ; alt="" />
+					<a href="image/fulls/5.jpg">
+						<img class="profileImg" src="image/thumbs/5.jpg" alt="" />
 					</a>
-					<a href="image/fulls/06.jpg">
-						<img src="image/thumbs/06.jpg" width="100px" height="100px" ; alt="" />
+					<a href="image/fulls/6.jpg">
+						<img class="profileImg" src="image/thumbs/6.jpg" alt="" />
+					</a>
+					<a href="image/fulls/7.jpg">
+						<img class="profileImg" src="image/thumbs/7.jpg" alt="" />
+					</a>
+					<a href="image/fulls/8.jpg">
+						<img class="profileImg" src="image/thumbs/8.jpg" alt="" />
+					</a>
+					<a href="image/fulls/9.jpg">
+						<img class="profileImg" src="image/thumbs/9.jpg" alt="" />
 					</a>
 				</div>
 
@@ -99,7 +109,7 @@
 						<a href="/" rel="external" data-icon="home" style="background-color:#C57087"></a>
 					</li>
 					<li>
-						<a href="/search" rel="external"  data-icon="search" style="background-color:#C57087"></a>
+						<a href="/search" rel="external" data-icon="search" style="background-color:#C57087"></a>
 					</li>
 					<li>
 						<a href="/post" rel="external" data-icon="edit" style="background-color:#C57087"></a>

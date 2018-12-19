@@ -38,3 +38,8 @@
   margin-right: 5px;
   margin-bottom: 5px;
 }
+
+.profileImg{
+  width: calc(33% - 16px);
+  height: 29vw;
+}
