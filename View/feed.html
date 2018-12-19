@@ -33,28 +33,28 @@
         <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
         <script>
             $.mobile.ajaxEnabled = false;
-      			$(document).ready(function() {
-      				//feed 데이터 받아오기
-      				$.ajax({
-      				url : "/proc/feedlist", // /main 에서 받아옴
-      				contentType: 'application/json; charset=utf-8',
-      				dataType :"json", // 데이터타입을 json 으로 받아옴
-      				method:"get",
-      						success : function(result) {
-      						var userId=result.data.userId;
-      						var date=result.data.date;
-      						var imgpath=result.data.imgpath;
-      						var like=result.data.like;
-      						var dislike=result.data.dislike;
+               $(document).ready(function() {
+                  //feed 데이터 받아오기
+                  $.ajax({
+                  url : "/proc/feedlist", // /main 에서 받아옴
+                  contentType: 'application/json; charset=utf-8',
+                  dataType :"json", // 데이터타입을 json 으로 받아옴
+                  method:"get",
+                        success : function(result) {
+                        var userId=result.data.userId;
+                        var date=result.data.date;
+                        var imgpath=result.data.imgpath;
+                        var like=result.data.like;
+                        var dislike=result.data.dislike;
                   var comment=result.data.comment;
-      						console.log("userId:"+userId+"\ndate:"+date+"\ntypeId:"+typeId+"\nimgpath:"+imgpath+'\nlike:'+like+'\ndislike:'+dislike+'\ncomment:'+comment);
-      						},
-      						error : function(request,status,e) {
-          					console.log("ajax error");
-          					console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+e);
-      						}
+                        console.log("userId:"+userId+"\ndate:"+date+"\ntypeId:"+typeId+"\nimgpath:"+imgpath+'\nlike:'+like+'\ndislike:'+dislike+'\ncomment:'+comment);
+                        },
+                        error : function(request,status,e) {
+                         console.log("ajax error");
+                         console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+e);
+                        }
                 });
-      				});
+                  });
 
 
             function fetchPage(name) {
