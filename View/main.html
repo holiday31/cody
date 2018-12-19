@@ -1,447 +1,370 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>코디플러스</title>
-		<link rel="shortcut icon" type="image/x-icon" href="https://mblogthumb-phinf.pstatic.net/20150913_165/koowq_1442154212671cvGl4_JPEG/%BF%CA%B0%C9%C0%CC_%BE%C6%C0%CC%C4%DC-01.png?type=w2" />
-		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-		<link href="https://fonts.googleapis.com/css?family=Do+Hyeon&amp;subset=korean" rel="stylesheet">
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
-		<link rel="stylesheet" href="css/main.css"/>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+   <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>코디플러스</title>
+      <link rel="shortcut icon" type="image/x-icon" href="https://mblogthumb-phinf.pstatic.net/20150913_165/koowq_1442154212671cvGl4_JPEG/%BF%CA%B0%C9%C0%CC_%BE%C6%C0%CC%C4%DC-01.png?type=w2" />
+      <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&amp;subset=korean" rel="stylesheet">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
+      <link rel="stylesheet" href="css/main.css"/>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+      <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+      <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-endless-scroll/1.8.0/js/jquery.endless-scroll.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-endless-scroll/1.8.0/js/jquery.endless-scroll.min.js"></script>
 
-		<script>
+      <script>
 (function($) {
 
-				$.fn.endlessScroll = function(options) {
+            $.fn.endlessScroll = function(options) {
 
-					var defaults = {
-						bottomPixels : 50,
-						fireOnce : true,
-						fireDelay : 150,
-						loader : "<br />Loading...<br />",
-						data : "",
-						insertAfter : "div:last",
-						resetCounter : function() {
-							return false;
-						},
-						callback : function() {
-							return true;
-						},
-						ceaseFire : function() {
-							return false;
-						}
-					};
+               var defaults = {
+                  bottomPixels : 50,
+                  fireOnce : true,
+                  fireDelay : 150,
+                  loader : "<br />Loading...<br />",
+                  data : "",
+                  insertAfter : "div:last",
+                  resetCounter : function() {
+                     return false;
+                  },
+                  callback : function() {
+                     return true;
+                  },
+                  ceaseFire : function() {
+                     return false;
+                  }
+               };
 
-					var options = $.extend({}, defaults, options);
+               var options = $.extend({}, defaults, options);
 
-					var firing = true;
-					var fired = false;
-					var fireSequence = 0;
+               var firing = true;
+               var fired = false;
+               var fireSequence = 0;
 
-					if (options.ceaseFire.apply(this) === true) {
-						firing = false;
-					}
+               if (options.ceaseFire.apply(this) === true) {
+                  firing = false;
+               }
 
-					if (firing === true) {
-						$(this).scroll(function() {
-							if (options.ceaseFire.apply(this) === true) {
-								firing = false;
-								return;
-								// Scroll will still get called, but nothing will happen
-							}
+               if (firing === true) {
+                  $(this).scroll(function() {
+                     if (options.ceaseFire.apply(this) === true) {
+                        firing = false;
+                        return;
+                        // Scroll will still get called, but nothing will happen
+                     }
 
-							if (this == document || this == window) {
-								var is_scrollable = $(document).height() - $(window).height() <= $(window).scrollTop() + options.bottomPixels;
-							} else {
-								// calculates the actual height of the scrolling container
-								var inner_wrap = $(".endless_scroll_inner_wrap", this);
-								if (inner_wrap.length == 0) {
-									inner_wrap = $(this).wrapInner("<div class=\"endless_scroll_inner_wrap\" />").find(".endless_scroll_inner_wrap");
-								}
-								var is_scrollable = inner_wrap.length > 0 && (inner_wrap.height() - $(this).height() <= $(this).scrollTop() + options.bottomPixels);
-							}
+                     if (this == document || this == window) {
+                        var is_scrollable = $(document).height() - $(window).height() <= $(window).scrollTop() + options.bottomPixels;
+                     } else {
+                        // calculates the actual height of the scrolling container
+                        var inner_wrap = $(".endless_scroll_inner_wrap", this);
+                        if (inner_wrap.length == 0) {
+                           inner_wrap = $(this).wrapInner("<div class=\"endless_scroll_inner_wrap\" />").find(".endless_scroll_inner_wrap");
+                        }
+                        var is_scrollable = inner_wrap.length > 0 && (inner_wrap.height() - $(this).height() <= $(this).scrollTop() + options.bottomPixels);
+                     }
 
-							if (is_scrollable && (options.fireOnce == false || (options.fireOnce == true && fired != true))) {
-								if (options.resetCounter.apply(this) === true)
-									fireSequence = 0;
+                     if (is_scrollable && (options.fireOnce == false || (options.fireOnce == true && fired != true))) {
+                        if (options.resetCounter.apply(this) === true)
+                           fireSequence = 0;
 
-								fired = true;
-								fireSequence++;
+                        fired = true;
+                        fireSequence++;
 
-								$(options.insertAfter).after("<div id=\"endless_scroll_loader\">" + options.loader + "</div>");
+                        $(options.insertAfter).after("<div id=\"endless_scroll_loader\">" + options.loader + "</div>");
 
-								data = typeof options.data == 'function' ? options.data.apply(this, [fireSequence]) : options.data;
+                        data = typeof options.data == 'function' ? options.data.apply(this, [fireSequence]) : options.data;
 
-								if (data !== false) {
-									$(options.insertAfter).after("<div id=\"endless_scroll_data\">" + data + "</div>");
-									$("div#endless_scroll_data").hide().fadeIn();
-									$("div#endless_scroll_data").removeAttr("id");
+                        if (data !== false) {
+                           $(options.insertAfter).after("<div id=\"endless_scroll_data\">" + data + "</div>");
+                           $("div#endless_scroll_data").hide().fadeIn();
+                           $("div#endless_scroll_data").removeAttr("id");
 
-									options.callback.apply(this, [fireSequence]);
+                           options.callback.apply(this, [fireSequence]);
 
-									if (options.fireDelay !== false || options.fireDelay !== 0) {
-										$("body").after("<div id=\"endless_scroll_marker\"></div>");
-										// slight delay for preventing event firing twice
-										$("div#endless_scroll_marker").fadeTo(options.fireDelay, 1, function() {
-											$(this).remove();
-											fired = false;
-										});
-									} else {
-										fired = false;
-									}
-								}
+                           if (options.fireDelay !== false || options.fireDelay !== 0) {
+                              $("body").after("<div id=\"endless_scroll_marker\"></div>");
+                              // slight delay for preventing event firing twice
+                              $("div#endless_scroll_marker").fadeTo(options.fireDelay, 1, function() {
+                                 $(this).remove();
+                                 fired = false;
+                              });
+                           } else {
+                              fired = false;
+                           }
+                        }
 
-								$("div#endless_scroll_loader").remove();
-							}
-						});
-					}
-				};
+                        $("div#endless_scroll_loader").remove();
+                     }
+                  });
+               }
+            };
 
-			})(jQuery);
-		   //스크립트 부분
-		   $.mobile.ajaxEnabled = false;
-			$(document).ready(function() {
-				stop = false;
-				$(document).endlessScroll({
-					inflowPixels : 300,
-					callback : function() {
-						//main 들어갈때 데이터 받아오기
-						 
-						$.ajax({
-							url : "/proc/main", // /main 에서 받아옴
-							contentType : 'application/json; charset=utf-8',
-							dataType : "json", // 데이터타입을 json 으로 받아옴
-							method : "get",
-							success : function(result) {
-							for (var i = 0; i < result.data.length; i++) {
-								var userId = result.data[i].userId;
-								var date = result.data[i].date;
-								var typeId = result.data[i].typeId;
-								var imgpath = result.data[i].imgpath;
-								var like = result.data[i].like;
-								var dislike = result.data[i].dislike;
-								if (stop == false) {
-									var $img = $('#images div.w3-third').clone().removeClass();
-									$img.find("img").attr("src", "/"+imgpath);
-									//이미지 변경
-									$img.find("span#user").text(userId);
-									// 사용자 변경
-									$img.find("span#type").text(typeId);
-									// 사용자 변경
-									$img.find("span#time").text(date);
-									// 시간 변경
-									var new_like = null;
-									new_like = "likecl"+i.toString();
-									var new_dislike = null;
-									new_dislike = "dislikecl"+i.toString();
-									//좋아요/별로에요 아이디 값 달리 주기
+         })(jQuery);
+         //스크립트 부분
+         $.mobile.ajaxEnabled = false;
+         $(document).ready(function() {
+            stop = false;
+            $(document).endlessScroll({
+               inflowPixels : 300,
+               callback : function() {
+                  //main 들어갈때 데이터 받아오기
+                  $.ajax({
+                     url : "/proc/main", // /main 에서 받아옴
+                     contentType : 'application/json; charset=utf-8',
+                     dataType : "json", // 데이터타입을 json 으로 받아옴
+                     method : "get",
+                     success : function(result) {
+                     for (var i = 0; i < result.data.length; i++) {
+                        var userId = result.data[i].userId;
+                        var date = result.data[i].date;
+                        var typeId = result.data[i].typeId;
+                        var imgpath = result.data[i].imgpath;
+                        var like = result.data[i].like;
+                        var dislike = result.data[i].dislike;
+                        if (stop == false) {
+                           var $img = $('#images div.w3-third').clone().removeClass();
+                           $img.find("img").attr("src", "/"+imgpath);
+                           //이미지 변경
+                           $img.find("span#user").text(userId);
+                           // 사용자 변경
+                           $img.find("span#type").text(typeId);
+                           // 사용자 변경
+                           $img.find("span#time").text(date);
+                           // 시간 변경
 
-									$img.find("input#liketo").addClass(new_like);
-									$img.find("input#disliketo").addClass(new_dislike);
+                           $img.find('img').addClass(typeId.toString());
+                           var new_like = null;
+                           new_like = "likecl"+i.toString();
+                           var new_dislike = null;
+                           new_dislike = "dislikecl"+i.toString();
+                           //좋아요/별로에요 아이디 값 달리 주기
 
-									var new_likecnt = null;
-									new_likecnt = "likecnt"+i.toString();
-									var new_dislikecnt = null;
-									new_dislikecnt = "dislikecnt"+i.toString();
+                           $img.find("input#liketo").addClass(new_like);
+                           $img.find("input#disliketo").addClass(new_dislike);
 
-									$img.find("span#like").addClass(new_likecnt);
-									$img.find("span#dislike").addClass(new_dislikecnt);
+                           var new_likecnt = null;
+                           new_likecnt = "likecnt"+i.toString();
+                           var new_dislikecnt = null;
+                           new_dislikecnt = "dislikecnt"+i.toString();
 
-									$img.find("span#like").html(like);
-									//좋아요수 변경
-									$img.find("span#dislike").html(dislike);
-									//별로에요수 변경
-									$('#images').append($img);
-										//이어서 붙이기
-									if (i + 1 == result.data.length) {
-										stop = true;
-									}
+                           $img.find("span#like").addClass(new_likecnt);
+                           $img.find("span#dislike").addClass(new_dislikecnt);
 
-										}
-									}
-							},
-							error : function(request, status, e) {
-								console.log("ajax error");
-								console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + e);
-							}
-						});
-					}
-				});
+                           $img.find("span#like").html(like);
+                           //좋아요수 변경
+                           $img.find("span#dislike").val(dislike);
+                           //별로에요수 변경
+                           console.log($('span#like').html());
+                           $('#images').append($img);
+                              //이어서 붙이기
+                           if (i + 1 == result.data.length) {
+                              stop = true;
+                           }
+
+                              }
+                           }
+                     },
+                     error : function(request, status, e) {
+                        console.log("ajax error");
+                        console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + e);
+                     }
+                  });
+               }
+            });
 
 
-				$('#newA').click(function(){
-					$('.cody_gomin .menu_name').addClass('select_menu');
-					$('.cody_share .menu_name').removeClass('select_menu');
-					$('#newA').addClass('select');
-					$('#newB').removeClass('select');
-					$('#hotA').removeClass('select');
-					$('#hotB').removeClass('select');
+            $('#newA').click(function(){
+               $('.cody_gomin .menu_name').addClass('select_menu');
+               $('.cody_share .menu_name').removeClass('select_menu');
+               $('#newA').addClass('select');
+               $('#newB').removeClass('select');
+               $('#hotA').removeClass('select');
+               $('#hotB').removeClass('select');
+            });
+            $('#hotA').click(function(){
+               $('.cody_gomin .menu_name').addClass('select_menu');
+               $('.cody_share .menu_name').removeClass('select_menu');
+               $('#hotA').addClass('select');
+               $('#newA').removeClass('select');
+               $('#newB').removeClass('select');
+               $('#hotB').removeClass('select');
+            });
+            $('#newB').click(function(){
+               $('.cody_share .menu_name').addClass('select_menu');
+               $('.cody_gomin .menu_name').removeClass('select_menu');
+               $('#newB').addClass('select');
+               $('#newA').removeClass('select');
+               $('#hotA').removeClass('select');
+               $('#hotB').removeClass('select');
+            });
+            $('#hotB').click(function(){
+               $('.cody_share .menu_name').addClass('select_menu');
+               $('.cody_gomin .menu_name').removeClass('select_menu');
+               $('#hotB').addClass('select');
+               $('#newB').removeClass('select');
+               $('#hotA').removeClass('select');
+               $('#newA').removeClass('select');
+            });
+         });
 
-					$.ajax({
-					url : "/proc/main", // /main 에서 받아옴
-					contentType: 'application/json; charset=utf-8',
-					dataType :"json", // 데이터타입을 json 으로 받아옴
-					method:"get",
-						success : function(result) {
-					for(var i = 0; i < result.data.length; i ++) {
-						var userId=result.data[i].userId;
-						var date=result.data[i].date;
-						var typeId=result.data[i].typeId;
-						var imgpath=result.data[i].imgpath;
-						var like=result.data[i].like;
-						var dislike=result.data[i].dislike;
-						console.log("userId:"+userId+"\ndate:"+date+"\ntypeId:"+typeId+"\nimgpath:"+imgpath+'\nlike:'+like+'\ndislike:'+dislike);
-					}
+         function llclick() { //좋아요 클릭시 이벤트 함수
+            var classname = $(event.target).attr('class');
+            console.log(classname);
+            var classname1 = $(event.target).next().attr('class');
+            console.log(classname1);
+            if($(event.target).attr('src')==("image/like.png")) {
+               if($(event.target).next().next().attr('src')!='image/dislike_click.png') {
+                  //싫어요를 안눌렀을 경우
+                  $(event.target).attr("src", 'image/like_click.png');
 
-						},
-						error : function(request,status,e) {
-					console.log("ajax error");
-					console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+e);
-						}
-				});
-				});
-				$('#hotA').click(function(){
-					$('.cody_gomin .menu_name').addClass('select_menu');
-					$('.cody_share .menu_name').removeClass('select_menu');
-					$('#hotA').addClass('select');
-					$('#newA').removeClass('select');
-					$('#newB').removeClass('select');
-					$('#hotB').removeClass('select');
+                  if($(event.target).next().is("."+classname1)==true) {
+                     cnt = parseInt($(event.target).next().html());
+                     cnt += 1;
+                     $(event.target).next().html(cnt);
+                  }
+               }
+            }
+            else if($(event.target).attr('src')==("image/like_click.png")){
+               $(event.target).attr("src", 'image/like.png');
+               if($(event.target).next().is("."+classname1)==true) {
+                  cnt = parseInt($(event.target).next().html());
+                  cnt -= 1;
+                  $(event.target).next().html(cnt);
+               }
+            }
+       }
 
-					$.ajax({
-					url : "/proc/hotA", // /main 에서 받아옴
-					contentType: 'application/json; charset=utf-8',
-					dataType :"json", // 데이터타입을 json 으로 받아옴
-					method:"get",
-						success : function(result) {
-					for(var i = 0; i < result.data.length; i ++) {
-						var userId=result.data[i].userId;
-						var date=result.data[i].date;
-						var typeId=result.data[i].typeId;
-						var imgpath=result.data[i].imgpath;
-						var like=result.data[i].like;
-						var dislike=result.data[i].dislike;
-						console.log("userId:"+userId+"\ndate:"+date+"\ntypeId:"+typeId+"\nimgpath:"+imgpath+'\nlike:'+like+'\ndislike:'+dislike);
-					}
+         function dlclick() { //싫어요 클릭시 이벤트 함수
+            var classname2 = $(event.target).next().attr('class');
+            console.log(classname2);
+            if($(event.target).attr('src')==("image/dislike.png")) {
+               if($(event.target).prev().prev().attr('src')!='image/like_click.png') {
+                  //좋아요를 안눌렀을 경우
+               $(event.target).attr("src", 'image/dislike_click.png');
+               if($(event.target).next().is("."+classname2)==true) {
+                  cnt = parseInt($(event.target).next().html());
+                  cnt += 1;
+                  $(event.target).next().html(cnt);
+               }
+            }
+            }
+            else if($(event.target).attr('src')==("image/dislike_click.png")){
+               $(event.target).attr("src", 'image/dislike.png');
+               if($(event.target).next().is("."+classname2)==true) {
+                  cnt = parseInt($(event.target).next().html());
+                  cnt -= 1;
+                  $(event.target).next().html(cnt);
+               }
+            }
+       }
 
-						},
-						error : function(request,status,e) {
-					console.log("ajax error");
-					console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+e);
-						}
-				});
-				});
-				$('#newB').click(function(){
-					$('.cody_share .menu_name').addClass('select_menu');
-					$('.cody_gomin .menu_name').removeClass('select_menu');
-					$('#newB').addClass('select');
-					$('#newA').removeClass('select');
-					$('#hotA').removeClass('select');
-					$('#hotB').removeClass('select');
+       function feedgo(str) {
+          console.log($(event.target).attr('class'));
+          if($(event.target).hasClass("2") == true) {
+             location.replace(str);
+          }
+          else {
+             str = "/feed";
+             location.replace(str);
+          }
+       }
+      </script>
 
-					$.ajax({
-					url : "/proc/newB", // /main 에서 받아옴
-					contentType: 'application/json; charset=utf-8',
-					dataType :"json", // 데이터타입을 json 으로 받아옴
-					method:"get",
-						success : function(result) {
-					for(var i = 0; i < result.data.length; i ++) {
-						var userId=result.data[i].userId;
-						var date=result.data[i].date;
-						var typeId=result.data[i].typeId;
-						var imgpath=result.data[i].imgpath;
-						var like=result.data[i].like;
-						var dislike=result.data[i].dislike;
-						console.log("userId:"+userId+"\ndate:"+date+"\ntypeId:"+typeId+"\nimgpath:"+imgpath+'\nlike:'+like+'\ndislike:'+dislike);
-					}
+      <style>
+         body {
+            font-family: 'Do Hyeon', sans-serif;
+            color: #FF99CC;
+         }
 
-						},
-						error : function(request,status,e) {
-					console.log("ajax error");
-					console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+e);
-						}
-				});
-				});
-				$('#hotB').click(function(){
-					$('.cody_share .menu_name').addClass('select_menu');
-					$('.cody_gomin .menu_name').removeClass('select_menu');
-					$('#hotB').addClass('select');
-					$('#newB').removeClass('select');
-					$('#hotA').removeClass('select');
-					$('#newA').removeClass('select');
+         img.landscape {
+            width: auto;
+            height: 100%;
+         }
+         img.portrait {
+            width: 100%;
+            height: auto;
+         }
+         .inline {
+            display: inline-block;
+         }
+         .nav-item {
+            color: #C57087;
+         }
 
-					$.ajax({
-					url : "/proc/hotB", // /main 에서 받아옴
-					contentType: 'application/json; charset=utf-8',
-					dataType :"json", // 데이터타입을 json 으로 받아옴
-					method:"get",
-						success : function(result) {
-					for(var i = 0; i < result.data.length; i ++) {
-						var userId=result.data[i].userId;
-						var date=result.data[i].date;
-						var typeId=result.data[i].typeId;
-						var imgpath=result.data[i].imgpath;
-						var like=result.data[i].like;
-						var dislike=result.data[i].dislike;
-						console.log("userId:"+userId+"\ndate:"+date+"\ntypeId:"+typeId+"\nimgpath:"+imgpath+'\nlike:'+like+'\ndislike:'+dislike);
-					}
+      </style>
 
-						},
-						error : function(request,status,e) {
-					console.log("ajax error");
-					console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+e);
-						}
-				});
-				});
-			});
+   </head>
 
-			function llclick() { //좋아요 클릭시 이벤트 함수
-				var classname = $(event.target).attr('class');
-				var classname1 = $(event.target).next().attr('class');
+   <body>
+      <div data-role="page" id="page1">
+         <div data-role="header" data-position="fixed" style="background-color:#C57087">
+            <h1 style="color:white">코디플러스</h1>
+         </div>
+         <div data-role="content" id="mainPage">
 
-				if($(event.target).attr('src')==("image/like.png")) {
-					if($(event.target).next().next().attr('src')!='image/dislike_click.png') {
-						//싫어요를 안눌렀을 경우
-						$(event.target).attr("src", 'image/like_click.png');
+            <div class="category_menu">
+               <div class="cody_gomin">
+                  <p class="menu_name select_menu">코디고민</p>
+                  <p id="newA"class="select">최신</p>
+                  <p id="hotA">인기</p>
+               </div>
+               <div class="cody_share">
+                  <p class="menu_name">코디공유</p>
+                  <p id="newB">최신</p>
+                  <p id="hotB">인기</p>
+               </div>
+            </div>
 
-						if($(event.target).next().is("."+classname1)==true) {
-							cnt = parseInt($(event.target).next().html());
-							cnt += 1;
-							$(event.target).next().html(cnt);
-						}
-					}
-				}
-				else if($(event.target).attr('src')==("image/like_click.png")){
-					$(event.target).attr("src", 'image/like.png');
-					if($(event.target).next().is("."+classname1)==true) {
-						cnt = parseInt($(event.target).next().html());
-						cnt -= 1;
-						$(event.target).next().html(cnt);
-					}
-				}
-		 }
+            <div class="w3-row-padding" id="images">
+               <div class="w3-third w3-container w3-margin-bottom" style="border-style:groove" >
+                  <p style="margin:20px">
+                     <span id="user">user1</span>
+                     <span id="type" name="type" style="display:none;"></span>
+                     <span style="float:right" id="time">1h ago</span>
+                  </p>
+                  <img src="image/post/postImg1.png" alt="Norway" style="width:100%" class="w3-hover-opacity" onclick="feedgo('/feed2');">
+                  <div class="w3-container w3-white">
+                     <input type="image" id="liketo" src="image/like.png" data-role=none style="width:25px; height:25px;margin:10px" onclick="llclick();">
+                     <span id="like">0</span>
+                     <input type="image" id="disliketo" src="image/dislike.png" data-role=none style="width:25px; height:25px;margin:10px" onclick="dlclick();">
+                     <span id="dislike">0</span>
+                     <input type="image" src="image/chat.png" data-role=none style="width:25px; height:325x;margin:10px" disabled>
+                     <span>0</span>
+                  </div>
+               </div>
+            </div>
+         </div>
 
-			function dlclick() { //싫어요 클릭시 이벤트 함수
-				var classname2 = $(event.target).next().attr('class');
-				if($(event.target).attr('src')==("image/dislike.png")) {
-					if($(event.target).prev().prev().attr('src')!='image/like_click.png') {
-						//좋아요를 안눌렀을 경우
-					$(event.target).attr("src", 'image/dislike_click.png');
-					if($(event.target).next().is("."+classname2)==true) {
-						cnt = parseInt($(event.target).next().html());
-						cnt += 1;
-						$(event.target).next().html(cnt);
-					}
-				}
-				}
-				else if($(event.target).attr('src')==("image/dislike_click.png")){
-					$(event.target).attr("src", 'image/dislike.png');
-					if($(event.target).next().is("."+classname2)==true) {
-						cnt = parseInt($(event.target).next().html());
-						cnt -= 1;
-						$(event.target).next().html(cnt);
-					}
-				}
-		 }
-		</script>
+            <div data-role="footer" data-position="fixed" style="background-color:#C57087">
+               <div data-role="navbar">
+                  <ul>
+                     <li>
+                        <a href="/" rel="external" data-icon="home" style="background-color:#C57087"></a>
+                     </li>
+                     <li>
+                        <a href="/search" rel="external"  data-icon="search" style="background-color:#C57087"></a>
+                     </li>
+                     <li>
+                        <a href="/post" rel="external" data-icon="edit" style="background-color:#C57087"></a>
+                     </li>
+                     <li>
+                        <a href="/like" rel="external" data-icon="heart" style="background-color:#C57087"></a>
+                     </li>
+                     <li>
+                        <a href="/myprofile" rel="external" data-icon="user" style="background-color:#C57087"></a>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
 
-		<style>
-			body {
-				font-family: 'Do Hyeon', sans-serif;
-				color: #FF99CC;
-			}
-
-			img.landscape {
-				width: auto;
-				height: 100%;
-			}
-			img.portrait {
-				width: 100%;
-				height: auto;
-			}
-			.inline {
-				display: inline-block;
-			}
-			.nav-item {
-				color: #C57087;
-			}
-
-		</style>
-
-	</head>
-
-	<body>
-		<div data-role="page" id="page1">
-			<div data-role="header" data-position="fixed" style="background-color:#C57087">
-				<h1 style="color:white">코디플러스</h1>
-			</div>
-			<div data-role="content" id="mainPage">
-
-				<div class="category_menu">
-					<div class="cody_gomin">
-						<p class="menu_name select_menu">코디고민</p>
-						<p id="newA"class="select">최신</p>
-						<p id="hotA">인기</p>
-					</div>
-					<div class="cody_share">
-						<p class="menu_name">코디공유</p>
-						<p id="newB">최신</p>
-						<p id="hotB">인기</p>
-					</div>
-				</div>
-
-				<div class="w3-row-padding" id="images">
-					<div class="w3-third w3-container w3-margin-bottom" style="border-style:groove" >
-						<p style="margin:20px">
-							<span id="user">user1</span>
-							<span id="type" name="type" style="display:none;"></span>
-							<span style="float:right" id="time">1h ago</span>
-						</p>
-						<img src="image/post/postImg1.png" alt="Norway" style="width:100%" class="w3-hover-opacity">
-						<div class="w3-container w3-white">
-							<input type="image" id="liketo" src="image/like.png" data-role=none style="width:25px; height:25px;margin:10px" onclick="llclick();">
-							<span id="like">0</span>
-							<input type="image" id="disliketo" src="image/dislike.png" data-role=none style="width:25px; height:25px;margin:10px" onclick="dlclick();">
-							<span id="dislike">0</span>
-							<input type="image" src="image/chat.png" data-role=none style="width:25px; height:325x;margin:10px" disabled>
-							<span>0</span>
-						</div>
-					</div>
-				</div>
-			</div>
-
-				<div data-role="footer" data-position="fixed" style="background-color:#C57087">
-					<div data-role="navbar">
-						<ul>
-							<li>
-								<a href="/" rel="external" data-icon="home" style="background-color:#C57087"></a>
-							</li>
-							<li>
-								<a href="/search" rel="external"  data-icon="search" style="background-color:#C57087"></a>
-							</li>
-							<li>
-								<a href="/post" rel="external" data-icon="edit" style="background-color:#C57087"></a>
-							</li>
-							<li>
-								<a href="/like" rel="external" data-icon="heart" style="background-color:#C57087"></a>
-							</li>
-							<li>
-								<a href="/myprofile" rel="external" data-icon="user" style="background-color:#C57087"></a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-
-	</body>
+   </body>
 
 </html>
