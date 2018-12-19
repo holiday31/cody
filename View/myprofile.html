@@ -24,53 +24,53 @@
 			color: purple;
 		}
 	</style>
-<script>
-	$(document).ready(function() {
-				//main 들어갈때 데이터 받아오기
-				$.ajax({
-				url : "/proc/main", // /main 에서 받아옴
-				contentType: 'application/json; charset=utf-8',
-				dataType :"json", // 데이터타입을 json 으로 받아옴
-				method:"get",
-						success : function(result) {
-					for(var i = 0; i < result.data.length; i ++) {
-						var userId=result.data[i].userId;
-						var date=result.data[i].date;
-						var typeId=result.data[i].typeId;
-						var imgpath=result.data[i].imgpath;
-						var like=result.data[i].like;
-						var dislike=result.data[i].dislike;
-						console.log("userId:"+userId+"\ndate:"+date+"\ntypeId:"+typeId+"\nimgpath:"+imgpath+'\nlike:'+like+'\ndislike:'+dislike);
-					}
+	<script>
+		$(document).ready(function() {
+					//main 들어갈때 데이터 받아오기
+					$.ajax({
+						url: "/proc/main", // /main 에서 받아옴
+						contentType: 'application/json; charset=utf-8',
+						dataType: "json", // 데이터타입을 json 으로 받아옴
+						method: "get",
+						success: function(result) {
+							for (var i = 0; i < result.data.length; i++) {
+								var userId = result.data[i].userId;
+								var date = result.data[i].date;
+								var typeId = result.data[i].typeId;
+								var imgpath = result.data[i].imgpath;
+								var like = result.data[i].like;
+								var dislike = result.data[i].dislike;
+								console.log("userId:" + userId + "\ndate:" + date + "\ntypeId:" + typeId + "\nimgpath:" + imgpath + '\nlike:' + like + '\ndislike:' + dislike);
+							}
 
 						},
-						error : function(request,status,e) {
-					console.log("ajax error");
-					console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+e);
+						error: function(request, status, e) {
+							console.log("ajax error");
+							console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + e);
 						}
-				});
-				$(document).ready(function() {
-				//main 들어갈때 데이터 받아오기
-				$.ajax({
-				url : "/proc/profile", // /main 에서 받아옴
-				contentType: 'application/json; charset=utf-8',
-				dataType :"json", // 데이터타입을 json 으로 받아옴
-				method:"get",
-						success : function(result) {
-					for(var i = 0; i < result.data.length; i ++) {
-						var imgpath=result.data[i].imgpath;
+					});
+					$(document).ready(function() {
+						//main 들어갈때 데이터 받아오기
+						$.ajax({
+							url: "/proc/profile", // /main 에서 받아옴
+							contentType: 'application/json; charset=utf-8',
+							dataType: "json", // 데이터타입을 json 으로 받아옴
+							method: "get",
+							success: function(result) {
+								for (var i = 0; i < result.data.length; i++) {
+									var imgpath = result.data[i].imgpath;
 
-						console.log("imgpath:"+imgpath);
-					}
+									console.log("imgpath:" + imgpath);
+								}
 
-						},
-						error : function(request,status,e) {
-					console.log("ajax error");
-					console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+e);
-						}
-				});
-				});
-</script>
+							},
+							error: function(request, status, e) {
+								console.log("ajax error");
+								console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + e);
+							}
+						});
+					});
+	</script>
 
 
 </head>
@@ -91,22 +91,22 @@
 			<section class="thumbnails">
 				<div data-role="listview">
 					<a href="image/fulls/01.jpg">
-						<img src="image/thumbs/01.jpg" width="100px" height="100px" ; alt="" />
+						<img class="profileImg" src="image/thumbs/01.jpg" width="100px" height="100px" ; alt="" />
 					</a>
 					<a href="image/fulls/02.jpg">
-						<img src="image/thumbs/02.jpg" width="100px" height="100px" ; alt="" />
+						<img class="profileImg" src="image/thumbs/02.jpg" width="100px" height="100px" ; alt="" />
 					</a>
 					<a href="image/fulls/03.jpg">
-						<img src="image/thumbs/03.jpg" width="100px" height="100px" ; alt="" />
+						<img class="profileImg" src="image/thumbs/03.jpg" width="100px" height="100px" ; alt="" />
 					</a>
 					<a href="image/fulls/04.jpg">
-						<img src="image/thumbs/04.jpg" width="100px" height="100px" ; alt="" />
+						<img class="profileImg" src="image/thumbs/04.jpg" width="100px" height="100px" ; alt="" />
 					</a>
 					<a href="image/fulls/05.jpg">
-						<img src="image/thumbs/05.jpg" width="100px" height="100px" ; alt="" />
+						<img class="profileImg" src="image/thumbs/05.jpg" width="100px" height="100px" ; alt="" />
 					</a>
 					<a href="image/fulls/06.jpg">
-						<img src="image/thumbs/06.jpg" width="100px" height="100px" ; alt="" />
+						<img class="profileImg" src="image/thumbs/06.jpg" width="100px" height="100px" ; alt="" />
 					</a>
 				</div>
 
@@ -121,7 +121,7 @@
 						<a href="/" rel="external" data-icon="home" style="background-color:#C57087"></a>
 					</li>
 					<li>
-						<a href="/search" rel="external"  data-icon="search" style="background-color:#C57087"></a>
+						<a href="/search" rel="external" data-icon="search" style="background-color:#C57087"></a>
 					</li>
 					<li>
 						<a href="/post" rel="external" data-icon="edit" style="background-color:#C57087"></a>
