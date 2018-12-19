@@ -89,12 +89,98 @@
          function bottomHref() {
             document.getElementById("bottom").href = "http://www.uni-min.co.kr/product/detail.html?product_no=6283&cate_no=35&display_group=1m";
          }
+
+				 function llclick() { //좋아요 클릭시 이벤트 함수
+					 var classname = $(event.target).attr('class');
+					 var classname1 = $(event.target).next().attr('class');
+
+					 if($(event.target).attr('src')==("image/like.png")) {
+						 if($(event.target).next().next().attr('src')!='image/dislike_click.png') {
+							 //싫어요를 안눌렀을 경우
+							 $(event.target).attr("src", 'image/like_click.png');
+
+							 if($(event.target).next().is("."+classname1)==true) {
+								 cnt = parseInt($(event.target).next().html());
+								 cnt += 1;
+								 $(event.target).next().html(cnt);
+							 }
+						 }
+					 }
+					 else if($(event.target).attr('src')==("image/like_click.png")){
+						 $(event.target).attr("src", 'image/like.png');
+						 if($(event.target).next().is("."+classname1)==true) {
+							 cnt = parseInt($(event.target).next().html());
+							 cnt -= 1;
+							 $(event.target).next().html(cnt);
+						 }
+					 }
+				}
+
+				 function dlclick() { //싫어요 클릭시 이벤트 함수
+					 var classname2 = $(event.target).next().attr('class');
+					 if($(event.target).attr('src')==("image/dislike.png")) {
+						 if($(event.target).prev().prev().attr('src')!='image/like_click.png') {
+							 //좋아요를 안눌렀을 경우
+						 $(event.target).attr("src", 'image/dislike_click.png');
+						 if($(event.target).next().is("."+classname2)==true) {
+							 cnt = parseInt($(event.target).next().html());
+							 cnt += 1;
+							 $(event.target).next().html(cnt);
+						 }
+					 }
+					 }
+					 else if($(event.target).attr('src')==("image/dislike_click.png")){
+						 $(event.target).attr("src", 'image/dislike.png');
+						 if($(event.target).next().is("."+classname2)==true) {
+							 cnt = parseInt($(event.target).next().html());
+							 cnt -= 1;
+							 $(event.target).next().html(cnt);
+						 }
+					 }
+				}
+
+				 //덧글 불러오기
+				 function fetchPage(name) {
+						 fetch(name).then(function(response) {
+								 response.text().then(function(text) {
+										 if(document.querySelector('section').innerHTML.length > 0)
+												 document.querySelector('section').innerHTML = "";
+										 else
+												 document.querySelector('section').innerHTML = text;
+								 })
+						 });
+				 }
       </script>
 
       <style>
-         body {
-            font-family: 'Do Hyeon', sans-serif;
-         }
+			body {
+									font-family: 'Do Hyeon', sans-serif;
+							}
+							 #icon input {
+									align: center;
+									width: 25px;
+									height: 25px;
+									margin: 10px;
+							}
+
+							section {
+									position: relative;
+							}
+
+							section td input, section td textarea {
+									position: relative;
+									resize: none;
+									width: 100%;
+							}
+
+
+							label {
+									text-align: center;
+							}
+
+							label img {
+									width: 50%;
+							}
 
       </style>
 
@@ -132,13 +218,16 @@
                      </li>
                   </ul>
                   <div class="card-body">
-                     <input type="image" src="image/like.png" data-role=none style="width:25px; height:25px;margin:10px">
-                     0
-                     <input type="image" src="image/dislike.png" data-role=none style="width:25px; height:25px;margin:10px">
-                     0
-                     <input type="image" src="image/chat.png" data-role=none style="width:25px; height:325x;margin:10px">
-                     0
+										<input type="image" id="liketo" src="image/like.png" data-role=none style="width:25px; height:25px;margin:10px" onclick="llclick();">
+										<span id="like">0</span>
+										<input type="image" id="disliketo" src="image/dislike.png" data-role=none style="width:25px; height:25px;margin:10px" onclick="dlclick();">
+										<span id="dislike">0</span>
+										<input type="image" onclick="fetchPage('comment.html')" src="image/chat.png" data-role=none style="width:25px; height:325x;margin:10px">
+										<span>0</span>
                   </div>
+									<section>
+
+									</section>
                </div>
             </div>
 
