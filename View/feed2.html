@@ -47,13 +47,14 @@
 							var bottomy=result.data.bottomy;
 							console.log("userId:"+userId+"\ndate:"+date+"\ntypeId:"+typeId+"\nimgpath:"+imgpath+'\nlike:'+like+'\ndislike:'+dislike+'\ncomment:'+comment
 						+'\ntopurl:'+topurl+'\nbottomurl:'+bottomurl+'\ntopx:'+topx+'\ntopy:'+topy+'\nbottomx:'+bottomx+'\nbottomy:'+bottomy);
-						}
-
 							},
+
+
 							error : function(request,status,e) {
 								console.log("ajax error");
 								console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+e);
 							}
+						});
 				//상의 좌표 놓을 곳 설정(데이터 받아서 설정할 것)
 				var tx = "150";
 				var ty = "45";

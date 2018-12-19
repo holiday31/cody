@@ -31,13 +31,12 @@
       						var dislike=result.data.dislike;
                   var comment=result.data.comment;
       						console.log("userId:"+userId+"\ndate:"+date+"\ntypeId:"+typeId+"\nimgpath:"+imgpath+'\nlike:'+like+'\ndislike:'+dislike+'\ncomment:'+comment);
-      					}
-
       						},
       						error : function(request,status,e) {
           					console.log("ajax error");
           					console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+e);
       						}
+                });
       				});
 
 
