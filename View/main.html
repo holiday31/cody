@@ -19,6 +19,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-endless-scroll/1.8.0/js/jquery.endless-scroll.min.js"></script>
 
       <script>
+      $.mobile.ajaxEnabled = false;
 (function($) {
 
             $.fn.endlessScroll = function(options) {
@@ -266,7 +267,47 @@
                    var dislike=result.data[i].dislike;
                    console.log("userId:"+userId+"\ndate:"+date+"\ntypeId:"+typeId+"\nimgpath:"+imgpath+'\nlike:'+like+'\ndislike:'+dislike);
                 }
+                if (stop == false) {
+                   var $img = $('#images div.w3-third').clone().removeClass();
+                   $img.find("img").attr("src", "/"+imgpath);
+                   //이미지 변경
+                   $img.find("span#user").text(userId);
+                   // 사용자 변경
+                   $img.find("span#type").text(typeId);
+                   // 사용자 변경
+                   $img.find("span#time").text(date);
+                   // 시간 변경
 
+                   $img.find('img').addClass(typeId.toString());
+                   var new_like = null;
+                   new_like = "likecl"+i.toString();
+                   var new_dislike = null;
+                   new_dislike = "dislikecl"+i.toString();
+                   //좋아요/별로에요 아이디 값 달리 주기
+
+                   $img.find("input#liketo").addClass(new_like);
+                   $img.find("input#disliketo").addClass(new_dislike);
+
+                   var new_likecnt = null;
+                   new_likecnt = "likecnt"+i.toString();
+                   var new_dislikecnt = null;
+                   new_dislikecnt = "dislikecnt"+i.toString();
+
+                   $img.find("span#like").addClass(new_likecnt);
+                   $img.find("span#dislike").addClass(new_dislikecnt);
+
+                   $img.find("span#like").html(like);
+                   //좋아요수 변경
+                   $img.find("span#dislike").val(dislike);
+                   //별로에요수 변경
+                   console.log($('span#like').html());
+                   $('#images').append($img);
+                      //이어서 붙이기
+                   if (i + 1 == result.data.length) {
+                      stop = true;
+                   }
+
+                      }
                    },
                    error : function(request,status,e) {
                 console.log("ajax error");
