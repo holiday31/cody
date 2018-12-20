@@ -27,6 +27,7 @@ router.get('/proc/comment', controller.comment);
 router.post('/proc/cmtcreate', controller.cmtcreate);
 router.get('/proc/like', controller.like);
 router.get('/proc/dislike', controller.dislike);
+router.get('/comment', controller.commentload);
 
 router.get('/login', controller.loginGET);
 router.get('/logout', controller.logout);

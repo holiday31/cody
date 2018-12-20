@@ -202,7 +202,8 @@ exports.like = function(req, res)
   else{
     console.log('<feed load>Error while performing Query.', err);
   }
-}
+});
+};
 
 exports.dislike = function(req, res)
 {
@@ -221,7 +222,8 @@ exports.dislike = function(req, res)
   else{
     console.log('<feed load>Error while performing Query.', err);
   }
-}
+});
+};
 
 exports.cmtcreate = function(req, res)
 {
@@ -240,8 +242,9 @@ exports.cmtcreate = function(req, res)
 		}
 	});
 }
-  else
+    else {
     res.render("login.html");
+  }
 };
 
 exports.comment = function(req, res)
@@ -264,6 +267,11 @@ exports.comment = function(req, res)
     console.log('<comment load>Error while performing Query.', err);
   }
 });
+};
+
+exports.commentload = function(req, res)
+{
+  res.render("comment.html");
 };
 
 

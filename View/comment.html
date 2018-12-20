@@ -12,6 +12,25 @@
 
   <script type="text/javascript">
       $(document).ready(function(){
+        $("#reply_save").onclick(function(){
+          $.ajax({
+          url : "/proc/cmtcreate", // /main 에서 받아옴
+          contentType: 'application/json; charset=utf-8',
+          dataType :"json", // 데이터타입을 json 으로 받아옴
+          method:"get",
+          // data:{postId: 20},
+                success : function(result) {
+                    console.log("댓글 등록 성공");
+                  },
+
+
+                error : function(request,status,e) {
+                   console.log("ajax error");
+                   console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+e);
+                }
+             });
+        });
+
 
         var reply_count = 0; //원래 DB에 저장하고 저장 아이디 번호를 넘겨줘야 하는데 DB 없이 댓글 소스만 있어 DB 에서 아이디 증가하는것처럼 스크립트에서 순번을 생성
         var status = false; //수정과 대댓글을 동시에 적용 못하도록
