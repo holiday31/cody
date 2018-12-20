@@ -25,8 +25,8 @@ router.get('/feed2', controller.feed2);
 router.get('/proc/feed2', controller.feedload2);
 router.get('/proc/comment', controller.comment);
 router.post('/proc/cmtcreate', controller.cmtcreate);
-// router.get('/proc/like', controller.like);
-// router.get('/proc/dislike', controller.dislike);
+router.get('/proc/like', controller.like);
+router.get('/proc/dislike', controller.dislike);
 
 router.get('/login', controller.loginGET);
 router.get('/logout', controller.logout);

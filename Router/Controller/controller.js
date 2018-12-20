@@ -161,7 +161,6 @@ exports.feedload = function(req, res)
 };
 exports.feedload2 = function(req, res)
 {
-
     var _postId=req.param('postId');
     console.log(_postId);
     connection.query('select distinct p.* ,count(c.commentId) as comment from post p inner join comment c on p.postId=c.postId where p.postId=?',[_postId]
@@ -184,6 +183,45 @@ exports.feedload2 = function(req, res)
 		}
 	});
 };
+
+
+exports.like = function(req, res)
+{
+  var _postId=req.param('postId');
+  var _like=req.param('like');
+  connection.query('update post set likecnt=? where postId=?',[(_like+1),_postId]
+,function(err,rows){
+    if (!err){
+              var result = {
+                  like: _like+1
+              }
+              console.log(result);
+
+              res.send(result);
+     }
+  else{
+    console.log('<feed load>Error while performing Query.', err);
+  }
+}
+
+exports.dislike = function(req, res)
+{
+  var _postId=req.param('postId');
+  var _dislike=req.param('dislike');
+  connection.query('update post set dislike=? where postId=?',[(_dislike+1),_postId]
+  ,function(err,rows){
+    if (!err){
+              var result = {
+                  dislike: _dislike+1
+              }
+              console.log(result);
+
+              res.send(result);
+     }
+  else{
+    console.log('<feed load>Error while performing Query.', err);
+  }
+}
 
 exports.cmtcreate = function(req, res)
 {
