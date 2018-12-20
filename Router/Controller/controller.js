@@ -141,17 +141,17 @@ exports.feed2 = function(req, res)
 };
 exports.feedload = function(req, res)
 {
-    var _postId=req.body.postId;
+    var _postId=req.param('postId');
     connection.query('select distinct p.* ,count(c.commentId) as comment from post p inner join comment c on p.postId=c.postId where p.postId=?',[_postId]
-    ,function(err,row){
+    ,function(err,rows){
 			if (!err){
 			var arr = [];
-			arr.push({userId: row.userId, date: rows.date,imgpath:row.imgpath, like:row.likecnt, dislike:row.dislike,comment:row.comment});
+			arr.push({userId: rows[0].userId, date: rows[0].date,imgpath:rows[0].imgpath, like:rows[0].likecnt, dislike:rows[0].dislike,comment:rows[0].comment});
 
 			var result = {
 				data: arr
 			}
-
+      console.log(result);
 			res.send(result);
 		   }
 		else{
@@ -161,19 +161,21 @@ exports.feedload = function(req, res)
 };
 exports.feedload2 = function(req, res)
 {
-    var _postId=req.body.postId;
+
+    var _postId=req.param('postId');
+    console.log(_postId);
     connection.query('select distinct p.* ,count(c.commentId) as comment from post p inner join comment c on p.postId=c.postId where p.postId=?',[_postId]
-	,function(err,row){
+	,function(err,rows){
 			if (!err){
-
                 var arr = [];
-                arr.push({userId: row.userId, date: rows.date,imgpath:row.imgpath,topurl:row.topurl,bottomurl:row._bottomurl,
+                arr.push({userId: rows[0].userId, date: rows[0].date,imgpath:rows[0].imgpath,topurl:rows[0].topurl,bottomurl:rows[0]._bottomurl,
 
-                    topx:row.topx,topy:row.topy,bottomx:row.bottomx,bottomy:row.bottomy,like:row.likecnt, dislike:row.dislike,comment:row.comment});
+                    topx:rows[0].topx,topy:rows[0].topy,bottomx:rows[0].bottomx,bottomy:rows[0].bottomy,like:rows[0].likecnt, dislike:rows[0].dislike,comment:rows[0].comment});
 
                 var result = {
                     data: arr
                 }
+                console.log(result);
 
 			res.send(result);
 		   }

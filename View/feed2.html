@@ -24,28 +24,30 @@
 
       <script>
 
-            $.mobile.ajaxEnabled = false;
+
             $(document).ready(function() {
                //feed2 데이터 받아오기
+
                $.ajax({
-               url : "/proc/feedload2", // /main 에서 받아옴
+               url : "/proc/feed2", // /main 에서 받아옴
                contentType: 'application/json; charset=utf-8',
                dataType :"json", // 데이터타입을 json 으로 받아옴
                method:"get",
+							 data:{postId: 20},
                      success : function(result) {
-                     var userId=result.data.userId;
-                     var date=result.data.date;
-                     var imgpath=result.data.imgpath;
-                     var like=result.data.like;
-                     var dislike=result.data.dislike;
-                     var comment=result.data.comment;
-                     var topurl=result.data.topurl;
-                     var bottomurl=result.data.bottomurl;
-                     var topx=result.data.topx;
-                     var topy=result.data.topy;
-                     var bottomx=result.data.bottomx;
-                     var bottomy=result.data.bottomy;
-                     console.log("userId:"+userId+"\ndate:"+date+"\ntypeId:"+typeId+"\nimgpath:"+imgpath+'\nlike:'+like+'\ndislike:'+dislike+'\ncomment:'+comment
+                     var userId=result.data[0].userId;
+                     var date=result.data[0].date;
+                     var imgpath=result.data[0].imgpath;
+                     var like=result.data[0].like;
+                     var dislike=result.data[0].dislike;
+                     var comment=result.data[0].comment;
+                     var topurl=result.data[0].topurl;
+                     var bottomurl=result.data[0].bottomurl;
+                     var topx=result.data[0].topx;
+                     var topy=result.data[0].topy;
+                     var bottomx=result.data[0].bottomx;
+                     var bottomy=result.data[0].bottomy;
+                     console.log("userId:"+userId+"\ndate:"+date+"\nimgpath:"+imgpath+'\nlike:'+like+'\ndislike:'+dislike+'\ncomment:'+comment
                   +'\ntopurl:'+topurl+'\nbottomurl:'+bottomurl+'\ntopx:'+topx+'\ntopy:'+topy+'\nbottomx:'+bottomx+'\nbottomy:'+bottomy);
                      },
 
